@@ -26,6 +26,8 @@ instead of being forced to write custom CSS.
 
 ## Text Input
 
+Add basic styles to a normal `input` element using the `form-input` class.
+
 <CodeSample code={`
   <label class="block">
     <span class="text-gray-700">Input</span>
@@ -37,17 +39,20 @@ instead of being forced to write custom CSS.
 
 ## Textarea
 
+Add basic styles to a `textarea` element using the `form-textarea` class.
 
 <CodeSample code={`
   <label class="block">
     <span class="text-gray-700">Textarea</span>
-    <textarea class="mt-1 block w-full form-textarea" rows="3" placeholder="Enter some long form content."></textarea>
+    <textarea class="form-textarea mt-1 block w-full" rows="3" placeholder="Enter some long form content."></textarea>
   </label>
 `}/>
 
 ---
 
 ## Select
+
+Add basic styles to a `select` element using the `form-select` class.
 
 <CodeSample code={`
   <label class="block">
@@ -61,10 +66,13 @@ instead of being forced to write custom CSS.
 
 ### Select Multiple
 
+If you are using the `multiple` attribute on a `select` element, use the `form-multiselect` class
+instead.
+
 <CodeSample code={`
   <label class="block">
     <span class="text-gray-700">Multiselect</span>
-    <select class="form-input block w-full mt-1" multiple>
+    <select class="form-multiselect block w-full mt-1" multiple>
       <option>Option 1</option>
       <option>Option 2</option>
       <option>Option 3</option>
@@ -78,29 +86,106 @@ instead of being forced to write custom CSS.
 
 ## Checkbox
 
+Create a custom checkbox by adding a `span` with the `form-checkbox` class next to an
+`input[type=checkbox]`.
+
+Hide the real checkbox element using the `sr-only` class, and hide the span from screen readers
+using `aria-hidden`.
+
+Control the layout of the checkbox and label however you like — the `form-checkbox` class doesn't
+impose any opinions in that regard. Here we've used flexbox to center the checkbox with the label.
+
 <CodeSample code={`
   <div class="block">
     <span class="text-gray-700">Checkboxes</span>
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="sr-only"/>
-          <span class="form-checkbox text-indigo-700" aria-hidden="true"></span>
+          <input type="checkbox" class="sr-only" checked/>
+          <span class="form-checkbox text-gray-800" aria-hidden="true"></span>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
           <input type="checkbox" class="sr-only"/>
-          <span class="form-checkbox text-green-600" aria-hidden="true"></span>
+          <span class="form-checkbox text-gray-800" aria-hidden="true"></span>
           <span class="ml-2">Option 2</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
           <input type="checkbox" class="sr-only"/>
+          <span class="form-checkbox text-gray-800" aria-hidden="true"></span>
+          <span class="ml-2">Option 3</span>
+        </label>
+      </div>
+    </div>
+  </div>
+`}/>
+
+### Changing the color
+
+You can customize the background color of a checkbox when it's checked by using Tailwind's text
+color utilities, like `text-indigo-600`.
+
+<CodeSample code={`
+  <div class="block">
+    <span class="text-gray-700">Checkboxes</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="sr-only" checked/>
+          <span class="form-checkbox text-indigo-600" aria-hidden="true"></span>
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="sr-only" checked/>
+          <span class="form-checkbox text-blue-500" aria-hidden="true"></span>
+          <span class="ml-2">Option 2</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="sr-only" checked/>
           <span class="form-checkbox text-pink-600" aria-hidden="true"></span>
           <span class="ml-2">Option 3</span>
+        </label>
+      </div>
+    </div>
+  </div>
+`}/>
+
+### Changing the size
+
+Use Tailwind's width and height utilities (like `h-6` and `w-6`) to customize the size of the
+checkbox.
+
+<CodeSample code={`
+  <div class="block">
+    <span class="text-gray-700">Checkboxes</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="sr-only" checked/>
+          <span class="form-checkbox h-4 w-4 text-gray-800" aria-hidden="true"></span>
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+      <div class="mt-1">
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="sr-only"/>
+          <span class="form-checkbox h-6 w-6 text-gray-800" aria-hidden="true"></span>
+          <span class="ml-3 text-lg">Option 2</span>
+        </label>
+      </div>
+      <div class="mt-1">
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="sr-only"/>
+          <span class="form-checkbox h-8 w-8 text-gray-800" aria-hidden="true"></span>
+          <span class="ml-4 text-xl">Option 3</span>
         </label>
       </div>
     </div>
@@ -111,31 +196,106 @@ instead of being forced to write custom CSS.
 
 ## Radio Button
 
+Create a custom radio button by adding a `span` with the `form-radio` class next to an
+`input[type=radio]`.
 
+Hide the real radio button using the `sr-only` class, and hide the span from screen readers
+using `aria-hidden`.
+
+Control the layout of the radio button and label however you like — the `form-radio` class doesn't
+impose any opinions in that regard. Here we've used flexbox to center the radio button with the label.
 
 <CodeSample code={`
   <div class="block">
-    <span class="text-gray-700">Radio buttons</span>
+    <span class="text-gray-700">Radio Buttons</span>
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="sr-only" name="radio" value="1"/>
-          <span class="form-radio text-indigo-700" aria-hidden="true"></span>
+          <input type="radio" class="sr-only" name="radio" value="1" checked/>
+          <span class="form-radio text-gray-800" aria-hidden="true"></span>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
           <input type="radio" class="sr-only" name="radio" value="2"/>
-          <span class="form-radio text-green-600" aria-hidden="true"></span>
+          <span class="form-radio text-gray-800" aria-hidden="true"></span>
           <span class="ml-2">Option 2</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
           <input type="radio" class="sr-only" name="radio" value="3"/>
+          <span class="form-radio text-gray-800" aria-hidden="true"></span>
+          <span class="ml-2">Option 3</span>
+        </label>
+      </div>
+    </div>
+  </div>
+`}/>
+
+### Changing the color
+
+You can customize the background color of a radio button when it's checked by using Tailwind's text
+color utilities, like `text-indigo-600`.
+
+<CodeSample code={`
+  <div class="block">
+    <span class="text-gray-700">Radio Buttons</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="sr-only" name="radio-colors" value="1" checked/>
+          <span class="form-radio text-indigo-600" aria-hidden="true"></span>
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="sr-only" name="radio-colors" value="2"/>
+          <span class="form-radio text-blue-500" aria-hidden="true"></span>
+          <span class="ml-2">Option 2</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="sr-only" name="radio-colors" value="3"/>
           <span class="form-radio text-pink-600" aria-hidden="true"></span>
           <span class="ml-2">Option 3</span>
+        </label>
+      </div>
+    </div>
+  </div>
+`}/>
+
+### Changing the size
+
+Use Tailwind's width and height utilities (like `h-6` and `w-6`) to customize the size of the
+radio button.
+
+<CodeSample code={`
+  <div class="block">
+    <span class="text-gray-700">Radio Buttons</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="sr-only" name="radio-sizes" value="1" checked/>
+          <span class="form-radio h-4 w-4 text-gray-800" aria-hidden="true"></span>
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+      <div class="mt-1">
+        <label class="inline-flex items-center">
+          <input type="radio" class="sr-only" name="radio-sizes" value="2"/>
+          <span class="form-radio h-6 w-6 text-gray-800" aria-hidden="true"></span>
+          <span class="ml-3 text-lg">Option 2</span>
+        </label>
+      </div>
+      <div class="mt-1">
+        <label class="inline-flex items-center">
+          <input type="radio" class="sr-only" name="radio-sizes" value="3"/>
+          <span class="form-radio h-8 w-8 text-gray-800" aria-hidden="true"></span>
+          <span class="ml-4 text-xl">Option 3</span>
         </label>
       </div>
     </div>

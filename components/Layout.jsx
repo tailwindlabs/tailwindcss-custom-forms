@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 export default ({ meta, children }) => {
   return (
-    <div class="antialiased text-gray-900">
+    <div className="antialiased text-gray-900">
       <Head>
         <title>{meta.title}</title>
       </Head>

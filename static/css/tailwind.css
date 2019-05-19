@@ -29,6 +29,9 @@
   > p {
     @apply text-gray-700 leading-relaxed
   }
+  > p code {
+    @apply text-sm font-bold text-gray-700 bg-gray-200
+  }
 }
 
 .hljs {
