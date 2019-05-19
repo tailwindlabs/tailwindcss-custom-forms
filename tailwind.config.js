@@ -71,7 +71,7 @@ module.exports = {
             backgroundRepeat: 'no-repeat',
           },
         },
-        '.form-input, .form-textarea': {
+        '.form-input, .form-textarea, .form-multiselect': {
           backgroundColor: '#fff',
           borderWidth: theme('borderWidth.default', defaultTheme.borderWidth.default),
           borderRadius: theme('borderRadius.default', defaultTheme.borderRadius.default),
