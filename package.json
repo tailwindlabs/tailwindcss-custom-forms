@@ -1,19 +1,26 @@
 {
   "scripts": {
-    "serve": "cross-env NODE_ENV=development concurrently \"postcss public/tailwind.css -o public/build/tailwind.css --watch\"  \"live-server ./public\"",
-    "development": "cross-env NODE_ENV=development postcss public/tailwind.css -o public/build/tailwind.css",
-    "production": "cross-env NODE_ENV=production postcss public/tailwind.css -o public/build/tailwind.css"
+    "dev": "next",
+    "build": "next build",
+    "export": "next export",
+    "deploy": "npm run build && npm run export",
+    "start": "next start"
   },
   "dependencies": {
-    "autoprefixer": "^9.5.1",
-    "tailwindcss": "^1.0"
-  },
-  "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
-    "concurrently": "^4.1.0",
-    "cross-env": "^5.2.0",
+    "@mdx-js/loader": "^1.0.19",
+    "@next/mdx": "^8.1.0",
+    "@zeit/next-css": "^1.0.1",
+    "autoprefixer": "^9.5.1",
     "cssnano": "^4.1.10",
-    "live-server": "^1.2.1",
-    "postcss-cli": "^6.1.2"
+    "dedent": "^0.7.0",
+    "highlight.js": "^9.15.6",
+    "next": "^8.1.0",
+    "postcss-import": "^12.0.1",
+    "postcss-nested": "^4.1.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-highlight": "^0.12.0",
+    "tailwindcss": "^1.0"
   }
 }

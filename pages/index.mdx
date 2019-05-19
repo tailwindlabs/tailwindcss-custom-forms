@@ -1,0 +1,143 @@
+import CodeSample from '../components/CodeSample'
+import Layout from '../components/Layout'
+
+export default Layout
+
+export const meta = {
+  title: 'Tailwind CSS Basic Form Elements',
+}
+
+# Tailwind CSS Basic Form Elements
+
+<div className="mt-2">
+  <a href="https://github.com/adamwathan/tailwindcss-form-styles" className="text-gray-600 hover:underline">
+    View on GitHub
+  </a>
+</div>
+
+Out of the box, selects, checkboxes, and radios look awful in Tailwind and right now the only way to
+make them look better is with custom CSS.
+
+To fix this, I'm working on an optional plugin that adds a few form component classes to Tailwind
+that are fairly unopinionated and easy to customize by layering on additional utility classes
+instead of being forced to write custom CSS.
+
+---
+
+## Text Input
+
+<CodeSample code={`
+  <label class="block">
+    <span class="text-gray-700">Input</span>
+    <input type="email" class="form-input mt-1 block w-full" placeholder="john@example.com"/>
+  </label>
+`}/>
+
+---
+
+## Textarea
+
+
+<CodeSample code={`
+  <label class="block">
+    <span class="text-gray-700">Textarea</span>
+    <textarea class="mt-1 block w-full form-textarea" rows="3" placeholder="Enter some long form content."></textarea>
+  </label>
+`}/>
+
+---
+
+## Select
+
+<CodeSample code={`
+  <label class="block">
+    <span class="text-gray-700">Select</span>
+    <select class="form-select block w-full mt-1">
+      <option>Option 1</option>
+      <option>Option 2</option>
+    </select>
+  </label>
+`}/>
+
+### Select Multiple
+
+<CodeSample code={`
+  <label class="block">
+    <span class="text-gray-700">Multiselect</span>
+    <select class="form-input block w-full mt-1" multiple>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+      <option>Option 4</option>
+      <option>Option 5</option>
+    </select>
+  </label>
+`}/>
+
+---
+
+## Checkbox
+
+<CodeSample code={`
+  <div class="block">
+    <span class="text-gray-700">Checkboxes</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="sr-only"/>
+          <span class="form-checkbox text-indigo-700" aria-hidden="true"></span>
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="sr-only"/>
+          <span class="form-checkbox text-green-600" aria-hidden="true"></span>
+          <span class="ml-2">Option 2</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="sr-only"/>
+          <span class="form-checkbox text-pink-600" aria-hidden="true"></span>
+          <span class="ml-2">Option 3</span>
+        </label>
+      </div>
+    </div>
+  </div>
+`}/>
+
+---
+
+## Radio Button
+
+
+
+<CodeSample code={`
+  <div class="block">
+    <span class="text-gray-700">Radio buttons</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="sr-only" name="radio" value="1"/>
+          <span class="form-radio text-indigo-700" aria-hidden="true"></span>
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="sr-only" name="radio" value="2"/>
+          <span class="form-radio text-green-600" aria-hidden="true"></span>
+          <span class="ml-2">Option 2</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="sr-only" name="radio" value="3"/>
+          <span class="form-radio text-pink-600" aria-hidden="true"></span>
+          <span class="ml-2">Option 3</span>
+        </label>
+      </div>
+    </div>
+  </div>
+`}/>
