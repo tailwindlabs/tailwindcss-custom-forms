@@ -1,15 +1,19 @@
-# Tailwind CSS Playground
+# Tailwind CSS Basic Form Styles
 
-A simple starter project for playing around with Tailwind in a proper PostCSS environment.
+Out of the box, selects, checkboxes, and radios look awful in Tailwind and right now the only way to make them look better is with custom CSS. The goal of this experiment is to provide a better starting point for form elements that is still fairly unopinionated and easy to customize by just layering on additional utilities instead of having to write complicated CSS rules (looking at you checkboxes.)
 
-To get started:
+Preview what I've got currently here:
+
+https://nervous-knuth-fa9c3e.netlify.com/
+
+## Running locally
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/tailwindcss/playground.git tailwindcss-playground
+    git clone https://github.com/adamwathan/tailwindcss-form-styles.git tailwindcss-form-styles
 
-    cd tailwindcss-playground
+    cd tailwindcss-form-styles
     ```
 
 2. Install the dependencies:
@@ -33,21 +37,3 @@ To get started:
     ```
 
     Now you should be able to see the project running at localhost:8080.
-
-4. Open `public/index.html` in your editor and start experimenting!
-
-## Building for production
-
-Even though this isn't necessarily a starter kit for a proper project, we've included an example of setting up both [Purgecss](https://www.purgecss.com/) and [cssnano](https://cssnano.co/) to optimize your CSS for production.
-
-To build an optimized version of your CSS, simply run:
-
-```bash
-# Using npm
-npm run production
-
-# Using Yarn
-yarn run production
-```
-
-After that's done, check out `./public/build/tailwind.css` to see the optimized output.
