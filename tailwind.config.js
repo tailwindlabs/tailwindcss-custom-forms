@@ -24,8 +24,8 @@ module.exports = {
         '.form-checkbox': {
           appearance: 'none',
           display: 'inline-block',
-          height: theme('spacing.4', defaultTheme.spacing[4]),
-          width: theme('spacing.4', defaultTheme.spacing[4]),
+          height: '1em',
+          width: '1em',
           verticalAlign: 'middle',
           borderWidth: theme('borderWidth.default', defaultTheme.borderWidth.default),
           borderRadius: theme('borderRadius.default', defaultTheme.borderRadius.default),
@@ -50,8 +50,8 @@ module.exports = {
         '.form-radio': {
           appearance: 'none',
           display: 'inline-block',
-          height: theme('spacing.4', defaultTheme.spacing[4]),
-          width: theme('spacing.4', defaultTheme.spacing[4]),
+          height: '1em',
+          width: '1em',
           verticalAlign: 'middle',
           borderWidth: theme('borderWidth.default', defaultTheme.borderWidth.default),
           borderRadius: '9999px',
