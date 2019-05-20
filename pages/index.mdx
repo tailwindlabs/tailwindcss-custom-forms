@@ -124,6 +124,37 @@ impose any opinions in that regard. Here we've used flexbox to center the checkb
   </div>
 `}/>
 
+### Styling checkboxes directly (No IE 11 support)
+
+If you only need to support Edge and not IE 11, you can also add the `form-checkbox` class to
+`input[type=checkbox]` elements directly and avoid the extra presentational `span` element.
+
+<CodeSample code={`
+  <div class="block">
+    <span class="text-gray-700">Checkboxes</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox text-gray-800" checked/>
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox text-gray-800"/>
+          <span class="ml-2">Option 2</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox text-gray-800"/>
+          <span class="ml-2">Option 3</span>
+        </label>
+      </div>
+    </div>
+  </div>
+`}/>
+
 ### Changing the color
 
 You can customize the background color of a checkbox when it's checked by using Tailwind's text
@@ -227,6 +258,37 @@ impose any opinions in that regard. Here we've used flexbox to center the radio 
         <label class="inline-flex items-center">
           <input type="radio" class="sr-only" name="radio" value="3"/>
           <span class="form-radio text-gray-800" aria-hidden="true"></span>
+          <span class="ml-2">Option 3</span>
+        </label>
+      </div>
+    </div>
+  </div>
+`}/>
+
+### Styling radio buttons directly (No IE 11 support)
+
+If you only need to support Edge and not IE 11, you can also add the `form-checkbox` class to
+`input[type=checkbox]` elements directly and avoid the extra presentational `span` element.
+
+<CodeSample code={`
+  <div class="block">
+    <span class="text-gray-700">Radio Buttons</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="form-radio text-gray-800" name="radio" value="1" checked/>
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="form-radio text-gray-800" name="radio" value="2"/>
+          <span class="ml-2">Option 2</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="form-radio text-gray-800" name="radio" value="3"/>
           <span class="ml-2">Option 3</span>
         </label>
       </div>
