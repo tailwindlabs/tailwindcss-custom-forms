@@ -1,19 +1,49 @@
-# Tailwind CSS Basic Form Styles
+# Tailwind CSS Custom Forms
 
-Out of the box, selects, checkboxes, and radios look awful in Tailwind and right now the only way to make them look better is with custom CSS. The goal of this experiment is to provide a better starting point for form elements that is still fairly unopinionated and easy to customize by just layering on additional utilities instead of having to write complicated CSS rules (looking at you checkboxes.)
+Out of the box, selects, checkboxes, and radios look awful in Tailwind and the only way to make them look better is with custom CSS.
 
-Preview what I've got currently here:
+The goal of this project is to provide a better starting point for form elements that is still fairly unopinionated, and easy to customize by adding utilities instead of having to write complicated CSS rules.
 
-https://nervous-knuth-fa9c3e.netlify.com/
+[Demo](https://nervous-knuth-fa9c3e.netlify.com/)
 
-## Running locally
+## Install
+
+1. Install the plugin:
+
+  ```bash
+  # Using npm
+  npm install @tailwindcss/custom-forms
+
+  # Using Yarn
+  yarn add @tailwindcss/custom-forms
+  ```
+
+2. Add it to your `tailwind.config.js` file:
+
+  ```js
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      require('@tailwindcss/custom-forms')
+    ]
+  }
+  ```
+
+## Documentation
+
+The project is still early but basic documentation can be found here:
+
+[Read the documentation](https://nervous-knuth-fa9c3e.netlify.com/)
+
+## Local development
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/adamwathan/tailwindcss-form-styles.git tailwindcss-form-styles
+    git clone https://github.com/tailwindcss/custom-forms.git tailwindcss-custom-forms
 
-    cd tailwindcss-form-styles
+    cd tailwindcss-custom-forms
     ```
 
 2. Install the dependencies:
@@ -36,4 +66,4 @@ https://nervous-knuth-fa9c3e.netlify.com/
     yarn run serve
     ```
 
-    Now you should be able to see the project running at localhost:8080.
+    Now you should be able to see the demo/docs running at localhost:8080.

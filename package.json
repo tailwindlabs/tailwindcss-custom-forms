@@ -1,12 +1,25 @@
 {
+  "name": "@tailwindcss/custom-forms",
+  "version": "0.1.0",
+  "description": "A better base for styling form elements with Tailwind CSS.",
+  "main": "index.js",
+  "repository": "https://github.com/tailwindcss/custom-forms",
+  "author": "Adam Wathan",
+  "license": "MIT",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "export": "next export",
+    "dev": "next dev docs",
+    "build": "next build docs",
+    "export": "next export docs",
     "deploy": "npm run build && npm run export",
-    "start": "next start"
+    "start": "next start docs"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^1.0"
   },
   "dependencies": {
+    "mini-svg-data-uri": "^1.0.3"
+  },
+  "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
     "@mdx-js/loader": "^1.0.19",
     "@next/mdx": "^8.1.0",
@@ -15,7 +28,6 @@
     "cssnano": "^4.1.10",
     "dedent": "^0.7.0",
     "highlight.js": "^9.15.6",
-    "mini-svg-data-uri": "^1.0.3",
     "next": "^8.1.1-canary.34",
     "postcss-custom-properties": "^8.0.10",
     "postcss-import": "^12.0.1",
