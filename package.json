@@ -15,6 +15,7 @@
     "cssnano": "^4.1.10",
     "dedent": "^0.7.0",
     "highlight.js": "^9.15.6",
+    "mini-svg-data-uri": "^1.0.3",
     "next": "^8.1.1-canary.34",
     "postcss-custom-properties": "^8.0.10",
     "postcss-import": "^12.0.1",
