@@ -46,7 +46,7 @@
   border-radius: theme('borderRadius.lg');
 }
 .hljs-comment, .hljs-quote {
-  color: theme('colors.gray-500');
+  color: theme('colors.gray.500');
   font-style: italic;
 }
 .hljs-name {
