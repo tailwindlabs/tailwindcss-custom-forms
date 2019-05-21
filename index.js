@@ -1,7 +1,7 @@
 const svgToDataUri = require('mini-svg-data-uri')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
-module.exports = function ({ addComponents, theme }) {
+module.exports = function ({ addUtilities, addComponents, theme }) {
 
   // Temporary until this class is added to core
   addUtilities({
