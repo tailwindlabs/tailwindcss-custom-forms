@@ -58,8 +58,8 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
         borderColor: options.focusBorderColor,
       },
       'input[type=checkbox]:checked + &, input[type=checkbox]&:checked': {
-        backgroundColor: 'currentColor',
-        borderColor: 'currentColor',
+        backgroundColor: options.checkedColor,
+        borderColor: options.checkedColor,
         backgroundImage: `url("${svgToDataUri(options.checkboxIcon)}")`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
