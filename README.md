@@ -6,6 +6,8 @@ The goal of this project is to provide a better starting point for form elements
 
 [Demo](https://tailwindcss-custom-forms.netlify.com/)
 
+![Screenshot](screenshot.png)
+
 ## Install
 
 1. Install the plugin:
