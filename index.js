@@ -73,7 +73,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       width: options.radioSize,
       verticalAlign: 'middle',
       borderWidth: options.borderWidth,
-      borderRadius: '9999px',
+      borderRadius: '50%',
       backgroundColor: options.backgroundColor,
       userSelect: 'none',
       'input[type=radio]:focus + &, input[type=radio]&:focus': {
