@@ -3,20 +3,6 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = function ({ addUtilities, addComponents, theme }) {
 
-  // Temporary until this class is added to core
-  addUtilities({
-    '.sr-only': {
-      position: 'absolute',
-      width: '1px',
-      height: '1px',
-      padding: '0',
-      overflow: 'hidden',
-      clip: 'rect(0, 0, 0, 0)',
-      whiteSpace: 'nowrap',
-      border: '0',
-    }
-  })
-
   const options = {
     horizontalPadding: defaultTheme.spacing[3],
     verticalPadding: defaultTheme.spacing[2],
@@ -50,14 +36,14 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       borderRadius: options.borderRadius,
       backgroundColor: options.backgroundColor,
       userSelect: 'none',
-      'input[type=checkbox]:focus + &, input[type=checkbox]&:focus': {
+      '&:focus': {
         outline: 'none',
         boxShadow: options.focusShadow,
       },
-      'input[type=checkbox]:focus:not(:checked) + &, input[type=checkbox]&:focus:not(:checked)': {
+      '&:focus:not(:checked)': {
         borderColor: options.focusBorderColor,
       },
-      'input[type=checkbox]:checked + &, input[type=checkbox]&:checked': {
+      '&:checked': {
         backgroundColor: options.checkedColor,
         borderColor: options.checkedColor,
         backgroundImage: `url("${svgToDataUri(options.checkboxIcon)}")`,
@@ -65,6 +51,13 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       },
+      '&::-ms-check': {
+        color: 'transparent', // Hide the check
+        background: 'inherit',
+        borderColor: 'inherit',
+        borderRadius: 'inherit',
+        borderWidth: options.borderWidth,
+      }
     },
     '.form-radio': {
       appearance: 'none',
@@ -76,14 +69,14 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       borderRadius: '9999px',
       backgroundColor: options.backgroundColor,
       userSelect: 'none',
-      'input[type=radio]:focus + &, input[type=radio]&:focus': {
+      '&:focus': {
         outline: 'none',
         boxShadow: options.focusShadow,
       },
-      'input[type=radio]:focus:not(:checked) + &, input[type=radio]&:focus:not(:checked)': {
+      '&:focus:not(:checked)': {
         borderColor: options.focusBorderColor,
       },
-      'input[type=radio]:checked + &, input[type=radio]&:checked': {
+      '&:checked': {
         backgroundColor: options.checkedColor,
         borderColor: options.checkedColor,
         backgroundImage: `url("${svgToDataUri(options.radioIcon)}")`,
@@ -91,6 +84,13 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       },
+      '&::-ms-check': {
+        color: 'transparent', // Hide the dot
+        background: 'inherit',
+        borderColor: 'inherit',
+        borderRadius: 'inherit',
+        borderWidth: options.borderWidth,
+      }
     },
     '.form-input, .form-textarea, .form-multiselect': {
       appearance: 'none',
