@@ -130,48 +130,8 @@ instead.
 
 ## Checkbox
 
-Create a custom checkbox by adding a `span` with the `form-checkbox` class next to an
-`input[type=checkbox]`.
-
-Hide the real checkbox element using the `sr-only` class, and hide the span from screen readers
-using `aria-hidden`.
-
 Control the layout of the checkbox and label however you like — the `form-checkbox` class doesn't
 impose any opinions in that regard. Here we've used flexbox to center the checkbox with the label.
-
-<CodeSample code={`
-  <div class="block">
-    <span class="text-gray-700">Checkboxes</span>
-    <div class="mt-2">
-      <div>
-        <label class="inline-flex items-center">
-          <input type="checkbox" class="sr-only" checked/>
-          <span class="form-checkbox text-gray-800" aria-hidden="true"></span>
-          <span class="ml-2">Option 1</span>
-        </label>
-      </div>
-      <div>
-        <label class="inline-flex items-center">
-          <input type="checkbox" class="sr-only"/>
-          <span class="form-checkbox text-gray-800" aria-hidden="true"></span>
-          <span class="ml-2">Option 2</span>
-        </label>
-      </div>
-      <div>
-        <label class="inline-flex items-center">
-          <input type="checkbox" class="sr-only"/>
-          <span class="form-checkbox text-gray-800" aria-hidden="true"></span>
-          <span class="ml-2">Option 3</span>
-        </label>
-      </div>
-    </div>
-  </div>
-`}/>
-
-### Styling checkboxes directly (No IE 11 support)
-
-If you only need to support Edge and not IE 11, you can also add the `form-checkbox` class to
-`input[type=checkbox]` elements directly and avoid the extra presentational `span` element.
 
 <CodeSample code={`
   <div class="block">
@@ -210,22 +170,19 @@ color utilities, like `text-indigo-600`.
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="sr-only" checked/>
-          <span class="form-checkbox text-indigo-600" aria-hidden="true"></span>
+          <input type="checkbox" class="form-checkbox text-indigo-600" checked/>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="sr-only" checked/>
-          <span class="form-checkbox text-blue-500" aria-hidden="true"></span>
+          <input type="checkbox" class="form-checkbox text-blue-500" checked/>
           <span class="ml-2">Option 2</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="sr-only" checked/>
-          <span class="form-checkbox text-pink-600" aria-hidden="true"></span>
+          <input type="checkbox" class="form-checkbox text-pink-600" checked/>
           <span class="ml-2">Option 3</span>
         </label>
       </div>
@@ -244,22 +201,19 @@ use Tailwind's width and height utilities, like `h-6` and `w-6`.
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="sr-only" checked/>
-          <span class="form-checkbox h-4 w-4 text-gray-800" aria-hidden="true"></span>
+          <input type="checkbox" class="form-checkbox h-4 w-4 text-gray-800" checked/>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div class="mt-1">
         <label class="inline-flex items-center">
-          <input type="checkbox" class="sr-only"/>
-          <span class="form-checkbox h-6 w-6 text-gray-800" aria-hidden="true"></span>
+          <input type="checkbox" class="form-checkbox h-6 w-6 text-gray-800"/>
           <span class="ml-3 text-lg">Option 2</span>
         </label>
       </div>
       <div class="mt-1">
         <label class="inline-flex items-center">
-          <input type="checkbox" class="sr-only"/>
-          <span class="form-checkbox h-8 w-8 text-gray-800" aria-hidden="true"></span>
+          <input type="checkbox" class="form-checkbox h-8 w-8 text-gray-800"/>
           <span class="ml-4 text-xl">Option 3</span>
         </label>
       </div>
@@ -271,12 +225,6 @@ use Tailwind's width and height utilities, like `h-6` and `w-6`.
 
 ## Radio Button
 
-Create a custom radio button by adding a `span` with the `form-radio` class next to an
-`input[type=radio]`.
-
-Hide the real radio button using the `sr-only` class, and hide the span from screen readers
-using `aria-hidden`.
-
 Control the layout of the radio button and label however you like — the `form-radio` class doesn't
 impose any opinions in that regard. Here we've used flexbox to center the radio button with the label.
 
@@ -286,22 +234,19 @@ impose any opinions in that regard. Here we've used flexbox to center the radio 
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="sr-only" name="radio" value="1" checked/>
-          <span class="form-radio text-gray-800" aria-hidden="true"></span>
+          <input type="radio" class="form-radio text-gray-800" name="radio" value="1" checked/>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="sr-only" name="radio" value="2"/>
-          <span class="form-radio text-gray-800" aria-hidden="true"></span>
+          <input type="radio" class="form-radio text-gray-800" name="radio" value="2"/>
           <span class="ml-2">Option 2</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="sr-only" name="radio" value="3"/>
-          <span class="form-radio text-gray-800" aria-hidden="true"></span>
+          <input type="radio" class="form-radio text-gray-800" name="radio" value="3"/>
           <span class="ml-2">Option 3</span>
         </label>
       </div>
@@ -309,36 +254,6 @@ impose any opinions in that regard. Here we've used flexbox to center the radio 
   </div>
 `}/>
 
-### Styling radio buttons directly (No IE 11 support)
-
-If you only need to support Edge and not IE 11, you can also add the `form-checkbox` class to
-`input[type=checkbox]` elements directly and avoid the extra presentational `span` element.
-
-<CodeSample code={`
-  <div class="block">
-    <span class="text-gray-700">Radio Buttons</span>
-    <div class="mt-2">
-      <div>
-        <label class="inline-flex items-center">
-          <input type="radio" class="form-radio text-gray-800" name="radio-direct" value="1" checked/>
-          <span class="ml-2">Option 1</span>
-        </label>
-      </div>
-      <div>
-        <label class="inline-flex items-center">
-          <input type="radio" class="form-radio text-gray-800" name="radio-direct" value="2"/>
-          <span class="ml-2">Option 2</span>
-        </label>
-      </div>
-      <div>
-        <label class="inline-flex items-center">
-          <input type="radio" class="form-radio text-gray-800" name="radio-direct" value="3"/>
-          <span class="ml-2">Option 3</span>
-        </label>
-      </div>
-    </div>
-  </div>
-`}/>
 
 ### Changing the color
 
@@ -351,22 +266,19 @@ color utilities, like `text-indigo-600`.
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="sr-only" name="radio-colors" value="1" checked/>
-          <span class="form-radio text-indigo-600" aria-hidden="true"></span>
+          <input type="radio" class="form-radio text-indigo-600" name="radio-colors" value="1" checked/>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="sr-only" name="radio-colors" value="2"/>
-          <span class="form-radio text-blue-500" aria-hidden="true"></span>
+          <input type="radio" class="form-radio text-blue-500" name="radio-colors" value="2"/>
           <span class="ml-2">Option 2</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="sr-only" name="radio-colors" value="3"/>
-          <span class="form-radio text-pink-600" aria-hidden="true"></span>
+          <input type="radio" class="form-radio text-pink-600" name="radio-colors" value="3"/>
           <span class="ml-2">Option 3</span>
         </label>
       </div>
@@ -385,22 +297,19 @@ use Tailwind's width and height utilities, like `h-6` and `w-6`.
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="sr-only" name="radio-sizes" value="1" checked/>
-          <span class="form-radio h-4 w-4 text-gray-800" aria-hidden="true"></span>
+          <input type="radio" class="form-radio h-4 w-4 text-gray-800" name="radio-sizes" value="1" checked/>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div class="mt-1">
         <label class="inline-flex items-center">
-          <input type="radio" class="sr-only" name="radio-sizes" value="2"/>
-          <span class="form-radio h-6 w-6 text-gray-800" aria-hidden="true"></span>
+          <input type="radio" class="form-radio h-6 w-6 text-gray-800" name="radio-sizes" value="2"/>
           <span class="ml-3 text-lg">Option 2</span>
         </label>
       </div>
       <div class="mt-1">
         <label class="inline-flex items-center">
-          <input type="radio" class="sr-only" name="radio-sizes" value="3"/>
-          <span class="form-radio h-8 w-8 text-gray-800" aria-hidden="true"></span>
+          <input type="radio" class="form-radio h-8 w-8 text-gray-800" name="radio-sizes" value="3"/>
           <span class="ml-4 text-xl">Option 3</span>
         </label>
       </div>
