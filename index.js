@@ -46,6 +46,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       height: options.checkboxSize,
       width: options.checkboxSize,
       verticalAlign: 'middle',
+      borderColor: options.borderColor,
       borderWidth: options.borderWidth,
       borderRadius: options.borderRadius,
       backgroundColor: options.backgroundColor,
@@ -72,6 +73,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       height: options.radioSize,
       width: options.radioSize,
       verticalAlign: 'middle',
+      borderColor: options.borderColor,
       borderWidth: options.borderWidth,
       borderRadius: '9999px',
       backgroundColor: options.backgroundColor,
@@ -95,6 +97,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
     '.form-input, .form-textarea, .form-multiselect': {
       appearance: 'none',
       backgroundColor: options.backgroundColor,
+      borderColor: options.borderColor,
       borderWidth: options.borderWidth,
       borderRadius: options.borderRadius,
       padding: `${options.verticalPadding} ${options.horizontalPadding}`,
@@ -108,6 +111,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
     },
     '.form-select': {
       backgroundColor: options.backgroundColor,
+      borderColor: options.borderColor,
       borderWidth: options.borderWidth,
       borderRadius: options.borderRadius,
       paddingTop: options.verticalPadding,
