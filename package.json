@@ -1,6 +1,6 @@
 {
   "name": "@tailwindcss/custom-forms",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A better base for styling form elements with Tailwind CSS.",
   "main": "index.js",
   "repository": "https://github.com/tailwindcss/custom-forms",
