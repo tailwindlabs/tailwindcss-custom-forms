@@ -1,5 +1,5 @@
 const svgToDataUri = require('mini-svg-data-uri')
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/resolveConfig')(require('tailwindcss/defaultConfig')).theme
 
 module.exports = function ({ addUtilities, addComponents, theme }) {
 
@@ -16,8 +16,8 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
     focusShadow: defaultTheme.boxShadow.outline,
     checkboxSize: '1em',
     radioSize: '1em',
-    checkboxIcon: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="M13.293 4.293a1 1 0 0 1 0 1.414L7 12a1 1 0 0 1-1.414 0L3.293 9.707a1 1 0 0 1 1.414-1.414l1.586 1.586 5.586-5.586a1 1 0 0 1 1.414 0z"/></svg>`,
-    radioIcon: `<svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/></svg>`,
+    checkboxIcon: `<svg viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z"/></svg>`,
+    radioIcon: `<svg viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>`,
     checkedColor: 'currentColor',
     selectIcon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${defaultTheme.colors.gray[500]}"><path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"/></svg>`,
     selectIconOffset: defaultTheme.spacing[2],
@@ -36,6 +36,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       borderWidth: options.borderWidth,
       borderRadius: options.borderRadius,
       backgroundColor: options.backgroundColor,
+      backgroundOrigin: 'border-box',
       userSelect: 'none',
       '&:focus': {
         outline: 'none',
@@ -48,7 +49,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
         backgroundColor: options.checkedColor,
         borderColor: options.checkedColor,
         backgroundImage: `url("${svgToDataUri(options.checkboxIcon)}")`,
-        backgroundSize: 'cover',
+        backgroundSize: '100% 100%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       },
@@ -70,6 +71,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       borderWidth: options.borderWidth,
       borderRadius: '50%',
       backgroundColor: options.backgroundColor,
+      backgroundOrigin: 'border-box',
       userSelect: 'none',
       '&:focus': {
         outline: 'none',
@@ -82,7 +84,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
         backgroundColor: options.checkedColor,
         borderColor: options.checkedColor,
         backgroundImage: `url("${svgToDataUri(options.radioIcon)}")`,
-        backgroundSize: 'cover',
+        backgroundSize: '100% 100%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       },
