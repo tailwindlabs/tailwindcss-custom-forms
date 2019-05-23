@@ -32,28 +32,26 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       height: options.checkboxSize,
       width: options.checkboxSize,
       verticalAlign: 'middle',
-      boxShadow: `inset 0 0 0 ${options.borderWidth} ${options.borderColor}`,
+      borderColor: options.borderColor,
+      borderWidth: options.borderWidth,
       borderRadius: options.borderRadius,
       backgroundColor: options.backgroundColor,
+      backgroundOrigin: 'border-box',
       userSelect: 'none',
       '&:focus': {
         outline: 'none',
-        boxShadow: `inset 0 0 0 ${options.borderWidth} ${options.borderColor}, ${options.focusShadow}`,
+        boxShadow: options.focusShadow,
       },
       '&:focus:not(:checked)': {
-        boxShadow: `inset 0 0 0 ${options.borderWidth} ${options.focusBorderColor}, ${options.focusShadow}`,
+        borderColor: options.focusBorderColor,
       },
       '&:checked': {
-        boxShadow: 'none',
         backgroundColor: options.checkedColor,
         borderColor: options.checkedColor,
         backgroundImage: `url("${svgToDataUri(options.checkboxIcon)}")`,
         backgroundSize: '100% 100%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-      },
-      '&:focus:checked': {
-        boxShadow: `${options.focusShadow}`,
       },
       '&::-ms-check': {
         color: 'transparent', // Hide the check
@@ -69,27 +67,26 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       height: options.radioSize,
       width: options.radioSize,
       verticalAlign: 'middle',
-      boxShadow: `inset 0 0 0 ${options.borderWidth} ${options.borderColor}`,
+      borderColor: options.borderColor,
+      borderWidth: options.borderWidth,
       borderRadius: '50%',
       backgroundColor: options.backgroundColor,
+      backgroundOrigin: 'border-box',
       userSelect: 'none',
       '&:focus': {
         outline: 'none',
-        boxShadow: `inset 0 0 0 ${options.borderWidth} ${options.borderColor}, ${options.focusShadow}`,
+        boxShadow: options.focusShadow,
       },
       '&:focus:not(:checked)': {
-        boxShadow: `inset 0 0 0 ${options.borderWidth} ${options.focusBorderColor}, ${options.focusShadow}`,
+        borderColor: options.focusBorderColor,
       },
       '&:checked': {
-        boxShadow: 'none',
         backgroundColor: options.checkedColor,
+        borderColor: options.checkedColor,
         backgroundImage: `url("${svgToDataUri(options.radioIcon)}")`,
         backgroundSize: '100% 100%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-      },
-      '&:focus:checked': {
-        boxShadow: `${options.focusShadow}`,
       },
       '&::-ms-check': {
         color: 'transparent', // Hide the dot
