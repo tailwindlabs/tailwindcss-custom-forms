@@ -62,10 +62,10 @@ The project is still early but basic documentation can be found here:
 
     ```bash
     # Using npm
-    npm run serve
+    npm run dev
 
     # Using Yarn
-    yarn run serve
+    yarn run dev
     ```
 
-    Now you should be able to see the demo/docs running at localhost:8080.
+    Now you should be able to see the demo/docs running at localhost:3000.
