@@ -14,6 +14,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
     backgroundColor: defaultTheme.colors.white,
     focusBorderColor: defaultTheme.colors.blue[400],
     focusShadow: defaultTheme.boxShadow.outline,
+    boxShadow: defaultTheme.boxShadow.none,
     checkboxSize: '1em',
     radioSize: '1em',
     checkboxIcon: `<svg viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z"/></svg>`,
@@ -28,6 +29,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
   addComponents({
     '.form-checkbox': {
       appearance: 'none',
+      boxShadow: options.boxShadow,
       display: 'inline-block',
       height: options.checkboxSize,
       width: options.checkboxSize,
@@ -63,6 +65,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
     },
     '.form-radio': {
       appearance: 'none',
+      boxShadow: options.boxShadow,
       display: 'inline-block',
       height: options.radioSize,
       width: options.radioSize,
@@ -102,6 +105,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       borderColor: options.borderColor,
       borderWidth: options.borderWidth,
       borderRadius: options.borderRadius,
+      boxShadow: options.boxShadow,
       padding: `${options.verticalPadding} ${options.horizontalPadding}`,
       fontSize: options.fontSize,
       lineHeight: options.lineHeight,
@@ -116,6 +120,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       borderColor: options.borderColor,
       borderWidth: options.borderWidth,
       borderRadius: options.borderRadius,
+      boxShadow: options.boxShadow,
       paddingTop: options.verticalPadding,
       paddingRight: `calc(${options.selectIconOffset} * 2 + ${options.selectIconSize})`,
       paddingBottom: options.verticalPadding,
