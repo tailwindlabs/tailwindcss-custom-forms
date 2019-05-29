@@ -52,10 +52,10 @@ Here is a list of the all of the available options, as well as their default val
           boxShadow: defaultTheme.boxShadow.none,
           checkboxSize: '1em',
           radioSize: '1em',
-          checkboxIcon: \`<svg viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z"/></svg>\`,
-          radioIcon: \`<svg viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>\`,
+          checkboxIcon: \`<svg viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z"></svg>\`,
+          radioIcon: \`<svg viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"></svg>\`,
           checkedColor: 'currentColor',
-          selectIcon: \`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${'${defaultTheme.colors.gray[500]}'}"><path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"/></svg>\`,
+          selectIcon: \`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${'${defaultTheme.colors.gray[500]}'}"><path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"></svg>\`,
           selectIconOffset: defaultTheme.spacing[2],
           selectIconSize: '1.5em',
         }
@@ -76,7 +76,7 @@ Add basic styles to a normal `input` element using the `form-input` class.
 <CodeSample code={`
   <label class="block">
     <span class="text-gray-700">Input</span>
-    <input type="email" class="form-input mt-1 block w-full" placeholder="john@example.com"/>
+    <input type="email" class="form-input mt-1 block w-full" placeholder="john@example.com">
   </label>
 `}/>
 
@@ -140,19 +140,19 @@ impose any opinions in that regard. Here we've used flexbox to center the checkb
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox text-gray-800" checked/>
+          <input type="checkbox" class="form-checkbox" checked>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox text-gray-800"/>
+          <input type="checkbox" class="form-checkbox">
           <span class="ml-2">Option 2</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox text-gray-800"/>
+          <input type="checkbox" class="form-checkbox">
           <span class="ml-2">Option 3</span>
         </label>
       </div>
@@ -171,19 +171,19 @@ color utilities, like `text-indigo-600`.
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox text-indigo-600" checked/>
+          <input type="checkbox" class="form-checkbox text-indigo-600" checked>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox text-blue-500" checked/>
+          <input type="checkbox" class="form-checkbox text-green-500" checked>
           <span class="ml-2">Option 2</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox text-pink-600" checked/>
+          <input type="checkbox" class="form-checkbox text-pink-600" checked>
           <span class="ml-2">Option 3</span>
         </label>
       </div>
@@ -202,19 +202,19 @@ use Tailwind's width and height utilities, like `h-6` and `w-6`.
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox h-4 w-4 text-gray-800" checked/>
+          <input type="checkbox" class="form-checkbox h-4 w-4" checked>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div class="mt-1">
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox h-6 w-6 text-gray-800"/>
+          <input type="checkbox" class="form-checkbox h-6 w-6">
           <span class="ml-3 text-lg">Option 2</span>
         </label>
       </div>
       <div class="mt-1">
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox h-8 w-8 text-gray-800"/>
+          <input type="checkbox" class="form-checkbox h-8 w-8">
           <span class="ml-4 text-xl">Option 3</span>
         </label>
       </div>
@@ -235,19 +235,19 @@ impose any opinions in that regard. Here we've used flexbox to center the radio 
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="form-radio text-gray-800" name="radio" value="1" checked/>
+          <input type="radio" class="form-radio" name="radio" value="1" checked>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="form-radio text-gray-800" name="radio" value="2"/>
+          <input type="radio" class="form-radio" name="radio" value="2">
           <span class="ml-2">Option 2</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="form-radio text-gray-800" name="radio" value="3"/>
+          <input type="radio" class="form-radio" name="radio" value="3">
           <span class="ml-2">Option 3</span>
         </label>
       </div>
@@ -267,19 +267,19 @@ color utilities, like `text-indigo-600`.
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="form-radio text-indigo-600" name="radio-colors" value="1" checked/>
+          <input type="radio" class="form-radio text-indigo-600" name="radio-colors" value="1" checked>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="form-radio text-blue-500" name="radio-colors" value="2"/>
+          <input type="radio" class="form-radio text-green-500" name="radio-colors" value="2">
           <span class="ml-2">Option 2</span>
         </label>
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="form-radio text-pink-600" name="radio-colors" value="3"/>
+          <input type="radio" class="form-radio text-pink-600" name="radio-colors" value="3">
           <span class="ml-2">Option 3</span>
         </label>
       </div>
@@ -298,19 +298,19 @@ use Tailwind's width and height utilities, like `h-6` and `w-6`.
     <div class="mt-2">
       <div>
         <label class="inline-flex items-center">
-          <input type="radio" class="form-radio h-4 w-4 text-gray-800" name="radio-sizes" value="1" checked/>
+          <input type="radio" class="form-radio h-4 w-4" name="radio-sizes" value="1" checked>
           <span class="ml-2">Option 1</span>
         </label>
       </div>
       <div class="mt-1">
         <label class="inline-flex items-center">
-          <input type="radio" class="form-radio h-6 w-6 text-gray-800" name="radio-sizes" value="2"/>
+          <input type="radio" class="form-radio h-6 w-6" name="radio-sizes" value="2">
           <span class="ml-3 text-lg">Option 2</span>
         </label>
       </div>
       <div class="mt-1">
         <label class="inline-flex items-center">
-          <input type="radio" class="form-radio h-8 w-8 text-gray-800" name="radio-sizes" value="3"/>
+          <input type="radio" class="form-radio h-8 w-8" name="radio-sizes" value="3">
           <span class="ml-4 text-xl">Option 3</span>
         </label>
       </div>
