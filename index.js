@@ -13,7 +13,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
     borderRadius: defaultTheme.borderRadius.default,
     backgroundColor: defaultTheme.colors.white,
     focusBorderColor: defaultTheme.colors.blue[400],
-    focusShadow: defaultTheme.boxShadow.outline,
+    focusBoxShadow: defaultTheme.boxShadow.outline,
     boxShadow: defaultTheme.boxShadow.none,
     checkboxSize: '1em',
     radioSize: '1em',
@@ -42,7 +42,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       userSelect: 'none',
       '&:focus': {
         outline: 'none',
-        boxShadow: options.focusShadow,
+        boxShadow: options.focusBoxShadow,
       },
       '&:focus:not(:checked)': {
         borderColor: options.focusBorderColor,
@@ -78,7 +78,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       userSelect: 'none',
       '&:focus': {
         outline: 'none',
-        boxShadow: options.focusShadow,
+        boxShadow: options.focusBoxShadow,
       },
       '&:focus:not(:checked)': {
         borderColor: options.focusBorderColor,
@@ -111,7 +111,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       lineHeight: options.lineHeight,
       '&:focus': {
         outline: 'none',
-        boxShadow: options.focusShadow,
+        boxShadow: options.focusBoxShadow,
         borderColor: options.focusBorderColor,
       }
     },
@@ -137,7 +137,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       },
       '&:focus': {
         outline: 'none',
-        boxShadow: options.focusShadow,
+        boxShadow: options.focusBoxShadow,
         borderColor: options.focusBorderColor,
       }
     },
