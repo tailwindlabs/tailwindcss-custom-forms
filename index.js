@@ -37,6 +37,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       borderRadius: options.borderRadius,
       backgroundColor: options.backgroundColor,
       userSelect: 'none',
+      colorAdjust: 'exact',
       '&:focus': {
         outline: 'none',
         boxShadow: options.focusShadow,
@@ -53,12 +54,14 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
         backgroundRepeat: 'no-repeat',
       },
       '&::-ms-check': {
-        color: 'transparent', // Hide the check
-        background: 'inherit',
-        borderColor: 'inherit',
-        borderRadius: 'inherit',
-        borderWidth: options.borderWidth,
-      }
+        '@media not print': {
+          color: 'transparent', // Hide the check
+          background: 'inherit',
+          borderColor: 'inherit',
+          borderRadius: 'inherit',
+          borderWidth: options.borderWidth,
+        }
+      },
     },
     '.form-radio': {
       appearance: 'none',
@@ -71,6 +74,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       borderRadius: '50%',
       backgroundColor: options.backgroundColor,
       userSelect: 'none',
+      colorAdjust: 'exact',
       '&:focus': {
         outline: 'none',
         boxShadow: options.focusShadow,
@@ -87,12 +91,14 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
         backgroundRepeat: 'no-repeat',
       },
       '&::-ms-check': {
-        color: 'transparent', // Hide the dot
-        background: 'inherit',
-        borderColor: 'inherit',
-        borderRadius: 'inherit',
-        borderWidth: options.borderWidth,
-      }
+        '@media not print': {
+          color: 'transparent', // Hide the dot
+          background: 'inherit',
+          borderColor: 'inherit',
+          borderRadius: 'inherit',
+          borderWidth: options.borderWidth,
+        },
+      },
     },
     '.form-input, .form-textarea, .form-multiselect': {
       appearance: 'none',
@@ -125,8 +131,16 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       backgroundPosition: `right ${options.selectIconOffset} center`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: `${options.selectIconSize} ${options.selectIconSize}`,
+      colorAdjust: 'exact',
       '&::-ms-expand': {
-        display: 'none',
+        border: 'none', // The select padding is causing some whitespace around the chevron which looks weird with a border
+        color: defaultTheme.colors.gray[500], // Chevron color
+        '@media not print': {
+          display: 'none',
+        },
+      },
+      '@media print and (-ms-high-contrast: active), print and (-ms-high-contrast: none)': {
+        paddingRight: options.horizontalPadding, // Fix padding for print in IE
       },
       '&:focus': {
         outline: 'none',
