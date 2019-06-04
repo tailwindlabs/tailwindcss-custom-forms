@@ -42,6 +42,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       backgroundOrigin: 'border-box',
       userSelect: 'none',
       colorAdjust: 'exact',
+      flexShrink: 0,
       '&:focus': {
         outline: 'none',
         boxShadow: options.focusBoxShadow,
@@ -82,6 +83,7 @@ module.exports = function ({ addUtilities, addComponents, theme }) {
       backgroundOrigin: 'border-box',
       userSelect: 'none',
       colorAdjust: 'exact',
+      flexShrink: 0,
       '&:focus': {
         outline: 'none',
         boxShadow: options.focusBoxShadow,
