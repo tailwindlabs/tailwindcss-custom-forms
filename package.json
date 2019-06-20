@@ -17,7 +17,9 @@
     "tailwindcss": "^1.0"
   },
   "dependencies": {
-    "mini-svg-data-uri": "^1.0.3"
+    "lodash": "^4.17.11",
+    "mini-svg-data-uri": "^1.0.3",
+    "traverse": "^0.6.6"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
