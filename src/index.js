@@ -40,7 +40,7 @@ function resolveOptions(userOptions) {
   }, fromPairs(map(userOptions, (value, key) => [key, flattenOptions(value)])))
 }
 
-function replaceIconDeclarations(component, defaultIcon) {
+function replaceIconDeclarations(component, replace) {
   return traverse(component).map(function (value) {
     if (!isPlainObject(value)) {
       return
@@ -50,7 +50,7 @@ function replaceIconDeclarations(component, defaultIcon) {
       const { iconColor, icon, ...rest } = value
       this.update({
         ...rest,
-        backgroundImage: `url("${svgToDataUri(isUndefined(icon) ? defaultIcon(iconColor) : (isFunction(icon) ? icon(iconColor) : icon))}")`
+        ...replace({ icon, iconColor }),
       })
     }
   })
@@ -97,13 +97,15 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
           },
         },
       }, options)
-    }, options.icon || (iconColor => {
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${iconColor}"><path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"/></svg>`
-    })))
+    }, ({ icon = options.icon, iconColor = options.iconColor }) => {
+      return {
+        backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
+      }
+    }))
   }
 
-  function addCheckbox({ icon, ...options}, modifier = '') {
-    if (isEmpty(options) && isUndefined(icon)) {
+  function addCheckbox(options, modifier = '') {
+    if (isEmpty(options)) {
       return
     }
 
@@ -117,13 +119,17 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
           },
         },
       }, options)
-    }, icon || (iconColor => {
-      return `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><path d="M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z"/></svg>`
-    })))
+    }, ({ icon = options.icon, iconColor = options.iconColor }) => {
+      return {
+        '&:checked': {
+          backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
+        }
+      }
+    }))
   }
 
-  function addRadio({ icon, ...options }, modifier = '') {
-    if (isEmpty(options) && isUndefined(icon)) {
+  function addRadio(options, modifier = '') {
+    if (isEmpty(options)) {
       return
     }
 
@@ -137,9 +143,13 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
           },
         },
       }, options)
-    }, icon || (iconColor => {
-      return `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>`
-    })))
+    }, ({ icon = options.icon, iconColor = options.iconColor }) => {
+      return {
+        '&:checked': {
+          backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
+        }
+      }
+    }))
   }
 
   function registerComponents() {
