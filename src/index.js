@@ -3,6 +3,7 @@ const map = require('lodash/map')
 const toPairs = require('lodash/toPairs')
 const fromPairs = require('lodash/fromPairs')
 const mergeWith = require('lodash/mergeWith')
+const flatMap = require('lodash/flatMap')
 const isEmpty = require('lodash/isEmpty')
 const isArray = require('lodash/isArray')
 const isFunction = require('lodash/isFunction')
@@ -29,7 +30,7 @@ function merge(...options) {
 }
 
 function flattenOptions(options) {
-  return merge(...toPairs(options).flatMap(([keys, value]) => {
+  return merge(...flatMap(toPairs(options), ([keys, value]) => {
     return fromPairs(keys.split(', ').map(key => [key, value]))
   }))
 }
