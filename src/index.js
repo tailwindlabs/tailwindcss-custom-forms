@@ -48,10 +48,7 @@ function replaceIconDeclarations(component, replace) {
 
     if (Object.keys(value).includes('iconColor') || Object.keys(value).includes('icon')) {
       const { iconColor, icon, ...rest } = value
-      this.update({
-        ...rest,
-        ...replace({ icon, iconColor }),
-      })
+      this.update(merge(replace({ icon, iconColor }), rest))
     }
   })
 }
