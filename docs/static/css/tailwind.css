@@ -26,11 +26,26 @@
   > h3 {
     @apply mt-10 text-xl font-semibold leading-tight
   }
+  > h4 {
+    @apply mt-10 text-lg font-semibold leading-tight
+  }
+  > h2 + h3 {
+    @apply mt-6
+  }
+  > h3 code {
+    @apply bg-gray-200 text-lg text-gray-700 font-bold tracking-tighter
+  }
   > p {
     @apply text-gray-700 leading-relaxed
   }
-  > p code {
+  > p code, > ul code {
     @apply text-sm font-bold text-gray-700 bg-gray-200
+  }
+  > ul {
+    @apply list-disc list-inside pl-2
+  }
+  > ul li {
+    @apply mt-2
   }
 }
 
@@ -38,7 +53,7 @@
   @apply subpixel-antialiased;
   display: block;
   overflow-x: auto;
-  padding: theme('spacing.2');
+  padding: theme('spacing.0');
   font-size: theme('fontSize.sm');
   line-height: theme('lineHeight.normal');
   color: var(--color-code-white);

@@ -17,55 +17,123 @@ export const meta = {
   </a>
 </div>
 
-Out of the box, selects, checkboxes, and radios look awful in Tailwind and the only way to make them look
-better is with custom CSS.
+Out of the box, selects, checkboxes, and radios look awful in Tailwind and the only way to make them
+look better is with custom CSS.
 
-The goal of this project is to provide a better starting point for form elements that is still fairly
-unopinionated, and easy to customize by adding utilities instead of having to write complicated CSS rules.
+The goal of this project is to provide a better starting point for form elements that looks good out
+of the box but is still fairly neutral, and is easy to customize by adding utilities instead of
+having to write the complex CSS necessary to style form elements across browsers yourself.
 
 ---
 
-## Configuration
+## Getting started
 
-You can customize any of the default form styles applied by this plugin using the `theme.customForms`
-section of your `tailwind.config.js` file.
+### 1. Install the plugin
 
-Here is a list of the all of the available options, as well as their default values:
+Install the plugin using npm or Yarn:
 
-<div className="rounded-b-lg p-4 bg-gray-800">
-  <Highlight className="language-js">{dedent`
-    // tailwind.config.js
-    const defaultTheme = require('tailwindcss/defaultTheme')\n
-    module.exports = {
-      theme: {
-        customForms: {
-          horizontalPadding: defaultTheme.spacing[3],
-          verticalPadding: defaultTheme.spacing[2],
-          lineHeight: defaultTheme.lineHeight.normal,
-          fontSize: defaultTheme.fontSize.base,
-          borderColor: defaultTheme.borderColor.default,
-          borderWidth: defaultTheme.borderWidth.default,
-          borderRadius: defaultTheme.borderRadius.default,
-          backgroundColor: defaultTheme.colors.white,
-          focusBorderColor: defaultTheme.colors.blue[400],
-          focusBoxShadow: defaultTheme.boxShadow.outline,
-          boxShadow: defaultTheme.boxShadow.none,
-          checkboxSize: '1em',
-          radioSize: '1em',
-          checkboxIcon: \`<svg viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z"/></svg>\`,
-          radioIcon: \`<svg viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>\`,
-          checkedColor: defaultTheme.colors.blue[500],
-          selectIcon: \`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${'${defaultTheme.colors.gray[500]}'}"><path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"/></svg>\`,
-          selectIconOffset: defaultTheme.spacing[2],
-          selectIconSize: '1.5em',
-        }
-      },
-      plugins: [
-        require('@tailwindcss/custom-forms'),
-      ],
-    }
-  `}</Highlight>
-</div>
+```bash
+# Using npm
+npm install @tailwindcss/custom-forms@next --save-dev
+
+# Using Yarn
+yarn add @tailwindcss/custom-forms@next -D
+```
+
+### 2. Add the plugin to your `tailwind.config.js` file
+
+Add the plugin to the `plugins` section of your `tailwind.config.js` file:
+
+```js
+// tailwind.config.js
+module.exports = {
+  // ...
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+### 3. Style some forms
+
+The plugin will generate a handful of new classes that you can use to style your forms:
+`form-input`, `form-textarea`, `form-select`, `form-multiselect`, `form-checkbox`, and `form-radio`.
+
+Simply add those classes to the corresponding HTML elements to apply some sensible default form
+styles that look the same in all browsers, and are easy to tweak with utilities:
+
+<CodeSample code={`
+  <label class="block">
+    <span class="text-gray-700">Name</span>
+    <input class="form-input mt-1 block w-full" placeholder="Jane Doe">
+  </label>\n
+
+  <div class="mt-4">
+    <span class="text-gray-700">Account Type</span>
+    <div class="mt-2">
+      <label class="inline-flex items-center">
+        <input type="radio" class="form-radio" name="accountType" value="personal">
+        <span class="ml-2">Personal</span>
+      </label>
+      <label class="inline-flex items-center ml-6">
+        <input type="radio" class="form-radio" name="accountType" value="busines">
+        <span class="ml-2">Business</span>
+      </label>
+    </div>
+  </div>\n
+
+  <label class="block mt-4">
+    <span class="text-gray-700">Requested Limit</span>
+    <select class="form-select mt-1 block w-full">
+      <option>$1,000</option>
+      <option>$5,000</option>
+      <option>$10,000</option>
+      <option>$25,000</option>
+    </select>
+  </label>\n
+
+  <div class="flex mt-6">
+    <label class="flex items-center">
+      <input type="checkbox" class="form-checkbox">
+      <span class="ml-2">I agree to the <span class="underline">privacy policy</span></span>
+    </label>
+  </div>
+`}>
+  <div className="p-4">
+    <label className="block">
+      <span className="text-gray-700">Name</span>
+      <input className="form-input mt-1 block w-full" placeholder="Jane Doe"/>
+    </label>
+    <div className="mt-4">
+      <span className="text-gray-700">Account Type</span>
+      <div className="mt-2">
+        <label className="inline-flex items-center">
+          <input type="radio" className="form-radio" name="accountType" value="personal"/>
+          <span className="ml-2">Personal</span>
+        </label>
+        <label className="inline-flex items-center ml-6">
+          <input type="radio" className="form-radio" name="accountType" value="busines"/>
+          <span className="ml-2">Business</span>
+        </label>
+      </div>
+    </div>
+    <label className="block mt-4">
+      <span className="text-gray-700">Requested Limit</span>
+      <select className="form-select mt-1 block w-full">
+        <option>$1,000</option>
+        <option>$5,000</option>
+        <option>$10,000</option>
+        <option>$25,000</option>
+      </select>
+    </label>
+    <div className="flex mt-6">
+      <label className="flex items-center">
+        <input type="checkbox" className="form-checkbox"/>
+        <span className="ml-2">I agree to the <span className="underline">privacy policy</span></span>
+      </label>
+    </div>
+  </div>
+</CodeSample>
 
 ---
 
@@ -317,3 +385,321 @@ use Tailwind's width and height utilities, like `h-6` and `w-6`.
     </div>
   </div>
 `}/>
+
+---
+
+## Customizing the default styles
+
+You can customize the default styles applied by this plugin in the `theme.customForms.default`
+section of your `tailwind.config.js` file.
+
+Each form element can be customized under the `input`, `textarea`, `select`, `multiselect`,
+`checkbox`, and `radio` keys respectively.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      input: {
+        borderRadius: theme('borderRadius.lg'),
+        backgroundColor: theme('colors.gray.200'),
+        '&:focus': {
+          backgroundColor: theme('colors.white'),
+        }
+      },
+      select: {
+        borderRadius: theme('borderRadius.lg'),
+        boxShadow: theme('boxShadow.default'),
+      },
+      checkbox: {
+        width: theme('spacing.6'),
+        height: theme('spacing.6'),
+      }
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+The configuration format is the same [CSS-in-JS syntax](https://tailwindcss.com/docs/plugins/#css-in-js-syntax)
+used to author Tailwind plugins, so you are free to customize or add any CSS properties you like.
+
+See [the default options](#) used by the plugin for a complete reference of styles that are applied
+out of the box.
+
+### Customizing the select, checkbox, and radio icons
+
+Providing a carefully encoded SVG data URI to the `backgroundImage` property can be a bit
+cumbersome, so to make icon customization easier this plugin allows you to provide a normal
+unencoded SVG using a special `icon` property instead:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      select: {
+        icon: '<svg fill="#e2e8f0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>',
+      },
+      checkbox: {
+        icon: '<svg fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>'
+      },
+      radio: {
+        icon: '<svg fill="#fff" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>'
+      },
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+You can also switch to a different icon for different states, like if you wanted to change the
+checkmark on hover:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      checkbox: {
+        icon: '<svg fill="#1a202c" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>',
+        '&:hover': {
+          icon: '<svg fill="#4a5568" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>',
+        }
+      },
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+Checkbox and radio icons are automatically hidden unless the elements are `:checked`, so you don't
+need to include that pseudo-selector in your configuration when using the special `icon` property.
+
+#### Customizing the icon color
+
+If you are happy with the default icons and just want to customize the color, you can use the
+special `iconColor` property to customize the color without re-specifying the entire SVG:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      select: {
+        iconColor: theme('colors.white'),
+      },
+      checkbox: {
+        iconColor: theme('colors.indigo-700'),
+      },
+      radio: {
+        iconColor: theme('colors.indigo-700'),
+      },
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+You can also change the `iconColor` for different states:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      checkbox: {
+        iconColor: theme('colors.gray.800'),
+        '&:hover': {
+          iconColor: theme('colors.gray.700'),
+        }
+      },
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+Just like with the `icon` property, you don't need to worry about including the `:checked`
+pseudo-selector for checkboxes and radios.
+
+If you are using a custom icon and still want to use the `iconColor` property to make it easy to
+change the color without re-specifying your entire custom SVG, define your custom icon as a callback
+that receives the icon color:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      checkbox: {
+        icon: iconColor => '<svg fill="${iconColor}" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>',
+        iconColor: theme('colors.gray.800'),
+        '&:hover': {
+          iconColor: theme('colors.gray.700'),
+        }
+      },
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+### Disabling a default style
+
+Although we've tried to make the default styles as neutral as possible while still looking
+well-designed, sometimes one of the styles we're providing out-of-the-box might be too opinionated
+for your project and painful to simply override.
+
+If you'd like to completely unset one of the default styles, explicitly set that property to
+`undefined` to prevent the plugin from including that property in the final CSS:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      input: {
+      '&:focus': {
+        boxShadow: undefined,
+        borderColor: undefined,
+      },
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+### Configuring multiple elements at once
+
+Often you'll want to set the same defaults for several different elements, and duplicating all of
+those styles can be a little verbose.
+
+To specify styles for multiple elements at the same time, simply provide all of the elements you'd
+like to style as a comma-separated list:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      'input, textarea, multiselect, select': {
+        borderRadius: theme('borderRadius.lg'),
+      },
+      'input, textarea, multiselect': {
+        backgroundColor: theme('colors.gray.900'),
+      },
+      select: {
+        backgroundColor: theme('colors.gray.600'),
+      },
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+---
+
+## Adding modifier classes
+
+You'll often need multiple form element styles in a single project, for example light form controls
+that are meant for light backgrounds, and dark form controls for dark backgrounds.
+
+This plugin lets you create "modifiers" for your form classes by adding extra top-level keys in the
+`theme.customForms` section of your config file.
+
+For example, this configuration adds a `dark` modifier:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      dark: {
+        'input, textarea, multiselect, checkbox, radio': {
+          backgroundColor: theme('colors.gray.900'),
+        },
+        select: {
+          backgroundColor: theme('colors.gray.600'),
+        },
+      }
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+This generates extra classes like `form-input-dark`, `form-textarea-dark`, `form-select-dark`, etc.
+
+It's important to note that **modifiers are not automatically merged with the default styles** and
+are designed to be used with the [multi-class modifier pattern](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/#component-modifiers).
+
+That means you should always include the default class for an element when using a modifier:
+
+```html
+<input class="form-input form-input-dark">
+```
+
+This makes it easy to create modifiers that serve different purposes that can still be composed.
+
+For example, here we're configuring a `dark` *color* modifier, and a `sm` *size* modifier:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      dark: {
+        'input, textarea, multiselect, checkbox, radio': {
+          backgroundColor: theme('colors.gray.900'),
+        },
+        select: {
+          backgroundColor: theme('colors.gray.600'),
+        },
+      },
+      sm: {
+        'input, textarea, multiselect, select': {
+          fontSize: theme('fontSize.sm'),
+          padding: `${theme('spacing.1')} ${theme('spacing.2')}`,
+        },
+        select: {
+          paddingRight: `${theme('spacing.4')}`,
+        },
+        'checkbox, radio': {
+          width: theme('spacing.3'),
+          height: theme('spacing.3'),
+        },
+      }
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+By using the multi-class pattern, we can combine these modifiers in our HTML to produce form
+elements that are both dark *and* small, without creating any new classes:
+
+```html
+<input class="form-input form-input-dark form-input-sm">
+```
