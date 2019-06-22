@@ -38,6 +38,9 @@
   > p {
     @apply text-gray-700 leading-relaxed
   }
+  > p a {
+    @apply text-gray-900 underline
+  }
   > p code, > ul code {
     @apply text-sm font-bold text-gray-700 bg-gray-200
   }
