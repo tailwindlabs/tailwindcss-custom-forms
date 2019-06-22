@@ -83,6 +83,9 @@ module.exports = {
     paddingLeft: defaultTheme.spacing[3],
     fontSize: defaultTheme.fontSize.base,
     lineHeight: defaultTheme.lineHeight.normal,
+    '@supports (-moz-appearance: none)': {
+      lineHeight: `calc(${defaultTheme.lineHeight.normal}em - 2px)`, // Compensate for extra 2px of height that comes from nowhere in FireFox
+    },
     backgroundPosition: `right ${defaultTheme.spacing[2]} center`,
     backgroundSize: `1.5em 1.5em`,
     iconColor: defaultTheme.colors.gray[500],
