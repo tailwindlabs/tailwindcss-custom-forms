@@ -1,9 +1,12 @@
+const flow = require('lodash/flow')
 const tap = require('lodash/tap')
 const map = require('lodash/map')
 const toPairs = require('lodash/toPairs')
 const fromPairs = require('lodash/fromPairs')
 const mergeWith = require('lodash/mergeWith')
 const flatMap = require('lodash/flatMap')
+const intersection = require('lodash/intersection')
+const omit = require('lodash/omit')
 const isEmpty = require('lodash/isEmpty')
 const isArray = require('lodash/isArray')
 const isFunction = require('lodash/isFunction')
@@ -41,17 +44,20 @@ function resolveOptions(userOptions) {
   }, fromPairs(map(userOptions, (value, key) => [key, flattenOptions(value)])))
 }
 
-function replaceIconDeclarations(component, replace) {
+function replaceDeclarations(component, search, replace) {
   return traverse(component).map(function (value) {
     if (!isPlainObject(value)) {
       return
     }
 
-    if (Object.keys(value).includes('iconColor') || Object.keys(value).includes('icon')) {
-      const { iconColor, icon, ...rest } = value
-      this.update(merge(replace({ icon, iconColor }), rest))
+    if (intersection(Object.keys(value), search).length > 0) {
+      this.update(merge(replace(value), omit(value, search)))
     }
   })
+}
+
+function replaceIconDeclarations(component, replace) {
+  return replaceDeclarations(component, ['icon', 'iconColor'], replace)
 }
 
 module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
@@ -84,7 +90,30 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents(replaceIconDeclarations({
+    flow([
+      components => replaceDeclarations(components, ['icon', 'iconColor'], ({ icon = options.icon, iconColor = options.iconColor }) => {
+        return {
+          backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
+        }
+      }),
+      components => replaceDeclarations(components, ['lineHeight'], ({ lineHeight }) => {
+        return {
+          lineHeight: lineHeight,
+          // Compensate for extra 2px of height that comes from nowhere in FireFox
+          '@supports (-moz-appearance: none)': {
+            // Underscore prefix is to prevent infinite recursion
+            _lineHeight: `calc(${isNaN(lineHeight) ? lineHeight : `${lineHeight}em`} - 2px)`,
+          },
+        }
+      }),
+      // Replace underscore-prefixed lineHeight in separate stage where no chance of infinite recursion
+      components => replaceDeclarations(components, ['_lineHeight'], ({ _lineHeight }) => {
+        return {
+          lineHeight: _lineHeight,
+        }
+      }),
+      addComponents,
+    ])({
       [`.form-select${modifier}`]: merge({
         '&::-ms-expand': {
           color: options.iconColor,
@@ -95,11 +124,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
           },
         },
       }, options)
-    }, ({ icon = options.icon, iconColor = options.iconColor }) => {
-      return {
-        backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
-      }
-    }))
+    })
   }
 
   function addCheckbox(options, modifier = '') {
