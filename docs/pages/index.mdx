@@ -401,21 +401,23 @@ Each form element can be customized under the `input`, `textarea`, `select`, `mu
 module.exports = {
   theme: {
     customForms: theme => ({
-      input: {
-        borderRadius: theme('borderRadius.lg'),
-        backgroundColor: theme('colors.gray.200'),
-        '&:focus': {
-          backgroundColor: theme('colors.white'),
-        }
+      default: {
+        input: {
+          borderRadius: theme('borderRadius.lg'),
+          backgroundColor: theme('colors.gray.200'),
+          '&:focus': {
+            backgroundColor: theme('colors.white'),
+          }
+        },
+        select: {
+          borderRadius: theme('borderRadius.lg'),
+          boxShadow: theme('boxShadow.default'),
+        },
+        checkbox: {
+          width: theme('spacing.6'),
+          height: theme('spacing.6'),
+        },
       },
-      select: {
-        borderRadius: theme('borderRadius.lg'),
-        boxShadow: theme('boxShadow.default'),
-      },
-      checkbox: {
-        width: theme('spacing.6'),
-        height: theme('spacing.6'),
-      }
     })
   },
   plugins: [
@@ -441,14 +443,16 @@ unencoded SVG using a special `icon` property instead:
 module.exports = {
   theme: {
     customForms: theme => ({
-      select: {
-        icon: '<svg fill="#e2e8f0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>',
-      },
-      checkbox: {
-        icon: '<svg fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>'
-      },
-      radio: {
-        icon: '<svg fill="#fff" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>'
+      default: {
+        select: {
+          icon: '<svg fill="#e2e8f0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>',
+        },
+        checkbox: {
+          icon: '<svg fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>'
+        },
+        radio: {
+          icon: '<svg fill="#fff" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>'
+        },
       },
     })
   },
@@ -466,11 +470,13 @@ checkmark on hover:
 module.exports = {
   theme: {
     customForms: theme => ({
-      checkbox: {
-        icon: '<svg fill="#1a202c" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>',
-        '&:hover': {
-          icon: '<svg fill="#4a5568" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>',
-        }
+      default: {
+        checkbox: {
+          icon: '<svg fill="#1a202c" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>',
+          '&:hover': {
+            icon: '<svg fill="#4a5568" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>',
+          },
+        },
       },
     })
   },
@@ -493,14 +499,16 @@ special `iconColor` property to customize the color without re-specifying the en
 module.exports = {
   theme: {
     customForms: theme => ({
-      select: {
-        iconColor: theme('colors.white'),
-      },
-      checkbox: {
-        iconColor: theme('colors.indigo-700'),
-      },
-      radio: {
-        iconColor: theme('colors.indigo-700'),
+      default: {
+        select: {
+          iconColor: theme('colors.white'),
+        },
+        checkbox: {
+          iconColor: theme('colors.indigo-700'),
+        },
+        radio: {
+          iconColor: theme('colors.indigo-700'),
+        },
       },
     })
   },
@@ -517,11 +525,13 @@ You can also change the `iconColor` for different states:
 module.exports = {
   theme: {
     customForms: theme => ({
-      checkbox: {
-        iconColor: theme('colors.gray.800'),
-        '&:hover': {
-          iconColor: theme('colors.gray.700'),
-        }
+      default: {
+        checkbox: {
+          iconColor: theme('colors.gray.800'),
+          '&:hover': {
+            iconColor: theme('colors.gray.700'),
+          },
+        },
       },
     })
   },
@@ -543,12 +553,14 @@ that receives the icon color:
 module.exports = {
   theme: {
     customForms: theme => ({
-      checkbox: {
-        icon: iconColor => '<svg fill="${iconColor}" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>',
-        iconColor: theme('colors.gray.800'),
-        '&:hover': {
-          iconColor: theme('colors.gray.700'),
-        }
+      default: {
+        checkbox: {
+          icon: iconColor => '<svg fill="${iconColor}" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>',
+          iconColor: theme('colors.gray.800'),
+          '&:hover': {
+            iconColor: theme('colors.gray.700'),
+          },
+        },
       },
     })
   },
@@ -572,10 +584,12 @@ If you'd like to completely unset one of the default styles, explicitly set that
 module.exports = {
   theme: {
     customForms: theme => ({
-      input: {
-      '&:focus': {
-        boxShadow: undefined,
-        borderColor: undefined,
+      default: {
+        input: {
+        '&:focus': {
+          boxShadow: undefined,
+          borderColor: undefined,
+        },
       },
     })
   },
@@ -598,14 +612,16 @@ like to style as a comma-separated list:
 module.exports = {
   theme: {
     customForms: theme => ({
-      'input, textarea, multiselect, select': {
-        borderRadius: theme('borderRadius.lg'),
-      },
-      'input, textarea, multiselect': {
-        backgroundColor: theme('colors.gray.900'),
-      },
-      select: {
-        backgroundColor: theme('colors.gray.600'),
+      default: {
+        'input, textarea, multiselect, select': {
+          borderRadius: theme('borderRadius.lg'),
+        },
+        'input, textarea, multiselect': {
+          backgroundColor: theme('colors.gray.900'),
+        },
+        select: {
+          backgroundColor: theme('colors.gray.600'),
+        },
       },
     })
   },
