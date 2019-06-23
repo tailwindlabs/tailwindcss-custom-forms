@@ -31,6 +31,7 @@
     "dedent": "^0.7.0",
     "highlight.js": "^9.15.6",
     "next": "^8.1.1-canary.34",
+    "param-case": "^2.1.1",
     "postcss-custom-properties": "^8.0.10",
     "postcss-import": "^12.0.1",
     "postcss-nested": "^4.1.2",
