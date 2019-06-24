@@ -1,5 +1,5 @@
 import '../static/css/tailwind.css'
-import React from 'react'
+import React, { useState, useEffect }  from 'react'
 import innerText from 'react-innertext'
 import paramCase from 'param-case'
 import takeWhile from 'lodash/takeWhile'
@@ -8,12 +8,10 @@ import Head from 'next/head'
 import CodeBlock from './CodeBlock'
 
 function H2(props) {
-  return <h2 id={paramCase(innerText(props.children))} {...props}/>
-}
+  useEffect(() => {
 
-const components = {
-  code: CodeBlock,
-  h2: H2,
+  })
+  return <h2 id={paramCase(innerText(props.children))} {...props}/>
 }
 
 function nestHeadings(headings, level = 1, stopAt = Infinity) {
@@ -60,7 +58,21 @@ function TableOfContents({ headings }) {
   )
 }
 
+function separateIntroduction(nodes) {
+  const introduction = takeWhile(nodes, node => node.props.originalType !== 'h2')
+  return [
+    introduction,
+    nodes.slice(introduction.length),
+  ]
+}
+
 export default ({ meta, children }) => {
+
+  const components = useState({
+    code: CodeBlock,
+    h2: H2,
+  })
+
   const headings = children.filter(node => {
     return ['h2'].includes(node.props.originalType)
   }).map(node => {
@@ -72,7 +84,7 @@ export default ({ meta, children }) => {
 
   const nested = nestHeadings(headings, 2)
 
-  console.log(React.Children.toArray(children))
+  const [introduction, content] = separateIntroduction(React.Children.toArray(children))
 
   return (
     <div className="antialiased text-gray-900 px-8">
@@ -81,14 +93,20 @@ export default ({ meta, children }) => {
       </Head>
       <div className="">
         <div className="flex items-start -mx-4">
-          <div className="sticky top-0 px-4 py-16 max-w-xs w-full flex-shrink-0 h-screen overflow-y-auto">
+          <div className="hidden lg:block sticky top-0 px-4 py-16 max-w-xs w-full flex-shrink-0 h-screen overflow-y-auto">
             <TableOfContents headings={nested}/>
           </div>
           <div className="px-4 py-16 flex-1 min-w-0">
             <div className="max-w-3xl mx-auto">
               <MDXProvider components={components}>
                 <div className="markdown">
-                  { children }
+                  { introduction }
+                  <div class="markdown lg:hidden">
+                    <h2>Contents</h2>
+                    <TableOfContents headings={nested}/>
+                    <hr/>
+                  </div>
+                  { content }
                 </div>
               </MDXProvider>
             </div>
