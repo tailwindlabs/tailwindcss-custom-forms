@@ -14,10 +14,10 @@ The goal of this project is to provide a better starting point for form elements
 
   ```bash
   # Using npm
-  npm install @tailwindcss/custom-forms
+  npm install @tailwindcss/custom-forms --save-dev
 
   # Using Yarn
-  yarn add @tailwindcss/custom-forms
+  yarn add @tailwindcss/custom-forms -D
   ```
 
 2. Add it to your `tailwind.config.js` file:
