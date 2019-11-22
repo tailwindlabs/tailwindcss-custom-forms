@@ -22,6 +22,12 @@ module.exports = {
       boxShadow: defaultTheme.boxShadow.outline,
       borderColor: defaultTheme.colors.blue[400],
     },
+    '&:disabled': {
+      backgroundColor: defaultTheme.colors.gray[100]
+    },
+    '&[readonly]': {
+      backgroundColor: defaultTheme.colors.gray[100]
+    }
   },
   textarea: {
     appearance: 'none',
@@ -44,6 +50,12 @@ module.exports = {
       boxShadow: defaultTheme.boxShadow.outline,
       borderColor: defaultTheme.colors.blue[400],
     },
+    '&:disabled': {
+      backgroundColor: defaultTheme.colors.gray[100]
+    },
+    '&[readonly]': {
+      backgroundColor: defaultTheme.colors.gray[100]
+    },
   },
   multiselect: {
     appearance: 'none',
@@ -62,6 +74,9 @@ module.exports = {
       boxShadow: defaultTheme.boxShadow.outline,
       borderColor: defaultTheme.colors.blue[400],
     },
+    '&:disabled': {
+      backgroundColor: defaultTheme.colors.gray[100]
+    }
   },
   select: {
     appearance: 'none',
@@ -92,6 +107,9 @@ module.exports = {
       boxShadow: defaultTheme.boxShadow.outline,
       borderColor: defaultTheme.colors.blue[400],
     },
+    '&:disabled': {
+      backgroundColor: defaultTheme.colors.gray[100]
+    }
   },
   checkbox: {
     appearance: 'none',
@@ -130,6 +148,15 @@ module.exports = {
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
     },
+    '&:disabled': {
+      backgroundColor: defaultTheme.colors.gray[100],
+    },
+    '&:disabled + *': {
+      color: defaultTheme.colors.gray[600],
+    },
+    '&:disabled:checked': {
+      backgroundColor: defaultTheme.colors.gray[500],
+    },
   },
   radio: {
     appearance: 'none',
@@ -167,6 +194,15 @@ module.exports = {
       backgroundSize: '100% 100%',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
+    },
+    '&:disabled': {
+      backgroundColor: defaultTheme.colors.gray[100],
+    },
+    '&:disabled + *': {
+      color: defaultTheme.colors.gray[600],
+    },
+    '&:disabled:checked': {
+      backgroundColor: defaultTheme.colors.gray[500],
     },
   }
 }
