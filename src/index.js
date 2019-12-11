@@ -41,14 +41,15 @@ function resolveOptions(userOptions) {
   }, fromPairs(map(userOptions, (value, key) => [key, flattenOptions(value)])))
 }
 
-function replaceIconDeclarations(component, replace) {
+function replaceIconDeclarations(component, replace, iconProperty = 'icon', iconColorProperty = 'iconColor') {
   return traverse(component).map(function (value) {
     if (!isPlainObject(value)) {
       return
     }
 
-    if (Object.keys(value).includes('iconColor') || Object.keys(value).includes('icon')) {
-      const { iconColor, icon, ...rest } = value
+    if (Object.keys(value).includes(iconProperty) || Object.keys(value).includes(iconColorProperty)) {
+      const keys = [iconProperty, iconColorProperty];
+      const { [keys[0]]: icon, [keys[1]]: iconColor, ...rest } = value;
       this.update(merge(replace({ icon, iconColor }), rest))
     }
   })
@@ -107,7 +108,17 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents(replaceIconDeclarations({
+    const replaceIconFn = (pseudoSelector) => {
+      return ({ icon = options.icon, iconColor = options.iconColor }) => {
+        return {
+          [`&:${pseudoSelector}`]: {
+            backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
+          }
+        }
+      }
+    };
+
+    let checkbox = {
       [`.form-checkbox${modifier}`]: merge({
         ...isUndefined(options.borderWidth) ? {} : {
           '&::-ms-check': {
@@ -117,13 +128,12 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
           },
         },
       }, options)
-    }, ({ icon = options.icon, iconColor = options.iconColor }) => {
-      return {
-        '&:checked': {
-          backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
-        }
-      }
-    }))
+    };
+
+    checkbox = replaceIconDeclarations(checkbox, replaceIconFn('checked'));
+    checkbox = replaceIconDeclarations(checkbox, replaceIconFn('indeterminate'), 'indeterminateIcon', 'indeterminateIconColor');
+
+    addComponents(checkbox);
   }
 
   function addRadio(options, modifier = '') {

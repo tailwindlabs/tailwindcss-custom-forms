@@ -290,6 +290,25 @@ use Tailwind's width and height utilities, like `h-6` and `w-6`.
   </div>
 `}/>
 
+### Indeterminate state
+
+Checkboxes can have a indeterminate state.
+
+<CodeSample code={`
+  <div class="block">
+    <span class="text-gray-700">Checkboxes</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox h-4 w-4" id="indeterminate-checkbox">
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">document.getElementById("indeterminate-checkbox").indeterminate = true</script>
+`}/>
+
 ---
 
 ## Radio Button
