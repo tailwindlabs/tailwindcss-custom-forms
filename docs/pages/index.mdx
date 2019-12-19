@@ -92,6 +92,14 @@ styles that look the same in all browsers, and are easy to tweak with utilities:
     </select>
   </label>\n
 
+  <div class="mt-4">
+    <label for="cc">Credit Cards</label>
+    <div class="flex items-center">
+      <input class="form-range flex-grow" type="range" min="1" max="5" value="1">
+      <input class="form-input w-10 ml-4 text-center" value="1" readonly>
+    </div>
+  </div>\n
+
   <div class="flex mt-6">
     <label class="flex items-center">
       <input type="checkbox" class="form-checkbox">
@@ -126,7 +134,15 @@ styles that look the same in all browsers, and are easy to tweak with utilities:
         <option>$25,000</option>
       </select>
     </label>
-    <div className="flex mt-6">
+    <div className="mt-4">
+      <label htmlFor="cc">Credit Cards</label>
+      <div className="flex items-center">
+        <input id="cc" className="form-range flex-grow" type="range" min="1" max="5" defaultValue="1"
+          onInput={e=>{document.querySelector("#cc-value").value = e.target.value}} />
+        <input id="cc-value" className="form-input w-10 ml-4 text-center" value="1" readOnly />
+      </div>
+    </div>
+    <div className="flex mt-4">
       <label className="flex items-center">
         <input type="checkbox" className="form-checkbox"/>
         <span className="ml-2">I agree to the <span className="underline">privacy policy</span></span>
@@ -388,13 +404,83 @@ use Tailwind's width and height utilities, like `h-6` and `w-6`.
 
 ---
 
+## Range Input
+
+Add basic styles to a normal `input` element using the `form-range` class.
+
+<CodeSample code={`
+  <label class="block">
+    <span class="text-gray-700">Range</span>
+    <input type="range" class="form-range mt-1 block w-full">
+  </label>
+`}/>
+
+### Changing the color
+
+You can customize the range colors in your tailwind configuration file. 
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      default: {
+        range: {
+          thumbBorderColor: theme('colors.orange.500'),
+          thumbBackgroundColor: theme('colors.orange.500'),
+          trackBorderColor: theme('colors.orange.300'),
+          trackBackgroundColor: theme('colors.orange.100'),
+          // disabled state
+          disabledThumbBorderColor: theme('colors.orange.300'),
+          disabledThumbBackgroundColor: theme('colors.orange.300'),
+          disabledTrackBorderColor: theme('colors.orange.200'),
+          disabledTrackBackgroundColor: theme('colors.orange.100'),
+          // active state
+          activeThumbBorderColor: theme('colors.orange.600'),
+          activeThumbBackgroundColor: theme('colors.orange.600'),
+          // focus state
+          focusColor: theme('colors.orange.400'),
+        },
+      },
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+### Changing the size
+
+You can change the size of the range input in your tailwind configuration file.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      default: {
+        range: {
+          thumbSize: "1.5rem",
+        },
+      },
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
+---
+
 ## Customizing the default styles
 
 You can customize the default styles applied by this plugin in the `theme.customForms.default`
 section of your `tailwind.config.js` file.
 
 Each form element can be customized under the `input`, `textarea`, `select`, `multiselect`,
-`checkbox`, and `radio` keys respectively.
+`checkbox`, `radio` and `range` keys respectively.
 
 ```js
 // tailwind.config.js

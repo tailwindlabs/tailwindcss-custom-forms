@@ -150,6 +150,123 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
     }))
   }
 
+  function addRange(options, modifier = '') {
+    if (isEmpty(options)) {
+      return
+    }
+
+    const focusRing = "4px"
+    const focus = {
+      boxShadow: `0 0 0 1px white, 0 0 0 ${focusRing} ${options.focusColor}`
+    }
+    const active = {
+      backgroundColor: options.activeThumbBackgroundColor,
+      borderColor: options.activeThumbBorderColor
+    }
+    const disabledThumb = {
+      'cursor': 'default',
+      borderColor: options.disabledThumbBorderColor,
+      backgroundColor: options.disabledThumbBackgroundColor
+    }
+    const disabledTrack = {
+      'cursor': 'default',
+      borderColor: options.disabledTrackBorderColor,
+      backgroundColor: options.disabledTrackBackgroundColor
+    }
+    const thumb = {
+      boxSizing: 'border-box',
+      width: options.thumbSize,
+      height: options.thumbSize,
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: options.thumbBorderColor,
+      borderRadius: '9999px',
+      backgroundColor: options.thumbBackgroundColor,
+      cursor: 'pointer',
+      appearance: 'none',
+    }
+    const track = {
+      boxSizing: 'border-box',
+      width: '100%',
+      height: `calc(${options.thumbSize} / 2)`,
+      backgroundColor: options.trackBackgroundColor,
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: options.trackBorderColor,
+      borderRadius: options.thumbSize,
+      cursor: 'pointer'
+    }
+
+    addComponents({
+      [`.form-range${modifier}`]: {
+        appearance: 'none',
+        backgroundColor: 'transparent',
+        cursor: 'pointer',
+        padding: '0',
+        // thumb size + focus ring + track border (1px top & 1px bottom) + 
+        // thumb border (1px top & 1px bottom)
+        height: `calc(${options.thumbSize} + ${focusRing} + 4px)`,
+        '&:focus': {
+          outline: 'none',
+          '&::-webkit-slider-thumb': focus,
+          '&::-moz-range-thumb': focus,
+          '&::-ms-thumb': focus
+        },
+        '&::-moz-focus-outer': {
+          border: '0'
+        },
+        '&:disabled': {
+          cursor: 'default',
+          '&::-webkit-slider-thumb': disabledThumb,
+          '&::-moz-range-thumb': disabledThumb,
+          '&::-ms-thumb': disabledThumb,
+          '&::-webkit-slider-runnable-track': disabledTrack,
+          '&::-moz-range-track': disabledTrack,
+          '&::-ms-fill-lower': disabledTrack,
+          '&::-ms-fill-upper': disabledTrack
+        },
+        // Chrome & Safari
+        '&::-webkit-slider-thumb': {
+          // Position fix for chrome:
+          // half of the track size (thumb size / 2 = track size)
+          // plus the thumb top border width (1px)
+          marginTop: `calc(-${options.thumbSize} / 4 - 1px)`,
+          ...thumb,
+          '&:active': active
+        },
+        '&::-webkit-slider-runnable-track': track,
+        // Firefox
+        '&::-moz-range-thumb': {
+          ...thumb,
+          '&:active': active
+        },
+        '&::-moz-range-track': track,
+        // IE11 & Edge
+        '&::-ms-thumb': {
+          // remove added margin
+          marginTop: '0',
+          // prevent focus ring being cut off
+          marginRight: focusRing,
+          marginLeft: focusRing,
+          ...thumb,
+          '&:active': active
+        },
+        '&::-ms-track': {
+          width: '100%',
+          boxSizing: 'border-box',
+          color: 'transparent',
+          cursor: 'pointer',
+          backgroundColor: 'transparent',
+          // border used to add space for the focus ring
+          borderColor: 'transparent',
+          borderWidth: `calc(${options.thumbSize} / 2)`,
+        },
+        '&::-ms-fill-lower': track,
+        '&::-ms-fill-upper': track
+      }
+    })
+  }
+
   function registerComponents() {
     const options = resolveOptions(theme('customForms'))
 
@@ -159,6 +276,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
     addSelect(options.default.select)
     addCheckbox(options.default.checkbox)
     addRadio(options.default.radio)
+    addRange(options.default.range)
 
     Object.keys((({ default: _default, ...rest }) => rest)(options)).forEach(key => {
       const modifier = `-${key}`
@@ -169,6 +287,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       addSelect(options[key].select || {}, modifier)
       addCheckbox(options[key].checkbox || {}, modifier)
       addRadio(options[key].radio || {}, modifier)
+      addRange(options[key].range || {}, modifier)
     })
   }
 
