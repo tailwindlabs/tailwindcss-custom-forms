@@ -130,6 +130,14 @@ module.exports = {
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
     },
+    '&[indeterminate]': {
+      borderColor: 'transparent',
+      backgroundColor: 'currentColor',
+      backgroundSize: '100% 100%',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      icon: iconColor => `<svg fill="${iconColor}" viewBox="0 0 24 26" xmlns="http://www.w3.org/2000/svg"><path d="M18,11H6c-1.104,0-2,0.896-2,2s0.896,2,2,2h12c1.104,0,2-0.896,2-2S19.104,11,18,11z"/></svg>`,
+    },
   },
   radio: {
     appearance: 'none',

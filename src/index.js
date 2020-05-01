@@ -121,6 +121,9 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return {
         '&:checked': {
           backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
+        },
+        '&[indeterminate]': {
+          backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
         }
       }
     }))
