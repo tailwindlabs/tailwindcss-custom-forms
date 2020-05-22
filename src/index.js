@@ -55,6 +55,14 @@ function replaceIconDeclarations(component, replace) {
 }
 
 module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
+  function addLabel(options, modifier = '') {
+    if (isEmpty(options)) {
+      return
+    }
+
+    addComponents({ [`.form-label{modifier}`]: options })
+  }
+  
   function addInput(options, modifier = '') {
     if (isEmpty(options)) {
       return
@@ -153,6 +161,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
   function registerComponents() {
     const options = resolveOptions(theme('customForms'))
 
+    addLabel(options.default.label)
     addInput(options.default.input)
     addTextarea(options.default.textarea)
     addMultiselect(options.default.multiselect)
@@ -163,6 +172,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
     Object.keys((({ default: _default, ...rest }) => rest)(options)).forEach(key => {
       const modifier = `-${key}`
 
+      addLabel(options[key].label || {}, modifier)
       addInput(options[key].input || {}, modifier)
       addTextarea(options[key].textarea || {}, modifier)
       addMultiselect(options[key].multiselect || {}, modifier)
