@@ -68,4 +68,4 @@ The project is still early but basic documentation can be found here:
     yarn run dev
     ```
 
-    Now you should be able to see the demo/docs running at localhost:3000.
+    Now you should be able to see the demo/docs running at [localhost:3000](http://localhost:3000).
