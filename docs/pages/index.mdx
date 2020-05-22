@@ -57,7 +57,7 @@ module.exports = {
 ### 3. Style some forms
 
 The plugin will generate a handful of new classes that you can use to style your forms:
-`form-input`, `form-textarea`, `form-select`, `form-multiselect`, `form-checkbox`, and `form-radio`.
+`form-label`, `form-input`, `form-textarea`, `form-select`, `form-multiselect`, `form-checkbox`, and `form-radio`.
 
 Simply add those classes to the corresponding HTML elements to apply some sensible default form
 styles that look the same in all browsers, and are easy to tweak with utilities:
@@ -134,6 +134,17 @@ styles that look the same in all browsers, and are easy to tweak with utilities:
     </div>
   </div>
 </CodeSample>
+
+---
+
+## Form Label
+
+Add basic styles to a normal `label` element using the `form-label` class.
+
+<CodeSample code={`
+  <label class="form-label" for="my-control">Styled label</label>
+  <input type="email" id="my-control" class="form-input mt-1 block w-full" placeholder="john@example.com">
+`}/>
 
 ---
 
