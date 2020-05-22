@@ -1,6 +1,9 @@
 const defaultTheme = require('tailwindcss/resolveConfig')(require('tailwindcss/defaultConfig')).theme
 
 module.exports = {
+  label: {
+    fontSize: defaultTheme.fontSize.base,
+  },
   input: {
     appearance: 'none',
     backgroundColor: defaultTheme.colors.white,
