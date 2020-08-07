@@ -4,7 +4,7 @@ Out of the box, selects, checkboxes, and radios look awful in Tailwind and the o
 
 The goal of this project is to provide a better starting point for form elements that is still fairly unopinionated, and easy to customize by adding utilities instead of having to write complicated CSS rules.
 
-[Demo](https://tailwindcss-custom-forms.netlify.com/)
+[Demo](https://tailwindcss-custom-forms.netlify.app)
 
 ![Screenshot](screenshot.png)
 
@@ -36,7 +36,7 @@ The goal of this project is to provide a better starting point for form elements
 
 The project is still early but basic documentation can be found here:
 
-[Read the documentation](https://tailwindcss-custom-forms.netlify.com/)
+[Read the documentation](https://tailwindcss-custom-forms.netlify.app)
 
 ## Local development
 
