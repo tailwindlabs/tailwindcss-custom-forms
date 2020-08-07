@@ -167,6 +167,20 @@ module.exports = {
       backgroundSize: '100% 100%',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-    },
+    }
+  },
+  range: {
+    thumbSize: "1.25rem",
+    focusColor: defaultTheme.colors.blue[400],
+    thumbBorderColor: defaultTheme.colors.gray[500],
+    thumbBackgroundColor: defaultTheme.colors.white,
+    trackBorderColor: defaultTheme.colors.gray[300],
+    trackBackgroundColor: defaultTheme.colors.gray[100],
+    disabledThumbBorderColor: defaultTheme.colors.gray[300],
+    disabledThumbBackgroundColor: defaultTheme.colors.white,
+    disabledTrackBorderColor: defaultTheme.colors.gray[200],
+    disabledTrackBackgroundColor: defaultTheme.colors.gray[100],
+    activeThumbBorderColor: defaultTheme.colors.gray[600],
+    activeThumbBackgroundColor: defaultTheme.colors.gray[300],
   }
 }
