@@ -19,10 +19,12 @@ function merge(...options) {
       return mergeWith(objValue, srcValue, mergeCustomizer)
     }
     return Object.keys(src).includes(key)
-      // Convert undefined to null otherwise lodash won't replace the key
-      // PostCSS still omits properties with a null value so it behaves
-      // the same as undefined.
-      ? (srcValue === undefined ? null : srcValue)
+      ? // Convert undefined to null otherwise lodash won't replace the key
+        // PostCSS still omits properties with a null value so it behaves
+        // the same as undefined.
+        srcValue === undefined
+        ? null
+        : srcValue
       : objValue
   }
 
@@ -30,15 +32,20 @@ function merge(...options) {
 }
 
 function flattenOptions(options) {
-  return merge(...flatMap(toPairs(options), ([keys, value]) => {
-    return fromPairs(keys.split(', ').map(key => [key, value]))
-  }))
+  return merge(
+    ...flatMap(toPairs(options), ([keys, value]) => {
+      return fromPairs(keys.split(', ').map((key) => [key, value]))
+    })
+  )
 }
 
 function resolveOptions(userOptions) {
-  return merge({
-    default: defaultOptions,
-  }, fromPairs(map(userOptions, (value, key) => [key, flattenOptions(value)])))
+  return merge(
+    {
+      default: defaultOptions,
+    },
+    fromPairs(map(userOptions, (value, key) => [key, flattenOptions(value)]))
+  )
 }
 
 function replaceIconDeclarations(component, replace) {
@@ -84,22 +91,32 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents(replaceIconDeclarations({
-      [`.form-select${modifier}`]: merge({
-        '&::-ms-expand': {
-          color: options.iconColor,
+    addComponents(
+      replaceIconDeclarations(
+        {
+          [`.form-select${modifier}`]: merge(
+            {
+              '&::-ms-expand': {
+                color: options.iconColor,
+              },
+              ...(isUndefined(options.paddingLeft)
+                ? {}
+                : {
+                    '@media print and (-ms-high-contrast: active), print and (-ms-high-contrast: none)': {
+                      paddingRight: options.paddingLeft, // Fix padding for print in IE
+                    },
+                  }),
+            },
+            options
+          ),
         },
-        ...isUndefined(options.paddingLeft) ? {} : {
-          '@media print and (-ms-high-contrast: active), print and (-ms-high-contrast: none)': {
-            paddingRight: options.paddingLeft, // Fix padding for print in IE
-          },
-        },
-      }, options)
-    }, ({ icon = options.icon, iconColor = options.iconColor }) => {
-      return {
-        backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
-      }
-    }))
+        ({ icon = options.icon, iconColor = options.iconColor }) => {
+          return {
+            backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`,
+          }
+        }
+      )
+    )
   }
 
   function addCheckbox(options, modifier = '') {
@@ -107,23 +124,33 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents(replaceIconDeclarations({
-      [`.form-checkbox${modifier}`]: merge({
-        ...isUndefined(options.borderWidth) ? {} : {
-          '&::-ms-check': {
-            '@media not print': {
-              borderWidth: options.borderWidth,
-            }
-          },
+    addComponents(
+      replaceIconDeclarations(
+        {
+          [`.form-checkbox${modifier}`]: merge(
+            {
+              ...(isUndefined(options.borderWidth)
+                ? {}
+                : {
+                    '&::-ms-check': {
+                      '@media not print': {
+                        borderWidth: options.borderWidth,
+                      },
+                    },
+                  }),
+            },
+            options
+          ),
         },
-      }, options)
-    }, ({ icon = options.icon, iconColor = options.iconColor }) => {
-      return {
-        '&:checked': {
-          backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
+        ({ icon = options.icon, iconColor = options.iconColor }) => {
+          return {
+            '&:checked': {
+              backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`,
+            },
+          }
         }
-      }
-    }))
+      )
+    )
   }
 
   function addRadio(options, modifier = '') {
@@ -131,23 +158,33 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents(replaceIconDeclarations({
-      [`.form-radio${modifier}`]: merge({
-        ...isUndefined(options.borderWidth) ? {} : {
-          '&::-ms-check': {
-            '@media not print': {
-              borderWidth: options.borderWidth,
-            }
-          },
+    addComponents(
+      replaceIconDeclarations(
+        {
+          [`.form-radio${modifier}`]: merge(
+            {
+              ...(isUndefined(options.borderWidth)
+                ? {}
+                : {
+                    '&::-ms-check': {
+                      '@media not print': {
+                        borderWidth: options.borderWidth,
+                      },
+                    },
+                  }),
+            },
+            options
+          ),
         },
-      }, options)
-    }, ({ icon = options.icon, iconColor = options.iconColor }) => {
-      return {
-        '&:checked': {
-          backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
+        ({ icon = options.icon, iconColor = options.iconColor }) => {
+          return {
+            '&:checked': {
+              backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`,
+            },
+          }
         }
-      }
-    }))
+      )
+    )
   }
 
   function registerComponents() {
@@ -160,7 +197,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
     addCheckbox(options.default.checkbox)
     addRadio(options.default.radio)
 
-    Object.keys((({ default: _default, ...rest }) => rest)(options)).forEach(key => {
+    Object.keys((({ default: _default, ...rest }) => rest)(options)).forEach((key) => {
       const modifier = `-${key}`
 
       addInput(options[key].input || {}, modifier)
