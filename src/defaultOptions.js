@@ -1,5 +1,7 @@
 const defaultTheme = require('tailwindcss/resolveConfig')(require('tailwindcss/defaultConfig')).theme
 
+const [baseFontSize, { lineHeight: baseLineHeight }] = defaultTheme.fontSize.base
+
 module.exports = {
   input: {
     appearance: 'none',
@@ -11,8 +13,8 @@ module.exports = {
     paddingRight: defaultTheme.spacing[3],
     paddingBottom: defaultTheme.spacing[2],
     paddingLeft: defaultTheme.spacing[3],
-    fontSize: defaultTheme.fontSize.base,
-    lineHeight: defaultTheme.lineHeight.normal,
+    fontSize: baseFontSize,
+    lineHeight: baseLineHeight,
     '&::placeholder': {
       color: defaultTheme.colors.gray[500],
       opacity: '1',
@@ -33,8 +35,8 @@ module.exports = {
     paddingRight: defaultTheme.spacing[3],
     paddingBottom: defaultTheme.spacing[2],
     paddingLeft: defaultTheme.spacing[3],
-    fontSize: defaultTheme.fontSize.base,
-    lineHeight: defaultTheme.lineHeight.normal,
+    fontSize: baseFontSize,
+    lineHeight: baseLineHeight,
     '&::placeholder': {
       color: defaultTheme.colors.gray[500],
       opacity: '1',
@@ -55,8 +57,8 @@ module.exports = {
     paddingRight: defaultTheme.spacing[3],
     paddingBottom: defaultTheme.spacing[2],
     paddingLeft: defaultTheme.spacing[3],
-    fontSize: defaultTheme.fontSize.base,
-    lineHeight: defaultTheme.lineHeight.normal,
+    fontSize: baseFontSize,
+    lineHeight: baseLineHeight,
     '&:focus': {
       outline: 'none',
       boxShadow: defaultTheme.boxShadow.outline,
@@ -81,8 +83,8 @@ module.exports = {
     paddingRight: defaultTheme.spacing[10],
     paddingBottom: defaultTheme.spacing[2],
     paddingLeft: defaultTheme.spacing[3],
-    fontSize: defaultTheme.fontSize.base,
-    lineHeight: defaultTheme.lineHeight.normal,
+    fontSize: baseFontSize,
+    lineHeight: baseLineHeight,
     backgroundPosition: `right ${defaultTheme.spacing[2]} center`,
     backgroundSize: `1.5em 1.5em`,
     iconColor: defaultTheme.colors.gray[500],
