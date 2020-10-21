@@ -6,6 +6,9 @@
   "repository": "https://github.com/tailwindcss/custom-forms",
   "author": "Adam Wathan",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "next dev docs",
     "build": "next build docs",
