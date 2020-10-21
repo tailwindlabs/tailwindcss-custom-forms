@@ -68,13 +68,6 @@ module.exports = {
   select: {
     appearance: 'none',
     colorAdjust: 'exact',
-    // TODO: Still needed now that IE11 is dropped?
-    '&::-ms-expand': {
-      border: 'none', // The select padding is causing some whitespace around the chevron which looks weird with a border
-      '@media not print': {
-        display: 'none',
-      },
-    },
     backgroundRepeat: 'no-repeat',
     backgroundColor: defaultTheme.colors.white,
     borderColor: defaultTheme.colors.gray[300],
@@ -100,15 +93,6 @@ module.exports = {
   checkbox: {
     appearance: 'none',
     colorAdjust: 'exact',
-    // TODO: Still needed now that IE11 is dropped?
-    '&::-ms-check': {
-      '@media not print': {
-        color: 'transparent', // Hide the check
-        background: 'inherit',
-        borderColor: 'inherit',
-        borderRadius: 'inherit',
-      },
-    },
     display: 'inline-block',
     verticalAlign: 'middle',
     backgroundOrigin: 'border-box',
@@ -140,15 +124,6 @@ module.exports = {
   radio: {
     appearance: 'none',
     colorAdjust: 'exact',
-    // TODO: Still needed now that IE11 is dropped?
-    '&::-ms-check': {
-      '@media not print': {
-        color: 'transparent', // Hide the check
-        background: 'inherit',
-        borderColor: 'inherit',
-        borderRadius: 'inherit',
-      },
-    },
     display: 'inline-block',
     verticalAlign: 'middle',
     backgroundOrigin: 'border-box',
