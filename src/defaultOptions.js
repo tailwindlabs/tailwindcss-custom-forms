@@ -120,6 +120,9 @@ module.exports = {
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
     },
+    '&:checked:focus': {
+      borderColor: 'transparent',
+    },
   },
   radio: {
     appearance: 'none',
