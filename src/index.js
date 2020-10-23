@@ -1,13 +1,10 @@
-const tap = require('lodash/tap')
 const map = require('lodash/map')
 const toPairs = require('lodash/toPairs')
 const fromPairs = require('lodash/fromPairs')
 const mergeWith = require('lodash/mergeWith')
 const flatMap = require('lodash/flatMap')
 const isEmpty = require('lodash/isEmpty')
-const isArray = require('lodash/isArray')
 const isFunction = require('lodash/isFunction')
-const isUndefined = require('lodash/isUndefined')
 const isPlainObject = require('lodash/isPlainObject')
 const defaultOptions = require('./defaultOptions')
 const svgToDataUri = require('mini-svg-data-uri')
@@ -40,12 +37,7 @@ function flattenOptions(options) {
 }
 
 function resolveOptions(userOptions) {
-  return merge(
-    {
-      default: defaultOptions,
-    },
-    fromPairs(map(userOptions, (value, key) => [key, flattenOptions(value)]))
-  )
+  return merge({ DEFAULT: defaultOptions }, fromPairs(map(userOptions, (value, key) => [key, flattenOptions(value)])))
 }
 
 function replaceIconDeclarations(component, replace) {
@@ -61,7 +53,7 @@ function replaceIconDeclarations(component, replace) {
   })
 }
 
-module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
+module.exports = function ({ addComponents, theme }) {
   function addInput(options, modifier = '') {
     if (isEmpty(options)) {
       return
@@ -93,23 +85,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
 
     addComponents(
       replaceIconDeclarations(
-        {
-          [`.form-select${modifier}`]: merge(
-            {
-              '&::-ms-expand': {
-                color: options.iconColor,
-              },
-              ...(isUndefined(options.paddingLeft)
-                ? {}
-                : {
-                    '@media print and (-ms-high-contrast: active), print and (-ms-high-contrast: none)': {
-                      paddingRight: options.paddingLeft, // Fix padding for print in IE
-                    },
-                  }),
-            },
-            options
-          ),
-        },
+        { [`.form-select${modifier}`]: options },
         ({ icon = options.icon, iconColor = options.iconColor }) => {
           return {
             backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`,
@@ -126,22 +102,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
 
     addComponents(
       replaceIconDeclarations(
-        {
-          [`.form-checkbox${modifier}`]: merge(
-            {
-              ...(isUndefined(options.borderWidth)
-                ? {}
-                : {
-                    '&::-ms-check': {
-                      '@media not print': {
-                        borderWidth: options.borderWidth,
-                      },
-                    },
-                  }),
-            },
-            options
-          ),
-        },
+        { [`.form-checkbox${modifier}`]: options },
         ({ icon = options.icon, iconColor = options.iconColor }) => {
           return {
             '&:checked': {
@@ -160,22 +121,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
 
     addComponents(
       replaceIconDeclarations(
-        {
-          [`.form-radio${modifier}`]: merge(
-            {
-              ...(isUndefined(options.borderWidth)
-                ? {}
-                : {
-                    '&::-ms-check': {
-                      '@media not print': {
-                        borderWidth: options.borderWidth,
-                      },
-                    },
-                  }),
-            },
-            options
-          ),
-        },
+        { [`.form-radio${modifier}`]: options },
         ({ icon = options.icon, iconColor = options.iconColor }) => {
           return {
             '&:checked': {
@@ -190,14 +136,14 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
   function registerComponents() {
     const options = resolveOptions(theme('customForms'))
 
-    addInput(options.default.input)
-    addTextarea(options.default.textarea)
-    addMultiselect(options.default.multiselect)
-    addSelect(options.default.select)
-    addCheckbox(options.default.checkbox)
-    addRadio(options.default.radio)
+    addInput(options.DEFAULT.input)
+    addTextarea(options.DEFAULT.textarea)
+    addMultiselect(options.DEFAULT.multiselect)
+    addSelect(options.DEFAULT.select)
+    addCheckbox(options.DEFAULT.checkbox)
+    addRadio(options.DEFAULT.radio)
 
-    Object.keys((({ default: _default, ...rest }) => rest)(options)).forEach((key) => {
+    Object.keys((({ DEFAULT: _default, ...rest }) => rest)(options)).forEach((key) => {
       const modifier = `-${key}`
 
       addInput(options[key].input || {}, modifier)
