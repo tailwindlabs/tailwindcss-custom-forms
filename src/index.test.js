@@ -189,7 +189,7 @@ it('should generate the default classes for the form components', () => {
 it('should be possible to `unset` certain values', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         input: {
           appearance: undefined,
         },
@@ -208,7 +208,7 @@ it('should be possible to `unset` certain values', () => {
 it('should be possible to remove the `input` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         input: null,
       },
     })
@@ -244,7 +244,7 @@ it('should be possible to remove the `input` component', () => {
 it('should be possible to remove the `textarea` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         textarea: null,
       },
     })
@@ -281,7 +281,7 @@ it('should be possible to remove the `textarea` component', () => {
 it('should be possible to remove the `multiselect` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         multiselect: null,
       },
     })
@@ -314,7 +314,7 @@ it('should be possible to remove the `multiselect` component', () => {
 it('should be possible to remove the `select` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         select: null,
       },
     })
@@ -352,7 +352,7 @@ it('should be possible to remove the `select` component', () => {
 it('should be possible to remove the `checkbox` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         checkbox: null,
       },
     })
@@ -399,7 +399,7 @@ it('should be possible to remove the `checkbox` component', () => {
 it('should be possible to remove the `radio` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         radio: null,
       },
     })
@@ -446,7 +446,7 @@ it('should be possible to remove the `radio` component', () => {
 it('should be possible to `unset` certain values', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         input: {
           appearance: undefined,
         },
@@ -638,7 +638,7 @@ it('should be possible to combine modifiers', () => {
 it('should be possible to change the icon and icon color of a `select` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         select: {
           icon: (iconColor) => `<svg fill="${iconColor}" />`,
           iconColor: 'pink',
@@ -658,7 +658,7 @@ it('should be possible to change the icon and icon color of a `select` component
 it('should be possible to change the icon of a `select` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         select: {
           icon: `<svg />`,
         },
@@ -677,7 +677,7 @@ it('should be possible to change the icon of a `select` component', () => {
 it('should be possible to change the icon and icon color of a `checkbox` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         checkbox: {
           icon: (iconColor) => `<svg fill="${iconColor}" />`,
           iconColor: 'pink',
@@ -697,7 +697,7 @@ it('should be possible to change the icon and icon color of a `checkbox` compone
 it('should be possible to change the icon of a `checkbox` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         checkbox: {
           icon: `<svg />`,
         },
@@ -716,7 +716,7 @@ it('should be possible to change the icon of a `checkbox` component', () => {
 it('should be possible to change the icon and icon color of a `radio` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         radio: {
           icon: (iconColor) => `<svg fill="${iconColor}" />`,
           iconColor: 'pink',
@@ -736,7 +736,7 @@ it('should be possible to change the icon and icon color of a `radio` component'
 it('should be possible to change the icon of a `radio` component', () => {
   expect(
     diffOnly({
-      default: {
+      DEFAULT: {
         radio: {
           icon: `<svg />`,
         },

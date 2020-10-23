@@ -37,7 +37,7 @@ function flattenOptions(options) {
 }
 
 function resolveOptions(userOptions) {
-  return merge({ default: defaultOptions }, fromPairs(map(userOptions, (value, key) => [key, flattenOptions(value)])))
+  return merge({ DEFAULT: defaultOptions }, fromPairs(map(userOptions, (value, key) => [key, flattenOptions(value)])))
 }
 
 function replaceIconDeclarations(component, replace) {
@@ -136,14 +136,14 @@ module.exports = function ({ addComponents, theme }) {
   function registerComponents() {
     const options = resolveOptions(theme('customForms'))
 
-    addInput(options.default.input)
-    addTextarea(options.default.textarea)
-    addMultiselect(options.default.multiselect)
-    addSelect(options.default.select)
-    addCheckbox(options.default.checkbox)
-    addRadio(options.default.radio)
+    addInput(options.DEFAULT.input)
+    addTextarea(options.DEFAULT.textarea)
+    addMultiselect(options.DEFAULT.multiselect)
+    addSelect(options.DEFAULT.select)
+    addCheckbox(options.DEFAULT.checkbox)
+    addRadio(options.DEFAULT.radio)
 
-    Object.keys((({ default: _default, ...rest }) => rest)(options)).forEach((key) => {
+    Object.keys((({ DEFAULT: _default, ...rest }) => rest)(options)).forEach((key) => {
       const modifier = `-${key}`
 
       addInput(options[key].input || {}, modifier)
