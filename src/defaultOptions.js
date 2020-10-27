@@ -17,7 +17,6 @@ module.exports = {
     lineHeight: baseLineHeight,
     '&::placeholder': {
       color: defaultTheme.colors.gray[400],
-      // opacity: '1',
     },
     '&:focus': {
       outline: 'none',
