@@ -1,18 +1,16 @@
+const tailwind = require('tailwindcss')
 const customFormsPlugin = require('.')
 const snapshotDiff = require('snapshot-diff')
+const postcss = require('postcss')
 
-function run(options) {
-  const state = { components: {} }
-  customFormsPlugin({
-    addComponents: (...args) => Object.assign(state.components, ...args),
-    theme: () => options,
-  })
-  return state
+function run(config = {}) {
+  return postcss([tailwind({ ...config, corePlugins: [], plugins: [customFormsPlugin] })])
+    .process(['@tailwind base;', '@tailwind components;', '@tailwind utilities;'].join('\n'), { from: undefined })
+    .then((result) => result.css)
 }
 
-function diffOnly(options) {
-  const before = run()
-  const after = run(options)
+async function diffOnly(config = {}) {
+  const [before, after] = await Promise.all([run(), run(config)])
 
   return `\n\n${snapshotDiff(before, after, {
     aAnnotation: '__REMOVE_ME__',
@@ -25,728 +23,966 @@ function diffOnly(options) {
     .replace(/Snapshot Diff:\n/g, '')
     .replace(/"/g, "'")
     .split('\n')
-    .map((line) => `    ${line}`)
+    .map((line) => `  ${line}`)
     .join('\n')}\n\n`
 }
 
-it('should generate the default classes for the form components', () => {
-  expect(run()).toMatchInlineSnapshot(`
-    Object {
-      "components": Object {
-        ".form-checkbox": Object {
-          "&:checked": Object {
-            "backgroundColor": "currentColor",
-            "backgroundImage": "url(\\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e\\")",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "100% 100%",
-            "borderColor": "transparent",
-          },
-          "&:checked:focus": Object {
-            "borderColor": "transparent",
-          },
-          "&:focus": Object {
-            "borderColor": "#93c5fd",
-            "boxShadow": "0 0 0 3px rgba(66, 153, 225, 0.5)",
-            "outline": "none",
-          },
-          "appearance": "none",
-          "backgroundColor": "#fff",
-          "backgroundOrigin": "border-box",
-          "borderColor": "#d4d4d8",
-          "borderRadius": "0.25rem",
-          "borderWidth": "1px",
-          "color": "#3b82f6",
-          "colorAdjust": "exact",
-          "display": "inline-block",
-          "flexShrink": 0,
-          "height": "1rem",
-          "userSelect": "none",
-          "verticalAlign": "middle",
-          "width": "1rem",
-        },
-        ".form-input": Object {
-          "&::placeholder": Object {
-            "color": "#a1a1aa",
-          },
-          "&:focus": Object {
-            "borderColor": "#93c5fd",
-            "boxShadow": "0 0 0 3px rgba(66, 153, 225, 0.5)",
-            "outline": "none",
-          },
-          "appearance": "none",
-          "backgroundColor": "#fff",
-          "borderColor": "#d4d4d8",
-          "borderRadius": "0.375rem",
-          "borderWidth": "1px",
-          "fontSize": "1rem",
-          "lineHeight": "1.5rem",
-          "paddingBottom": "0.5rem",
-          "paddingLeft": "0.75rem",
-          "paddingRight": "0.75rem",
-          "paddingTop": "0.5rem",
-        },
-        ".form-multiselect": Object {
-          "&:focus": Object {
-            "borderColor": "#93c5fd",
-            "boxShadow": "0 0 0 3px rgba(66, 153, 225, 0.5)",
-            "outline": "none",
-          },
-          "appearance": "none",
-          "backgroundColor": "#fff",
-          "borderColor": "#d4d4d8",
-          "borderRadius": "0.375rem",
-          "borderWidth": "1px",
-          "fontSize": "1rem",
-          "lineHeight": "1.5rem",
-          "paddingBottom": "0.5rem",
-          "paddingLeft": "0.75rem",
-          "paddingRight": "0.75rem",
-          "paddingTop": "0.5rem",
-        },
-        ".form-radio": Object {
-          "&:checked": Object {
-            "backgroundColor": "currentColor",
-            "backgroundImage": "url(\\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e\\")",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "100% 100%",
-            "borderColor": "transparent",
-          },
-          "&:checked:focus": Object {
-            "borderColor": "transparent",
-          },
-          "&:focus": Object {
-            "borderColor": "#93c5fd",
-            "boxShadow": "0 0 0 3px rgba(66, 153, 225, 0.5)",
-            "outline": "none",
-          },
-          "appearance": "none",
-          "backgroundColor": "#fff",
-          "backgroundOrigin": "border-box",
-          "borderColor": "#d4d4d8",
-          "borderRadius": "100%",
-          "borderWidth": "1px",
-          "color": "#3b82f6",
-          "colorAdjust": "exact",
-          "display": "inline-block",
-          "flexShrink": 0,
-          "height": "1rem",
-          "userSelect": "none",
-          "verticalAlign": "middle",
-          "width": "1rem",
-        },
-        ".form-select": Object {
-          "&:focus": Object {
-            "borderColor": "#93c5fd",
-            "boxShadow": "0 0 0 3px rgba(66, 153, 225, 0.5)",
-            "outline": "none",
-          },
-          "appearance": "none",
-          "backgroundColor": "#fff",
-          "backgroundImage": "url(\\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e\\")",
-          "backgroundPosition": "right 0.5rem center",
-          "backgroundRepeat": "no-repeat",
-          "backgroundSize": "1.5em 1.5em",
-          "borderColor": "#d4d4d8",
-          "borderRadius": "0.375rem",
-          "borderWidth": "1px",
-          "colorAdjust": "exact",
-          "fontSize": "1rem",
-          "lineHeight": "1.5rem",
-          "paddingBottom": "0.5rem",
-          "paddingLeft": "0.75rem",
-          "paddingRight": "2.5rem",
-          "paddingTop": "0.5rem",
-        },
-        ".form-textarea": Object {
-          "&::placeholder": Object {
-            "color": "#a1a1aa",
-            "opacity": "1",
-          },
-          "&:focus": Object {
-            "borderColor": "#93c5fd",
-            "boxShadow": "0 0 0 3px rgba(66, 153, 225, 0.5)",
-            "outline": "none",
-          },
-          "appearance": "none",
-          "backgroundColor": "#fff",
-          "borderColor": "#d4d4d8",
-          "borderRadius": "0.375rem",
-          "borderWidth": "1px",
-          "fontSize": "1rem",
-          "lineHeight": "1.5rem",
-          "paddingBottom": "0.5rem",
-          "paddingLeft": "0.75rem",
-          "paddingRight": "0.75rem",
-          "paddingTop": "0.5rem",
-        },
-      },
+it('should generate the default classes for the form components', async () => {
+  expect(await run()).toMatchInlineSnapshot(`
+    ".form-input {
+      appearance: none;
+      background-color: #fff;
+      border-color: #d4d4d8;
+      border-width: 1px;
+      border-radius: 0.375rem;
+      padding-top: 0.5rem;
+      padding-right: 0.75rem;
+      padding-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
     }
+
+    .form-input::placeholder {
+      color: #a1a1aa;
+    }
+
+    .form-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      border-color: #93c5fd;
+    }
+
+    .form-textarea {
+      appearance: none;
+      background-color: #fff;
+      border-color: #d4d4d8;
+      border-width: 1px;
+      border-radius: 0.375rem;
+      padding-top: 0.5rem;
+      padding-right: 0.75rem;
+      padding-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    .form-textarea::placeholder {
+      color: #a1a1aa;
+      opacity: 1;
+    }
+
+    .form-textarea:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      border-color: #93c5fd;
+    }
+
+    .form-multiselect {
+      appearance: none;
+      background-color: #fff;
+      border-color: #d4d4d8;
+      border-width: 1px;
+      border-radius: 0.375rem;
+      padding-top: 0.5rem;
+      padding-right: 0.75rem;
+      padding-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    .form-multiselect:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      border-color: #93c5fd;
+    }
+
+    .form-select {
+      background-image: url(\\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e\\");
+      appearance: none;
+      color-adjust: exact;
+      background-repeat: no-repeat;
+      background-color: #fff;
+      border-color: #d4d4d8;
+      border-width: 1px;
+      border-radius: 0.375rem;
+      padding-top: 0.5rem;
+      padding-right: 2.5rem;
+      padding-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      background-position: right 0.5rem center;
+      background-size: 1.5em 1.5em;
+    }
+
+    .form-select:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      border-color: #93c5fd;
+    }
+
+    .form-checkbox:checked {
+      background-image: url(\\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e\\");
+      border-color: transparent;
+      background-color: currentColor;
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .form-checkbox {
+      appearance: none;
+      color-adjust: exact;
+      display: inline-block;
+      vertical-align: middle;
+      background-origin: border-box;
+      user-select: none;
+      flex-shrink: 0;
+      height: 1rem;
+      width: 1rem;
+      color: #3b82f6;
+      background-color: #fff;
+      border-color: #d4d4d8;
+      border-width: 1px;
+      border-radius: 0.25rem;
+    }
+
+    .form-checkbox:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      border-color: #93c5fd;
+    }
+
+    .form-checkbox:checked:focus {
+      border-color: transparent;
+    }
+
+    .form-radio:checked {
+      background-image: url(\\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e\\");
+      border-color: transparent;
+      background-color: currentColor;
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .form-radio {
+      appearance: none;
+      color-adjust: exact;
+      display: inline-block;
+      vertical-align: middle;
+      background-origin: border-box;
+      user-select: none;
+      flex-shrink: 0;
+      border-radius: 100%;
+      height: 1rem;
+      width: 1rem;
+      color: #3b82f6;
+      background-color: #fff;
+      border-color: #d4d4d8;
+      border-width: 1px;
+    }
+
+    .form-radio:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      border-color: #93c5fd;
+    }
+
+    .form-radio:checked:focus {
+      border-color: transparent;
+    }"
   `)
 })
 
-it('should be possible to `unset` certain values', () => {
+it('should be possible to `unset` certain values', async () => {
   expect(
-    diffOnly({
-      DEFAULT: {
-        input: {
-          appearance: undefined,
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              input: {
+                appearance: null,
+              },
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        -       'appearance': 'none',
-        +       'appearance': null,
+      -   appearance: none;
 
     "
   `)
 })
 
-it('should be possible to remove the `input` component', () => {
+it('should be possible to remove the `input` component', async () => {
   expect(
-    diffOnly({
-      DEFAULT: {
-        input: null,
-      },
-    })
-  ).toMatchInlineSnapshot(`
-    "
-
-        -     '.form-input': Object {
-        -       '&::placeholder': Object {
-        -         'color': '#a1a1aa',
-        -       },
-        -       '&:focus': Object {
-        -         'borderColor': '#93c5fd',
-        -         'boxShadow': '0 0 0 3px rgba(66, 153, 225, 0.5)',
-        -         'outline': 'none',
-        -       },
-        -       'appearance': 'none',
-        -       'backgroundColor': '#fff',
-        -       'borderColor': '#d4d4d8',
-        -       'borderRadius': '0.375rem',
-        -       'borderWidth': '1px',
-        -       'fontSize': '1rem',
-        -       'lineHeight': '1.5rem',
-        -       'paddingBottom': '0.5rem',
-        -       'paddingLeft': '0.75rem',
-        -       'paddingRight': '0.75rem',
-        -       'paddingTop': '0.5rem',
-        -     },
-
-    "
-  `)
-})
-
-it('should be possible to remove the `textarea` component', () => {
-  expect(
-    diffOnly({
-      DEFAULT: {
-        textarea: null,
-      },
-    })
-  ).toMatchInlineSnapshot(`
-    "
-
-        -     '.form-textarea': Object {
-        -       '&::placeholder': Object {
-        -         'color': '#a1a1aa',
-        -         'opacity': '1',
-        -       },
-        -       '&:focus': Object {
-        -         'borderColor': '#93c5fd',
-        -         'boxShadow': '0 0 0 3px rgba(66, 153, 225, 0.5)',
-        -         'outline': 'none',
-        -       },
-        -       'appearance': 'none',
-        -       'backgroundColor': '#fff',
-        -       'borderColor': '#d4d4d8',
-        -       'borderRadius': '0.375rem',
-        -       'borderWidth': '1px',
-        -       'fontSize': '1rem',
-        -       'lineHeight': '1.5rem',
-        -       'paddingBottom': '0.5rem',
-        -       'paddingLeft': '0.75rem',
-        -       'paddingRight': '0.75rem',
-        -       'paddingTop': '0.5rem',
-        -     },
-
-    "
-  `)
-})
-
-it('should be possible to remove the `multiselect` component', () => {
-  expect(
-    diffOnly({
-      DEFAULT: {
-        multiselect: null,
-      },
-    })
-  ).toMatchInlineSnapshot(`
-    "
-
-        -     '.form-multiselect': Object {
-        -       '&:focus': Object {
-        -         'borderColor': '#93c5fd',
-        -         'boxShadow': '0 0 0 3px rgba(66, 153, 225, 0.5)',
-        -         'outline': 'none',
-        -       },
-        -       'appearance': 'none',
-        -       'backgroundColor': '#fff',
-        -       'borderColor': '#d4d4d8',
-        -       'borderRadius': '0.375rem',
-        -       'borderWidth': '1px',
-        -       'fontSize': '1rem',
-        -       'lineHeight': '1.5rem',
-        -       'paddingBottom': '0.5rem',
-        -       'paddingLeft': '0.75rem',
-        -       'paddingRight': '0.75rem',
-        -       'paddingTop': '0.5rem',
-        -     },
-
-    "
-  `)
-})
-
-it('should be possible to remove the `select` component', () => {
-  expect(
-    diffOnly({
-      DEFAULT: {
-        select: null,
-      },
-    })
-  ).toMatchInlineSnapshot(`
-    "
-
-        -     '.form-select': Object {
-        -       '&:focus': Object {
-        -         'borderColor': '#93c5fd',
-        -         'boxShadow': '0 0 0 3px rgba(66, 153, 225, 0.5)',
-        -         'outline': 'none',
-        -       },
-        -       'appearance': 'none',
-        -       'backgroundColor': '#fff',
-        -       'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e\\\\')',
-        -       'backgroundPosition': 'right 0.5rem center',
-        -       'backgroundRepeat': 'no-repeat',
-        -       'backgroundSize': '1.5em 1.5em',
-        -       'borderColor': '#d4d4d8',
-        -       'borderRadius': '0.375rem',
-        -       'borderWidth': '1px',
-        -       'colorAdjust': 'exact',
-        -       'fontSize': '1rem',
-        -       'lineHeight': '1.5rem',
-        -       'paddingBottom': '0.5rem',
-        -       'paddingLeft': '0.75rem',
-        -       'paddingRight': '2.5rem',
-        -       'paddingTop': '0.5rem',
-        -     },
-
-    "
-  `)
-})
-
-it('should be possible to remove the `checkbox` component', () => {
-  expect(
-    diffOnly({
-      DEFAULT: {
-        checkbox: null,
-      },
-    })
-  ).toMatchInlineSnapshot(`
-    "
-
-        -     '.form-checkbox': Object {
-        -       '&:checked': Object {
-        -         'backgroundColor': 'currentColor',
-        -         'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e\\\\')',
-        -         'backgroundPosition': 'center',
-        -         'backgroundRepeat': 'no-repeat',
-        -         'backgroundSize': '100% 100%',
-        -         'borderColor': 'transparent',
-        -       },
-        -       '&:checked:focus': Object {
-        -         'borderColor': 'transparent',
-        -       },
-        -       '&:focus': Object {
-        -         'borderColor': '#93c5fd',
-        -         'boxShadow': '0 0 0 3px rgba(66, 153, 225, 0.5)',
-        -         'outline': 'none',
-        -       },
-        -       'appearance': 'none',
-        -       'backgroundColor': '#fff',
-        -       'backgroundOrigin': 'border-box',
-        -       'borderColor': '#d4d4d8',
-        -       'borderRadius': '0.25rem',
-        -       'borderWidth': '1px',
-        -       'color': '#3b82f6',
-        -       'colorAdjust': 'exact',
-        -       'display': 'inline-block',
-        -       'flexShrink': 0,
-        -       'height': '1rem',
-        -       'userSelect': 'none',
-        -       'verticalAlign': 'middle',
-        -       'width': '1rem',
-        -     },
-
-    "
-  `)
-})
-
-it('should be possible to remove the `radio` component', () => {
-  expect(
-    diffOnly({
-      DEFAULT: {
-        radio: null,
-      },
-    })
-  ).toMatchInlineSnapshot(`
-    "
-
-        -     '.form-radio': Object {
-        -       '&:checked': Object {
-        -         'backgroundColor': 'currentColor',
-        -         'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e\\\\')',
-        -         'backgroundPosition': 'center',
-        -         'backgroundRepeat': 'no-repeat',
-        -         'backgroundSize': '100% 100%',
-        -         'borderColor': 'transparent',
-        -       },
-        -       '&:checked:focus': Object {
-        -         'borderColor': 'transparent',
-        -       },
-        -       '&:focus': Object {
-        -         'borderColor': '#93c5fd',
-        -         'boxShadow': '0 0 0 3px rgba(66, 153, 225, 0.5)',
-        -         'outline': 'none',
-        -       },
-        -       'appearance': 'none',
-        -       'backgroundColor': '#fff',
-        -       'backgroundOrigin': 'border-box',
-        -       'borderColor': '#d4d4d8',
-        -       'borderRadius': '100%',
-        -       'borderWidth': '1px',
-        -       'color': '#3b82f6',
-        -       'colorAdjust': 'exact',
-        -       'display': 'inline-block',
-        -       'flexShrink': 0,
-        -       'height': '1rem',
-        -       'userSelect': 'none',
-        -       'verticalAlign': 'middle',
-        -       'width': '1rem',
-        -     },
-
-    "
-  `)
-})
-
-it('should be possible to `unset` certain values', () => {
-  expect(
-    diffOnly({
-      DEFAULT: {
-        input: {
-          appearance: undefined,
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              input: null,
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        -       'appearance': 'none',
-        +       'appearance': null,
+      - .form-input {
+      -   appearance: none;
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      -   border-width: 1px;
+      -   border-radius: 0.375rem;
+      -   padding-top: 0.5rem;
+      -   padding-right: 0.75rem;
+      -   padding-bottom: 0.5rem;
+      -   padding-left: 0.75rem;
+      -   font-size: 1rem;
+      -   line-height: 1.5rem;
+      - }
+      -
+      - .form-input::placeholder {
+      -   color: #a1a1aa;
+      - }
+      -
+      - .form-input:focus {
+      -   outline: none;
+      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   border-color: #93c5fd;
+      - }
+      -
 
     "
   `)
 })
 
-it('should be possible to add a custom modifier for `input`', () => {
+it('should be possible to remove the `textarea` component', async () => {
   expect(
-    diffOnly({
-      dark: {
-        input: {
-          backgroundColor: '#GRAY900',
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              textarea: null,
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        +     '.form-input-dark': Object {
-        +       'backgroundColor': '#GRAY900',
-        +     },
+      - .form-textarea {
+      -   appearance: none;
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      -   border-width: 1px;
+      -   border-radius: 0.375rem;
+      -   padding-top: 0.5rem;
+      -   padding-right: 0.75rem;
+      -   padding-bottom: 0.5rem;
+      -   padding-left: 0.75rem;
+      -   font-size: 1rem;
+      -   line-height: 1.5rem;
+      - }
+      -
+      - .form-textarea::placeholder {
+      -   color: #a1a1aa;
+      -   opacity: 1;
+      - }
+      -
+      - .form-textarea:focus {
+      -   outline: none;
+      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   border-color: #93c5fd;
+      - }
+      -
 
     "
   `)
 })
 
-it('should be possible to add a custom modifier for `textarea`', () => {
+it('should be possible to remove the `multiselect` component', async () => {
   expect(
-    diffOnly({
-      dark: {
-        textarea: {
-          backgroundColor: '#GRAY900',
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              multiselect: null,
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        +     '.form-textarea-dark': Object {
-        +       'backgroundColor': '#GRAY900',
-        +     },
+      - .form-multiselect {
+      -   appearance: none;
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      -   border-width: 1px;
+      -   border-radius: 0.375rem;
+      -   padding-top: 0.5rem;
+      -   padding-right: 0.75rem;
+      -   padding-bottom: 0.5rem;
+      -   padding-left: 0.75rem;
+      -   font-size: 1rem;
+      -   line-height: 1.5rem;
+      - }
+      -
+      - .form-multiselect:focus {
+      -   outline: none;
+      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   border-color: #93c5fd;
+      - }
+      -
 
     "
   `)
 })
 
-it('should be possible to add a custom modifier for `multiselect`', () => {
+it('should be possible to remove the `select` component', async () => {
   expect(
-    diffOnly({
-      dark: {
-        multiselect: {
-          backgroundColor: '#GRAY900',
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              select: null,
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        +     '.form-multiselect-dark': Object {
-        +       'backgroundColor': '#GRAY900',
-        +     },
+      - .form-select {
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   appearance: none;
+      -   color-adjust: exact;
+      -   background-repeat: no-repeat;
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      -   border-width: 1px;
+      -   border-radius: 0.375rem;
+      -   padding-top: 0.5rem;
+      -   padding-right: 2.5rem;
+      -   padding-bottom: 0.5rem;
+      -   padding-left: 0.75rem;
+      -   font-size: 1rem;
+      -   line-height: 1.5rem;
+      -   background-position: right 0.5rem center;
+      -   background-size: 1.5em 1.5em;
+      - }
+      -
+      - .form-select:focus {
+      -   outline: none;
+      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   border-color: #93c5fd;
+      - }
+      -
 
     "
   `)
 })
 
-it('should be possible to add a custom modifier for `select`', () => {
+it('should be possible to remove the `checkbox` component', async () => {
   expect(
-    diffOnly({
-      dark: {
-        select: {
-          backgroundColor: '#GRAY900',
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              checkbox: null,
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        +     '.form-select-dark': Object {
-        +       'backgroundColor': '#GRAY900',
-        +     },
+      - .form-checkbox:checked {
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+      -   border-color: transparent;
+      -   background-color: currentColor;
+      -   background-size: 100% 100%;
+      -   background-position: center;
+      -   background-repeat: no-repeat;
+      - }
+      -
+      - .form-checkbox {
+      -   appearance: none;
+      -   color-adjust: exact;
+      -   display: inline-block;
+      -   vertical-align: middle;
+      -   background-origin: border-box;
+      -   user-select: none;
+      -   flex-shrink: 0;
+      -   height: 1rem;
+      -   width: 1rem;
+      -   color: #3b82f6;
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      -   border-width: 1px;
+      -   border-radius: 0.25rem;
+      - }
+      -
+      - .form-checkbox:focus {
+      -   outline: none;
+      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   border-color: #93c5fd;
+      - }
+      -
+      - .form-checkbox:checked:focus {
+      -   border-color: transparent;
+      - }
+      -
 
     "
   `)
 })
 
-it('should be possible to add a custom modifier for `checkbox`', () => {
+it('should be possible to remove the `radio` component', async () => {
   expect(
-    diffOnly({
-      dark: {
-        checkbox: {
-          backgroundColor: '#GRAY900',
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              radio: null,
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        +     '.form-checkbox-dark': Object {
-        +       'backgroundColor': '#GRAY900',
-        +     },
+      -
+      - .form-radio:checked {
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
+      -   border-color: transparent;
+      -   background-color: currentColor;
+      -   background-size: 100% 100%;
+      -   background-position: center;
+      -   background-repeat: no-repeat;
+      - }
+      -
+      - .form-radio {
+      -   appearance: none;
+      -   color-adjust: exact;
+      -   display: inline-block;
+      -   vertical-align: middle;
+      -   background-origin: border-box;
+      -   user-select: none;
+      -   flex-shrink: 0;
+      -   border-radius: 100%;
+      -   height: 1rem;
+      -   width: 1rem;
+      -   color: #3b82f6;
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      -   border-width: 1px;
+      - }
+      -
+      - .form-radio:focus {
+      -   outline: none;
+      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   border-color: #93c5fd;
+      - }
+      -
+      - .form-radio:checked:focus {
+      -   border-color: transparent;
+      - }
 
     "
   `)
 })
 
-it('should be possible to add a custom modifier for `radio`', () => {
+it('should be possible to add a custom modifier for `input`', async () => {
   expect(
-    diffOnly({
-      dark: {
-        radio: {
-          backgroundColor: '#GRAY900',
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            dark: {
+              input: {
+                backgroundColor: '#GRAY900',
+              },
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        +     '.form-radio-dark': Object {
-        +       'backgroundColor': '#GRAY900',
-        +     },
+      +
+      + .form-input-dark {
+      +   background-color: #GRAY900;
+      + }
 
     "
   `)
 })
 
-it('should be possible to combine modifiers', () => {
+it('should be possible to add a custom modifier for `textarea`', async () => {
   expect(
-    diffOnly({
-      dark: {
-        'input, textarea, multiselect, checkbox, radio': {
-          backgroundColor: '#GRAY900',
-        },
-        select: {
-          backgroundColor: '#GRAY600',
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            dark: {
+              textarea: {
+                backgroundColor: '#GRAY900',
+              },
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        +     '.form-checkbox-dark': Object {
-        +       'backgroundColor': '#GRAY900',
-        +     },
-        
-        ---
-        
-        +     '.form-input-dark': Object {
-        +       'backgroundColor': '#GRAY900',
-        +     },
-        
-        ---
-        
-        +     },
-        +     '.form-multiselect-dark': Object {
-        +       'backgroundColor': '#GRAY900',
-        
-        ---
-        
-        +     },
-        +     '.form-radio-dark': Object {
-        +       'backgroundColor': '#GRAY900',
-        
-        ---
-        
-        +     },
-        +     '.form-select-dark': Object {
-        +       'backgroundColor': '#GRAY600',
-        
-        ---
-        
-        +     },
-        +     '.form-textarea-dark': Object {
-        +       'backgroundColor': '#GRAY900',
+      +
+      + .form-textarea-dark {
+      +   background-color: #GRAY900;
+      + }
 
     "
   `)
 })
 
-it('should be possible to change the icon and icon color of a `select` component', () => {
+it('should be possible to add a custom modifier for `multiselect`', async () => {
   expect(
-    diffOnly({
-      DEFAULT: {
-        select: {
-          icon: (iconColor) => `<svg fill="${iconColor}" />`,
-          iconColor: 'pink',
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            dark: {
+              multiselect: {
+                backgroundColor: '#GRAY900',
+              },
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        -       'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e\\\\')',
-        +       'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg fill='pink' /%3e\\\\')',
+      +
+      + .form-multiselect-dark {
+      +   background-color: #GRAY900;
+      + }
 
     "
   `)
 })
 
-it('should be possible to change the icon of a `select` component', () => {
+it('should be possible to add a custom modifier for `select`', async () => {
   expect(
-    diffOnly({
-      DEFAULT: {
-        select: {
-          icon: `<svg />`,
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            dark: {
+              select: {
+                backgroundColor: '#GRAY900',
+              },
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        -       'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e\\\\')',
-        +       'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg /%3e\\\\')',
+      +
+      + .form-select-dark {
+      +   background-color: #GRAY900;
+      + }
 
     "
   `)
 })
 
-it('should be possible to change the icon and icon color of a `checkbox` component', () => {
+it('should be possible to add a custom modifier for `checkbox`', async () => {
   expect(
-    diffOnly({
-      DEFAULT: {
-        checkbox: {
-          icon: (iconColor) => `<svg fill="${iconColor}" />`,
-          iconColor: 'pink',
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            dark: {
+              checkbox: {
+                backgroundColor: '#GRAY900',
+              },
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        -         'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e\\\\')',
-        +         'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg fill='pink' /%3e\\\\')',
+      +
+      + .form-checkbox-dark {
+      +   background-color: #GRAY900;
+      + }
 
     "
   `)
 })
 
-it('should be possible to change the icon of a `checkbox` component', () => {
+it('should be possible to add a custom modifier for `radio`', async () => {
   expect(
-    diffOnly({
-      DEFAULT: {
-        checkbox: {
-          icon: `<svg />`,
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            dark: {
+              radio: {
+                backgroundColor: '#GRAY900',
+              },
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        -         'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e\\\\')',
-        +         'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg /%3e\\\\')',
+      +
+      + .form-radio-dark {
+      +   background-color: #GRAY900;
+      + }
 
     "
   `)
 })
 
-it('should be possible to change the icon and icon color of a `radio` component', () => {
+it('should be possible to combine modifiers', async () => {
   expect(
-    diffOnly({
-      DEFAULT: {
-        radio: {
-          icon: (iconColor) => `<svg fill="${iconColor}" />`,
-          iconColor: 'pink',
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            dark: {
+              'input, textarea, multiselect, checkbox, radio': {
+                backgroundColor: '#GRAY900',
+              },
+              select: {
+                backgroundColor: '#GRAY600',
+              },
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        -         'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e\\\\')',
-        +         'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg fill='pink' /%3e\\\\')',
+      +
+      + .form-input-dark {
+      +   background-color: #GRAY900;
+      + }
+      +
+      + .form-textarea-dark {
+      +   background-color: #GRAY900;
+      + }
+      +
+      + .form-multiselect-dark {
+      +   background-color: #GRAY900;
+      + }
+      +
+      + .form-checkbox-dark {
+      +   background-color: #GRAY900;
+      + }
+      +
+      + .form-radio-dark {
+      +   background-color: #GRAY900;
+      + }
+      +
+      + .form-select-dark {
+      +   background-color: #GRAY600;
+      + }
 
     "
   `)
 })
 
-it('should be possible to change the icon of a `radio` component', () => {
+it('should be possible to combine and merge selectors', async () => {
   expect(
-    diffOnly({
-      DEFAULT: {
-        radio: {
-          icon: `<svg />`,
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            dark: {
+              'input, textarea': {
+                backgroundColor: '#GRAY900',
+              },
+              textarea: {
+                height: '20px',
+              },
+            },
+          },
         },
       },
     })
   ).toMatchInlineSnapshot(`
     "
 
-        -         'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e\\\\')',
-        +         'backgroundImage': 'url(\\\\'data:image/svg+xml,%3csvg /%3e\\\\')',
+      +
+      + .form-input-dark {
+      +   background-color: #GRAY900;
+      + }
+      +
+      + .form-textarea-dark {
+      +   background-color: #GRAY900;
+      +   height: 20px;
+      + }
+
+    "
+  `)
+})
+
+it('should be possible to change the icon and icon color of a `select` component', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              select: {
+                icon: (iconColor) => `<svg fill="${iconColor}" />`,
+                iconColor: 'pink',
+              },
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg fill='pink' /%3e');
+
+    "
+  `)
+})
+
+it('should be possible to change the icon of a `select` component', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              select: {
+                icon: `<svg />`,
+              },
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg /%3e');
+
+    "
+  `)
+})
+
+it('should be possible to change the iconColor of a `select` component', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              select: {
+                iconColor: 'pink',
+              },
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='pink' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+
+    "
+  `)
+})
+
+it('should be possible to change the icon and icon color of a `checkbox` component', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              checkbox: {
+                icon: (iconColor) => `<svg fill="${iconColor}" />`,
+                iconColor: 'pink',
+              },
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg fill='pink' /%3e');
+
+    "
+  `)
+})
+
+it('should be possible to change the icon of a `checkbox` component', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              checkbox: {
+                icon: `<svg />`,
+              },
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg /%3e');
+
+    "
+  `)
+})
+
+it('should be possible to change the iconColor of a `checkbox` component', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              checkbox: {
+                iconColor: 'pink',
+              },
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='pink' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+
+    "
+  `)
+})
+
+it('should be possible to change the icon and icon color of a `radio` component', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              radio: {
+                icon: (iconColor) => `<svg fill="${iconColor}" />`,
+                iconColor: 'pink',
+              },
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg fill='pink' /%3e');
+
+    "
+  `)
+})
+
+it('should be possible to change the icon of a `radio` component', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              radio: {
+                icon: `<svg />`,
+              },
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg /%3e');
+
+    "
+  `)
+})
+
+it('should be possible to change the iconColor of a `radio` component', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        extend: {
+          customForms: {
+            DEFAULT: {
+              radio: {
+                iconColor: 'pink',
+              },
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='pink' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
 
     "
   `)
