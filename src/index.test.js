@@ -204,8 +204,10 @@ it('should be possible to `unset` certain values', async () => {
         extend: {
           customForms: {
             DEFAULT: {
-              input: {
-                appearance: null,
+              css: {
+                input: {
+                  appearance: null,
+                },
               },
             },
           },
@@ -228,7 +230,9 @@ it('should be possible to remove the `input` component', async () => {
         extend: {
           customForms: {
             DEFAULT: {
-              input: null,
+              css: {
+                input: null,
+              },
             },
           },
         },
@@ -273,7 +277,9 @@ it('should be possible to remove the `textarea` component', async () => {
         extend: {
           customForms: {
             DEFAULT: {
-              textarea: null,
+              css: {
+                textarea: null,
+              },
             },
           },
         },
@@ -319,7 +325,9 @@ it('should be possible to remove the `multiselect` component', async () => {
         extend: {
           customForms: {
             DEFAULT: {
-              multiselect: null,
+              css: {
+                multiselect: null,
+              },
             },
           },
         },
@@ -360,7 +368,9 @@ it('should be possible to remove the `select` component', async () => {
         extend: {
           customForms: {
             DEFAULT: {
-              select: null,
+              css: {
+                select: null,
+              },
             },
           },
         },
@@ -406,7 +416,9 @@ it('should be possible to remove the `checkbox` component', async () => {
         extend: {
           customForms: {
             DEFAULT: {
-              checkbox: null,
+              css: {
+                checkbox: null,
+              },
             },
           },
         },
@@ -463,7 +475,9 @@ it('should be possible to remove the `radio` component', async () => {
         extend: {
           customForms: {
             DEFAULT: {
-              radio: null,
+              css: {
+                radio: null,
+              },
             },
           },
         },
@@ -520,8 +534,10 @@ it('should be possible to add a custom modifier for `input`', async () => {
         extend: {
           customForms: {
             dark: {
-              input: {
-                backgroundColor: '#GRAY900',
+              css: {
+                input: {
+                  backgroundColor: '#GRAY900',
+                },
               },
             },
           },
@@ -547,8 +563,10 @@ it('should be possible to add a custom modifier for `textarea`', async () => {
         extend: {
           customForms: {
             dark: {
-              textarea: {
-                backgroundColor: '#GRAY900',
+              css: {
+                textarea: {
+                  backgroundColor: '#GRAY900',
+                },
               },
             },
           },
@@ -574,8 +592,10 @@ it('should be possible to add a custom modifier for `multiselect`', async () => 
         extend: {
           customForms: {
             dark: {
-              multiselect: {
-                backgroundColor: '#GRAY900',
+              css: {
+                multiselect: {
+                  backgroundColor: '#GRAY900',
+                },
               },
             },
           },
@@ -601,8 +621,10 @@ it('should be possible to add a custom modifier for `select`', async () => {
         extend: {
           customForms: {
             dark: {
-              select: {
-                backgroundColor: '#GRAY900',
+              css: {
+                select: {
+                  backgroundColor: '#GRAY900',
+                },
               },
             },
           },
@@ -628,8 +650,10 @@ it('should be possible to add a custom modifier for `checkbox`', async () => {
         extend: {
           customForms: {
             dark: {
-              checkbox: {
-                backgroundColor: '#GRAY900',
+              css: {
+                checkbox: {
+                  backgroundColor: '#GRAY900',
+                },
               },
             },
           },
@@ -655,8 +679,10 @@ it('should be possible to add a custom modifier for `radio`', async () => {
         extend: {
           customForms: {
             dark: {
-              radio: {
-                backgroundColor: '#GRAY900',
+              css: {
+                radio: {
+                  backgroundColor: '#GRAY900',
+                },
               },
             },
           },
@@ -682,11 +708,13 @@ it('should be possible to combine modifiers', async () => {
         extend: {
           customForms: {
             dark: {
-              'input, textarea, multiselect, checkbox, radio': {
-                backgroundColor: '#GRAY900',
-              },
-              select: {
-                backgroundColor: '#GRAY600',
+              css: {
+                'input, textarea, multiselect, checkbox, radio': {
+                  backgroundColor: '#GRAY900',
+                },
+                select: {
+                  backgroundColor: '#GRAY600',
+                },
               },
             },
           },
@@ -732,11 +760,13 @@ it('should be possible to combine and merge selectors', async () => {
         extend: {
           customForms: {
             dark: {
-              'input, textarea': {
-                backgroundColor: '#GRAY900',
-              },
-              textarea: {
-                height: '20px',
+              css: {
+                'input, textarea': {
+                  backgroundColor: '#GRAY900',
+                },
+                textarea: {
+                  height: '20px',
+                },
               },
             },
           },
@@ -767,9 +797,11 @@ it('should be possible to change the icon and icon color of a `select` component
         extend: {
           customForms: {
             DEFAULT: {
-              select: {
-                icon: (iconColor) => `<svg fill="${iconColor}" />`,
-                iconColor: 'pink',
+              css: {
+                select: {
+                  icon: (iconColor) => `<svg fill="${iconColor}" />`,
+                  iconColor: 'pink',
+                },
               },
             },
           },
@@ -793,8 +825,10 @@ it('should be possible to change the icon of a `select` component', async () => 
         extend: {
           customForms: {
             DEFAULT: {
-              select: {
-                icon: `<svg />`,
+              css: {
+                select: {
+                  icon: `<svg />`,
+                },
               },
             },
           },
@@ -818,8 +852,10 @@ it('should be possible to change the iconColor of a `select` component', async (
         extend: {
           customForms: {
             DEFAULT: {
-              select: {
-                iconColor: 'pink',
+              css: {
+                select: {
+                  iconColor: 'pink',
+                },
               },
             },
           },
@@ -843,9 +879,11 @@ it('should be possible to change the icon and icon color of a `checkbox` compone
         extend: {
           customForms: {
             DEFAULT: {
-              checkbox: {
-                icon: (iconColor) => `<svg fill="${iconColor}" />`,
-                iconColor: 'pink',
+              css: {
+                checkbox: {
+                  icon: (iconColor) => `<svg fill="${iconColor}" />`,
+                  iconColor: 'pink',
+                },
               },
             },
           },
@@ -869,8 +907,10 @@ it('should be possible to change the icon of a `checkbox` component', async () =
         extend: {
           customForms: {
             DEFAULT: {
-              checkbox: {
-                icon: `<svg />`,
+              css: {
+                checkbox: {
+                  icon: `<svg />`,
+                },
               },
             },
           },
@@ -894,8 +934,10 @@ it('should be possible to change the iconColor of a `checkbox` component', async
         extend: {
           customForms: {
             DEFAULT: {
-              checkbox: {
-                iconColor: 'pink',
+              css: {
+                checkbox: {
+                  iconColor: 'pink',
+                },
               },
             },
           },
@@ -919,9 +961,11 @@ it('should be possible to change the icon and icon color of a `radio` component'
         extend: {
           customForms: {
             DEFAULT: {
-              radio: {
-                icon: (iconColor) => `<svg fill="${iconColor}" />`,
-                iconColor: 'pink',
+              css: {
+                radio: {
+                  icon: (iconColor) => `<svg fill="${iconColor}" />`,
+                  iconColor: 'pink',
+                },
               },
             },
           },
@@ -945,8 +989,10 @@ it('should be possible to change the icon of a `radio` component', async () => {
         extend: {
           customForms: {
             DEFAULT: {
-              radio: {
-                icon: `<svg />`,
+              css: {
+                radio: {
+                  icon: `<svg />`,
+                },
               },
             },
           },
@@ -970,8 +1016,10 @@ it('should be possible to change the iconColor of a `radio` component', async ()
         extend: {
           customForms: {
             DEFAULT: {
-              radio: {
-                iconColor: 'pink',
+              css: {
+                radio: {
+                  iconColor: 'pink',
+                },
               },
             },
           },

@@ -10,9 +10,9 @@ const traverse = require('traverse')
 function replaceIconDeclarations(component, replace) {
   const properties = ['iconColor', 'icon']
   return traverse(component).map(function (value) {
-    if (!isPlainObject(value)) return 
+    if (!isPlainObject(value)) return
 
-    if (Object.keys(value).some(prop => properties.includes(prop))) {
+    if (Object.keys(value).some((prop) => properties.includes(prop))) {
       const { iconColor, icon, ...rest } = value
       this.update(merge(replace({ icon, iconColor }), rest))
     }
@@ -65,10 +65,10 @@ module.exports = plugin(
     // Register components
     Object.entries(flattenOptions(theme('customForms'))).forEach(([key, config]) => {
       const modifier = key === 'DEFAULT' ? '' : `-${key}`
-      Object.entries(config)
+      Object.entries(config.css)
         .filter(([, options]) => !isEmpty(options))
         .forEach(([key, options]) => components[key](options, modifier))
     })
   },
-  { theme: { customForms: { DEFAULT: defaultOptions } } }
+  { theme: { customForms: { DEFAULT: { css: defaultOptions } } } }
 )
