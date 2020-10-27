@@ -1,5 +1,7 @@
 const plugin = require('tailwindcss/plugin')
 const merge = require('lodash/merge')
+const fromPairs = require('lodash/fromPairs')
+const toPairs = require('lodash/toPairs')
 const isEmpty = require('lodash/isEmpty')
 const isFunction = require('lodash/isFunction')
 const isPlainObject = require('lodash/isPlainObject')
@@ -22,9 +24,9 @@ function replaceIconDeclarations(component, replace) {
 function flattenOptions(options) {
   return merge(
     {},
-    ...Object.entries(options).map(([keys, value]) => {
+    ...toPairs(options).map(([keys, value]) => {
       const flattendValue = isPlainObject(value) ? flattenOptions(value) : value
-      return Object.fromEntries(keys.split(', ').map((key) => [key, flattendValue]))
+      return fromPairs(keys.split(', ').map((key) => [key, flattendValue]))
     })
   )
 }
@@ -63,9 +65,9 @@ module.exports = plugin(
     }
 
     // Register components
-    Object.entries(flattenOptions(theme('customForms'))).forEach(([key, config]) => {
+    toPairs(flattenOptions(theme('customForms'))).forEach(([key, config]) => {
       const modifier = key === 'DEFAULT' ? '' : `-${key}`
-      Object.entries(config.css)
+      toPairs(config.css)
         .filter(([, options]) => !isEmpty(options))
         .forEach(([key, options]) => components[key](options, modifier))
     })
