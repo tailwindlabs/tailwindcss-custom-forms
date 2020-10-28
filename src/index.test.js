@@ -1035,3 +1035,126 @@ it('should be possible to change the iconColor of a `radio` component', async ()
     "
   `)
 })
+
+it('should pull values from the user config for colors', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        colors: {
+          white: '#WHITE',
+          gray: {
+            300: '#GRAY300',
+            400: '#GRAY400',
+          },
+          blue: {
+            300: '#BLUE300',
+            500: '#BLUE500',
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      +   background-color: #WHITE;
+      +   border-color: #GRAY300;
+      
+      ---
+      
+      -   color: #a1a1aa;
+      +   color: #GRAY400;
+      
+      ---
+      
+      -   border-color: #93c5fd;
+      +   border-color: #BLUE300;
+      
+      ---
+      
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      +   background-color: #WHITE;
+      +   border-color: #GRAY300;
+      
+      ---
+      
+      -   color: #a1a1aa;
+      +   color: #GRAY400;
+      
+      ---
+      
+      -   border-color: #93c5fd;
+      +   border-color: #BLUE300;
+      
+      ---
+      
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      +   background-color: #WHITE;
+      +   border-color: #GRAY300;
+      
+      ---
+      
+      -   border-color: #93c5fd;
+      +   border-color: #BLUE300;
+      
+      ---
+      
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23GRAY400' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      
+      ---
+      
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      +   background-color: #WHITE;
+      +   border-color: #GRAY300;
+      
+      ---
+      
+      -   border-color: #93c5fd;
+      +   border-color: #BLUE300;
+      
+      ---
+      
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23WHITE' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+      
+      ---
+      
+      -   color: #3b82f6;
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      +   color: #BLUE500;
+      +   background-color: #WHITE;
+      +   border-color: #GRAY300;
+      
+      ---
+      
+      -   border-color: #93c5fd;
+      +   border-color: #BLUE300;
+      
+      ---
+      
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23WHITE' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
+      
+      ---
+      
+      -   color: #3b82f6;
+      -   background-color: #fff;
+      -   border-color: #d4d4d8;
+      +   color: #BLUE500;
+      +   background-color: #WHITE;
+      +   border-color: #GRAY300;
+      
+      ---
+      
+      -   border-color: #93c5fd;
+      +   border-color: #BLUE300;
+
+    "
+  `)
+})

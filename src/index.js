@@ -72,5 +72,5 @@ module.exports = plugin(
         .forEach(([key, options]) => components[key](options, modifier))
     })
   },
-  { theme: { customForms: { DEFAULT: { css: defaultOptions } } } }
+  { theme: { customForms: theme => ({ DEFAULT: {css: defaultOptions(theme) } }) } }
 )
