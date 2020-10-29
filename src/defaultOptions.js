@@ -1,6 +1,12 @@
+const hexRgb = require('hex-rgb')
 const defaultTheme = require('tailwindcss/resolveConfig')(require('tailwindcss/defaultConfig')).theme
 const [baseFontSize, { lineHeight: baseLineHeight }] = defaultTheme.fontSize.base
 const { colors, spacing, borderWidth, borderRadius, boxShadow } = defaultTheme
+
+function rgba(hex, alpha) {
+  const { red, green, blue } = hexRgb(hex)
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`
+}
 
 module.exports = (theme) => ({
   input: {
@@ -20,7 +26,7 @@ module.exports = (theme) => ({
     },
     '&:focus': {
       outline: 'none',
-      boxShadow: boxShadow.outline, // TODO: Will box-shadow outlines be moved?
+      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
       borderColor: theme('colors.blue.300', colors.blue[300]),
     },
   },
@@ -42,7 +48,7 @@ module.exports = (theme) => ({
     },
     '&:focus': {
       outline: 'none',
-      boxShadow: boxShadow.outline, // TODO: Will box-shadow outlines be moved?
+      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
       borderColor: theme('colors.blue.300', colors.blue[300]),
     },
   },
@@ -60,7 +66,7 @@ module.exports = (theme) => ({
     lineHeight: baseLineHeight,
     '&:focus': {
       outline: 'none',
-      boxShadow: boxShadow.outline, // TODO: Will box-shadow outlines be moved?
+      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
       borderColor: theme('colors.blue.300', colors.blue[300]),
     },
   },
@@ -85,7 +91,7 @@ module.exports = (theme) => ({
       `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M7 7l3-3 3 3m0 6l-3 3-3-3" stroke="${iconColor}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
     '&:focus': {
       outline: 'none',
-      boxShadow: boxShadow.outline, // TODO: Will box-shadow outlines be moved?
+      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
       borderColor: theme('colors.blue.300', colors.blue[300]),
     },
   },
@@ -109,7 +115,7 @@ module.exports = (theme) => ({
       `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><path d="M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z"/></svg>`,
     '&:focus': {
       outline: 'none',
-      boxShadow: boxShadow.outline, // TODO: Will box-shadow outlines be moved?
+      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
       borderColor: theme('colors.blue.300', colors.blue[300]),
     },
     '&:checked': {
@@ -143,7 +149,7 @@ module.exports = (theme) => ({
       `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>`,
     '&:focus': {
       outline: 'none',
-      boxShadow: boxShadow.outline, // TODO: Will box-shadow outlines be moved?
+      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
       borderColor: theme('colors.blue.300', colors.blue[300]),
     },
     '&:checked': {
@@ -157,5 +163,4 @@ module.exports = (theme) => ({
       borderColor: 'transparent',
     },
   },
-
 })

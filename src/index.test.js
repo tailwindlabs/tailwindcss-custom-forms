@@ -49,7 +49,7 @@ it('should generate the default classes for the form components', async () => {
 
     .form-input:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       border-color: #93c5fd;
     }
 
@@ -74,7 +74,7 @@ it('should generate the default classes for the form components', async () => {
 
     .form-textarea:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       border-color: #93c5fd;
     }
 
@@ -94,7 +94,7 @@ it('should generate the default classes for the form components', async () => {
 
     .form-multiselect:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       border-color: #93c5fd;
     }
 
@@ -119,7 +119,7 @@ it('should generate the default classes for the form components', async () => {
 
     .form-select:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       border-color: #93c5fd;
     }
 
@@ -151,7 +151,7 @@ it('should generate the default classes for the form components', async () => {
 
     .form-checkbox:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       border-color: #93c5fd;
     }
 
@@ -187,7 +187,7 @@ it('should generate the default classes for the form components', async () => {
 
     .form-radio:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       border-color: #93c5fd;
     }
 
@@ -261,7 +261,7 @@ it('should be possible to remove the `input` component', async () => {
       -
       - .form-input:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       -   border-color: #93c5fd;
       - }
       -
@@ -309,7 +309,7 @@ it('should be possible to remove the `textarea` component', async () => {
       -
       - .form-textarea:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       -   border-color: #93c5fd;
       - }
       -
@@ -352,7 +352,7 @@ it('should be possible to remove the `multiselect` component', async () => {
       -
       - .form-multiselect:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       -   border-color: #93c5fd;
       - }
       -
@@ -400,7 +400,7 @@ it('should be possible to remove the `select` component', async () => {
       -
       - .form-select:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       -   border-color: #93c5fd;
       - }
       -
@@ -455,7 +455,7 @@ it('should be possible to remove the `checkbox` component', async () => {
       -
       - .form-checkbox:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       -   border-color: #93c5fd;
       - }
       -
@@ -515,7 +515,7 @@ it('should be possible to remove the `radio` component', async () => {
       -
       - .form-radio:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       -   border-color: #93c5fd;
       - }
       -
@@ -1154,6 +1154,43 @@ it('should pull values from the user config for colors', async () => {
       
       -   border-color: #93c5fd;
       +   border-color: #BLUE300;
+
+    "
+  `)
+})
+
+it('should be possible to override the config and default colors', async () => {
+  expect(
+    await diffOnly({
+      theme: {
+        extend: {
+          colors: {
+            chuck: 'chucknorris',
+          },
+          customForms: (theme) => ({
+            DEFAULT: {
+              css: {
+                'input, textarea': {
+                  '&:focus': {
+                    boxShadow: theme('colors.chuck', 'red'),
+                  },
+                },
+              },
+            },
+          }),
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "
+
+      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
+      +   box-shadow: chucknorris;
+      
+      ---
+      
+      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
+      +   box-shadow: chucknorris;
 
     "
   `)
