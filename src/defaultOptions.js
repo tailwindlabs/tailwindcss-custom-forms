@@ -125,8 +125,13 @@ module.exports = (theme) => ({
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
     },
+    '&:checked:hover': {
+      borderColor: 'transparent',
+      backgroundColor: 'currentColor',
+    },
     '&:checked:focus': {
       borderColor: 'transparent',
+      backgroundColor: 'currentColor',
     },
   },
   radio: {
@@ -159,8 +164,13 @@ module.exports = (theme) => ({
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
     },
+    '&:checked:hover': {
+      borderColor: 'transparent',
+      backgroundColor: 'currentColor',
+    },
     '&:checked:focus': {
       borderColor: 'transparent',
+      backgroundColor: 'currentColor',
     },
   },
 })

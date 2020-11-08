@@ -32,7 +32,7 @@ it('should generate the default classes for the form components', async () => {
     ".form-input {
       appearance: none;
       background-color: #fff;
-      border-color: #d4d4d8;
+      border-color: #d1d5db;
       border-width: 1px;
       border-radius: 0.375rem;
       padding-top: 0.5rem;
@@ -44,7 +44,7 @@ it('should generate the default classes for the form components', async () => {
     }
 
     .form-input::placeholder {
-      color: #a1a1aa;
+      color: #9ca3af;
     }
 
     .form-input:focus {
@@ -56,7 +56,7 @@ it('should generate the default classes for the form components', async () => {
     .form-textarea {
       appearance: none;
       background-color: #fff;
-      border-color: #d4d4d8;
+      border-color: #d1d5db;
       border-width: 1px;
       border-radius: 0.375rem;
       padding-top: 0.5rem;
@@ -68,7 +68,7 @@ it('should generate the default classes for the form components', async () => {
     }
 
     .form-textarea::placeholder {
-      color: #a1a1aa;
+      color: #9ca3af;
       opacity: 1;
     }
 
@@ -81,7 +81,7 @@ it('should generate the default classes for the form components', async () => {
     .form-multiselect {
       appearance: none;
       background-color: #fff;
-      border-color: #d4d4d8;
+      border-color: #d1d5db;
       border-width: 1px;
       border-radius: 0.375rem;
       padding-top: 0.5rem;
@@ -99,12 +99,12 @@ it('should generate the default classes for the form components', async () => {
     }
 
     .form-select {
-      background-image: url(\\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e\\");
+      background-image: url(\\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e\\");
       appearance: none;
       color-adjust: exact;
       background-repeat: no-repeat;
       background-color: #fff;
-      border-color: #d4d4d8;
+      border-color: #d1d5db;
       border-width: 1px;
       border-radius: 0.375rem;
       padding-top: 0.5rem;
@@ -144,7 +144,7 @@ it('should generate the default classes for the form components', async () => {
       width: 1rem;
       color: #3b82f6;
       background-color: #fff;
-      border-color: #d4d4d8;
+      border-color: #d1d5db;
       border-width: 1px;
       border-radius: 0.25rem;
     }
@@ -155,8 +155,14 @@ it('should generate the default classes for the form components', async () => {
       border-color: #93c5fd;
     }
 
+    .form-checkbox:checked:hover {
+      border-color: transparent;
+      background-color: currentColor;
+    }
+
     .form-checkbox:checked:focus {
       border-color: transparent;
+      background-color: currentColor;
     }
 
     .form-radio:checked {
@@ -181,7 +187,7 @@ it('should generate the default classes for the form components', async () => {
       width: 1rem;
       color: #3b82f6;
       background-color: #fff;
-      border-color: #d4d4d8;
+      border-color: #d1d5db;
       border-width: 1px;
     }
 
@@ -191,8 +197,14 @@ it('should generate the default classes for the form components', async () => {
       border-color: #93c5fd;
     }
 
+    .form-radio:checked:hover {
+      border-color: transparent;
+      background-color: currentColor;
+    }
+
     .form-radio:checked:focus {
       border-color: transparent;
+      background-color: currentColor;
     }"
   `)
 })
@@ -244,7 +256,7 @@ it('should be possible to remove the `input` component', async () => {
       - .form-input {
       -   appearance: none;
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       -   border-width: 1px;
       -   border-radius: 0.375rem;
       -   padding-top: 0.5rem;
@@ -256,7 +268,7 @@ it('should be possible to remove the `input` component', async () => {
       - }
       -
       - .form-input::placeholder {
-      -   color: #a1a1aa;
+      -   color: #9ca3af;
       - }
       -
       - .form-input:focus {
@@ -291,7 +303,7 @@ it('should be possible to remove the `textarea` component', async () => {
       - .form-textarea {
       -   appearance: none;
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       -   border-width: 1px;
       -   border-radius: 0.375rem;
       -   padding-top: 0.5rem;
@@ -303,7 +315,7 @@ it('should be possible to remove the `textarea` component', async () => {
       - }
       -
       - .form-textarea::placeholder {
-      -   color: #a1a1aa;
+      -   color: #9ca3af;
       -   opacity: 1;
       - }
       -
@@ -339,7 +351,7 @@ it('should be possible to remove the `multiselect` component', async () => {
       - .form-multiselect {
       -   appearance: none;
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       -   border-width: 1px;
       -   border-radius: 0.375rem;
       -   padding-top: 0.5rem;
@@ -380,12 +392,12 @@ it('should be possible to remove the `select` component', async () => {
     "
 
       - .form-select {
-      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
       -   appearance: none;
       -   color-adjust: exact;
       -   background-repeat: no-repeat;
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       -   border-width: 1px;
       -   border-radius: 0.375rem;
       -   padding-top: 0.5rem;
@@ -448,7 +460,7 @@ it('should be possible to remove the `checkbox` component', async () => {
       -   width: 1rem;
       -   color: #3b82f6;
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       -   border-width: 1px;
       -   border-radius: 0.25rem;
       - }
@@ -459,8 +471,14 @@ it('should be possible to remove the `checkbox` component', async () => {
       -   border-color: #93c5fd;
       - }
       -
+      - .form-checkbox:checked:hover {
+      -   border-color: transparent;
+      -   background-color: currentColor;
+      - }
+      -
       - .form-checkbox:checked:focus {
       -   border-color: transparent;
+      -   background-color: currentColor;
       - }
       -
 
@@ -509,7 +527,7 @@ it('should be possible to remove the `radio` component', async () => {
       -   width: 1rem;
       -   color: #3b82f6;
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       -   border-width: 1px;
       - }
       -
@@ -519,8 +537,14 @@ it('should be possible to remove the `radio` component', async () => {
       -   border-color: #93c5fd;
       - }
       -
+      - .form-radio:checked:hover {
+      -   border-color: transparent;
+      -   background-color: currentColor;
+      - }
+      -
       - .form-radio:checked:focus {
       -   border-color: transparent;
+      -   background-color: currentColor;
       - }
 
     "
@@ -811,7 +835,7 @@ it('should be possible to change the icon and icon color of a `select` component
   ).toMatchInlineSnapshot(`
     "
 
-      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
       +   background-image: url('data:image/svg+xml,%3csvg fill='pink' /%3e');
 
     "
@@ -838,7 +862,7 @@ it('should be possible to change the icon of a `select` component', async () => 
   ).toMatchInlineSnapshot(`
     "
 
-      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
       +   background-image: url('data:image/svg+xml,%3csvg /%3e');
 
     "
@@ -865,7 +889,7 @@ it('should be possible to change the iconColor of a `select` component', async (
   ).toMatchInlineSnapshot(`
     "
 
-      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
       +   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='pink' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
 
     "
@@ -1057,13 +1081,13 @@ it('should pull values from the user config for colors', async () => {
     "
 
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       +   background-color: #WHITE;
       +   border-color: #GRAY300;
       
       ---
       
-      -   color: #a1a1aa;
+      -   color: #9ca3af;
       +   color: #GRAY400;
       
       ---
@@ -1074,13 +1098,13 @@ it('should pull values from the user config for colors', async () => {
       ---
       
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       +   background-color: #WHITE;
       +   border-color: #GRAY300;
       
       ---
       
-      -   color: #a1a1aa;
+      -   color: #9ca3af;
       +   color: #GRAY400;
       
       ---
@@ -1091,7 +1115,7 @@ it('should pull values from the user config for colors', async () => {
       ---
       
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       +   background-color: #WHITE;
       +   border-color: #GRAY300;
       
@@ -1102,13 +1126,13 @@ it('should pull values from the user config for colors', async () => {
       
       ---
       
-      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
       +   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23GRAY400' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
       
       ---
       
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       +   background-color: #WHITE;
       +   border-color: #GRAY300;
       
@@ -1126,7 +1150,7 @@ it('should pull values from the user config for colors', async () => {
       
       -   color: #3b82f6;
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       +   color: #BLUE500;
       +   background-color: #WHITE;
       +   border-color: #GRAY300;
@@ -1145,7 +1169,7 @@ it('should pull values from the user config for colors', async () => {
       
       -   color: #3b82f6;
       -   background-color: #fff;
-      -   border-color: #d4d4d8;
+      -   border-color: #d1d5db;
       +   color: #BLUE500;
       +   background-color: #WHITE;
       +   border-color: #GRAY300;
