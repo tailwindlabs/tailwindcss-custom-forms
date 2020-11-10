@@ -49,8 +49,8 @@ it('should generate the default classes for the form components', async () => {
 
     .form-input:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      border-color: #93c5fd;
+      box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      border-color: #2563eb;
     }
 
     .form-textarea {
@@ -74,8 +74,8 @@ it('should generate the default classes for the form components', async () => {
 
     .form-textarea:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      border-color: #93c5fd;
+      box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      border-color: #2563eb;
     }
 
     .form-multiselect {
@@ -94,12 +94,12 @@ it('should generate the default classes for the form components', async () => {
 
     .form-multiselect:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      border-color: #93c5fd;
+      box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      border-color: #2563eb;
     }
 
     .form-select {
-      background-image: url(\\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e\\");
+      background-image: url(\\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e\\");
       appearance: none;
       color-adjust: exact;
       background-repeat: no-repeat;
@@ -119,12 +119,12 @@ it('should generate the default classes for the form components', async () => {
 
     .form-select:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      border-color: #93c5fd;
+      box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      border-color: #2563eb;
     }
 
     .form-checkbox:checked {
-      background-image: url(\\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e\\");
+      background-image: url(\\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\\");
       border-color: transparent;
       background-color: currentColor;
       background-size: 100% 100%;
@@ -142,7 +142,7 @@ it('should generate the default classes for the form components', async () => {
       flex-shrink: 0;
       height: 1rem;
       width: 1rem;
-      color: #3b82f6;
+      color: #2563eb;
       background-color: #fff;
       border-color: #d1d5db;
       border-width: 1px;
@@ -151,8 +151,7 @@ it('should generate the default classes for the form components', async () => {
 
     .form-checkbox:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      border-color: #93c5fd;
+      box-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff), 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
     }
 
     .form-checkbox:checked:hover {
@@ -185,7 +184,7 @@ it('should generate the default classes for the form components', async () => {
       border-radius: 100%;
       height: 1rem;
       width: 1rem;
-      color: #3b82f6;
+      color: #2563eb;
       background-color: #fff;
       border-color: #d1d5db;
       border-width: 1px;
@@ -193,8 +192,7 @@ it('should generate the default classes for the form components', async () => {
 
     .form-radio:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      border-color: #93c5fd;
+      box-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff), 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
     }
 
     .form-radio:checked:hover {
@@ -273,8 +271,8 @@ it('should be possible to remove the `input` component', async () => {
       -
       - .form-input:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      -   border-color: #93c5fd;
+      -   box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      -   border-color: #2563eb;
       - }
       -
 
@@ -321,8 +319,8 @@ it('should be possible to remove the `textarea` component', async () => {
       -
       - .form-textarea:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      -   border-color: #93c5fd;
+      -   box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      -   border-color: #2563eb;
       - }
       -
 
@@ -364,8 +362,8 @@ it('should be possible to remove the `multiselect` component', async () => {
       -
       - .form-multiselect:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      -   border-color: #93c5fd;
+      -   box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      -   border-color: #2563eb;
       - }
       -
 
@@ -392,7 +390,7 @@ it('should be possible to remove the `select` component', async () => {
     "
 
       - .form-select {
-      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e');
       -   appearance: none;
       -   color-adjust: exact;
       -   background-repeat: no-repeat;
@@ -412,8 +410,8 @@ it('should be possible to remove the `select` component', async () => {
       -
       - .form-select:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      -   border-color: #93c5fd;
+      -   box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      -   border-color: #2563eb;
       - }
       -
 
@@ -440,7 +438,7 @@ it('should be possible to remove the `checkbox` component', async () => {
     "
 
       - .form-checkbox:checked {
-      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
       -   border-color: transparent;
       -   background-color: currentColor;
       -   background-size: 100% 100%;
@@ -458,7 +456,7 @@ it('should be possible to remove the `checkbox` component', async () => {
       -   flex-shrink: 0;
       -   height: 1rem;
       -   width: 1rem;
-      -   color: #3b82f6;
+      -   color: #2563eb;
       -   background-color: #fff;
       -   border-color: #d1d5db;
       -   border-width: 1px;
@@ -467,8 +465,7 @@ it('should be possible to remove the `checkbox` component', async () => {
       -
       - .form-checkbox:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      -   border-color: #93c5fd;
+      -   box-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff), 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
       - }
       -
       - .form-checkbox:checked:hover {
@@ -525,7 +522,7 @@ it('should be possible to remove the `radio` component', async () => {
       -   border-radius: 100%;
       -   height: 1rem;
       -   width: 1rem;
-      -   color: #3b82f6;
+      -   color: #2563eb;
       -   background-color: #fff;
       -   border-color: #d1d5db;
       -   border-width: 1px;
@@ -533,8 +530,7 @@ it('should be possible to remove the `radio` component', async () => {
       -
       - .form-radio:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
-      -   border-color: #93c5fd;
+      -   box-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff), 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
       - }
       -
       - .form-radio:checked:hover {
@@ -835,7 +831,7 @@ it('should be possible to change the icon and icon color of a `select` component
   ).toMatchInlineSnapshot(`
     "
 
-      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e');
       +   background-image: url('data:image/svg+xml,%3csvg fill='pink' /%3e');
 
     "
@@ -862,7 +858,7 @@ it('should be possible to change the icon of a `select` component', async () => 
   ).toMatchInlineSnapshot(`
     "
 
-      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e');
       +   background-image: url('data:image/svg+xml,%3csvg /%3e');
 
     "
@@ -889,8 +885,8 @@ it('should be possible to change the iconColor of a `select` component', async (
   ).toMatchInlineSnapshot(`
     "
 
-      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
-      +   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='pink' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='pink' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e');
 
     "
   `)
@@ -917,7 +913,7 @@ it('should be possible to change the icon and icon color of a `checkbox` compone
   ).toMatchInlineSnapshot(`
     "
 
-      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
       +   background-image: url('data:image/svg+xml,%3csvg fill='pink' /%3e');
 
     "
@@ -944,7 +940,7 @@ it('should be possible to change the icon of a `checkbox` component', async () =
   ).toMatchInlineSnapshot(`
     "
 
-      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
       +   background-image: url('data:image/svg+xml,%3csvg /%3e');
 
     "
@@ -971,8 +967,8 @@ it('should be possible to change the iconColor of a `checkbox` component', async
   ).toMatchInlineSnapshot(`
     "
 
-      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
-      +   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='pink' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='pink' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
 
     "
   `)
@@ -1092,11 +1088,6 @@ it('should pull values from the user config for colors', async () => {
       
       ---
       
-      -   border-color: #93c5fd;
-      +   border-color: #BLUE300;
-      
-      ---
-      
       -   background-color: #fff;
       -   border-color: #d1d5db;
       +   background-color: #WHITE;
@@ -1109,8 +1100,15 @@ it('should pull values from the user config for colors', async () => {
       
       ---
       
-      -   border-color: #93c5fd;
-      +   border-color: #BLUE300;
+      -   background-color: #fff;
+      -   border-color: #d1d5db;
+      +   background-color: #WHITE;
+      +   border-color: #GRAY300;
+      
+      ---
+      
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23GRAY400' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e');
       
       ---
       
@@ -1121,13 +1119,8 @@ it('should pull values from the user config for colors', async () => {
       
       ---
       
-      -   border-color: #93c5fd;
-      +   border-color: #BLUE300;
-      
-      ---
-      
-      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
-      +   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23GRAY400' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e');
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23WHITE' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
       
       ---
       
@@ -1135,30 +1128,6 @@ it('should pull values from the user config for colors', async () => {
       -   border-color: #d1d5db;
       +   background-color: #WHITE;
       +   border-color: #GRAY300;
-      
-      ---
-      
-      -   border-color: #93c5fd;
-      +   border-color: #BLUE300;
-      
-      ---
-      
-      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
-      +   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23WHITE' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e');
-      
-      ---
-      
-      -   color: #3b82f6;
-      -   background-color: #fff;
-      -   border-color: #d1d5db;
-      +   color: #BLUE500;
-      +   background-color: #WHITE;
-      +   border-color: #GRAY300;
-      
-      ---
-      
-      -   border-color: #93c5fd;
-      +   border-color: #BLUE300;
       
       ---
       
@@ -1167,17 +1136,10 @@ it('should pull values from the user config for colors', async () => {
       
       ---
       
-      -   color: #3b82f6;
       -   background-color: #fff;
       -   border-color: #d1d5db;
-      +   color: #BLUE500;
       +   background-color: #WHITE;
       +   border-color: #GRAY300;
-      
-      ---
-      
-      -   border-color: #93c5fd;
-      +   border-color: #BLUE300;
 
     "
   `)
@@ -1208,12 +1170,10 @@ it('should be possible to override the config and default colors', async () => {
   ).toMatchInlineSnapshot(`
     "
 
-      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       +   box-shadow: chucknorris;
       
       ---
       
-      -   box-shadow: 0 0 0 3px rgba(191, 219, 254, 0.5);
       +   box-shadow: chucknorris;
 
     "

@@ -26,8 +26,15 @@ module.exports = (theme) => ({
     },
     '&:focus': {
       outline: 'none',
-      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
-      borderColor: theme('colors.blue.300', colors.blue[300]),
+      'box-shadow': [
+        `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
+        `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
+          'colors.blue.600',
+          colors.blue[600]
+        )})`,
+        `var(--box-shadow, 0 0 #0000)`,
+      ].join(', '),
+      borderColor: theme('colors.blue.600', colors.blue[600]),
     },
   },
   textarea: {
@@ -48,8 +55,15 @@ module.exports = (theme) => ({
     },
     '&:focus': {
       outline: 'none',
-      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
-      borderColor: theme('colors.blue.300', colors.blue[300]),
+      'box-shadow': [
+        `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
+        `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
+          'colors.blue.600',
+          colors.blue[600]
+        )})`,
+        `var(--box-shadow, 0 0 #0000)`,
+      ].join(', '),
+      borderColor: theme('colors.blue.600', colors.blue[600]),
     },
   },
   multiselect: {
@@ -66,8 +80,15 @@ module.exports = (theme) => ({
     lineHeight: baseLineHeight,
     '&:focus': {
       outline: 'none',
-      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
-      borderColor: theme('colors.blue.300', colors.blue[300]),
+      'box-shadow': [
+        `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
+        `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
+          'colors.blue.600',
+          colors.blue[600]
+        )})`,
+        `var(--box-shadow, 0 0 #0000)`,
+      ].join(', '),
+      borderColor: theme('colors.blue.600', colors.blue[600]),
     },
   },
   select: {
@@ -88,11 +109,18 @@ module.exports = (theme) => ({
     backgroundSize: `1.5em 1.5em`,
     iconColor: theme('colors.gray.400', colors.gray[400]),
     icon: (iconColor) =>
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M7 7l3-3 3 3m0 6l-3 3-3-3" stroke="${iconColor}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+      `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><path stroke="${iconColor}" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/></svg>`,
     '&:focus': {
       outline: 'none',
-      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
-      borderColor: theme('colors.blue.300', colors.blue[300]),
+      'box-shadow': [
+        `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
+        `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
+          'colors.blue.600',
+          colors.blue[600]
+        )})`,
+        `var(--box-shadow, 0 0 #0000)`,
+      ].join(', '),
+      borderColor: theme('colors.blue.600', colors.blue[600]),
     },
   },
   checkbox: {
@@ -105,18 +133,24 @@ module.exports = (theme) => ({
     flexShrink: 0,
     height: spacing[4],
     width: spacing[4],
-    color: theme('colors.blue.500', colors.blue[500]),
+    color: theme('colors.blue.600', colors.blue[600]),
     backgroundColor: theme('colors.white', colors.white),
     borderColor: theme('colors.gray.300', colors.gray[300]),
     borderWidth: borderWidth.DEFAULT,
     borderRadius: borderRadius.DEFAULT,
     iconColor: theme('colors.white', colors.white),
     icon: (iconColor) =>
-      `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><path d="M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z"/></svg>`,
+      `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"/></svg>`,
     '&:focus': {
       outline: 'none',
-      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
-      borderColor: theme('colors.blue.300', colors.blue[300]),
+      'box-shadow': [
+        `0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff)`,
+        `0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, ${theme(
+          'colors.blue.600',
+          colors.blue[600]
+        )})`,
+        `var(--box-shadow, 0 0 #0000)`,
+      ].join(', '),
     },
     '&:checked': {
       borderColor: 'transparent',
@@ -145,7 +179,7 @@ module.exports = (theme) => ({
     borderRadius: '100%',
     height: spacing[4],
     width: spacing[4],
-    color: theme('colors.blue.500', colors.blue[500]),
+    color: theme('colors.blue.600', colors.blue[600]),
     backgroundColor: theme('colors.white', colors.white),
     borderColor: theme('colors.gray.300', colors.gray[300]),
     borderWidth: borderWidth.DEFAULT,
@@ -154,8 +188,14 @@ module.exports = (theme) => ({
       `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>`,
     '&:focus': {
       outline: 'none',
-      boxShadow: `0 0 0 3px ${rgba(theme('colors.blue.200', colors.blue[200]), 0.5)}`,
-      borderColor: theme('colors.blue.300', colors.blue[300]),
+      'box-shadow': [
+        `0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff)`,
+        `0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, ${theme(
+          'colors.blue.600',
+          colors.blue[600]
+        )})`,
+        `var(--box-shadow, 0 0 #0000)`,
+      ].join(', '),
     },
     '&:checked': {
       borderColor: 'transparent',
