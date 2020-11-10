@@ -12,12 +12,16 @@ export default () => (
         <div className="w-1/2 px-6">
           <label className="block">
             <span className="text-gray-700">Input</span>
-            <input type="email" className="form-input mt-1 block w-full" placeholder="john@example.com"/>
+            <input type="email" className="form-input mt-1 block w-full" placeholder="john@example.com" />
           </label>
 
           <label className="block mt-4">
             <span className="text-gray-700">Textarea</span>
-            <textarea className="form-textarea mt-1 block w-full h-24" rows="3" placeholder="Enter some long form content."></textarea>
+            <textarea
+              className="form-textarea mt-1 block w-full h-24"
+              rows="3"
+              placeholder="Enter some long form content."
+            ></textarea>
           </label>
 
           <div className="block mt-4">
@@ -25,19 +29,19 @@ export default () => (
             <div className="mt-2">
               <div>
                 <label className="inline-flex items-center">
-                  <input type="checkbox" className="form-checkbox text-gray-800"/>
+                  <input type="checkbox" className="form-checkbox" />
                   <span className="ml-2">Option 1</span>
                 </label>
               </div>
               <div>
                 <label className="inline-flex items-center">
-                  <input type="checkbox" className="form-checkbox text-gray-800"/>
+                  <input type="checkbox" className="form-checkbox" />
                   <span className="ml-2">Option 2</span>
                 </label>
               </div>
               <div>
                 <label className="inline-flex items-center">
-                  <input type="checkbox" className="form-checkbox text-gray-800"/>
+                  <input type="checkbox" className="form-checkbox" />
                   <span className="ml-2">Option 3</span>
                 </label>
               </div>
@@ -70,19 +74,19 @@ export default () => (
             <div className="mt-2">
               <div>
                 <label className="inline-flex items-center">
-                  <input type="radio" className="form-radio text-gray-800" name="radio-direct" value="1"/>
+                  <input type="radio" className="form-radio" name="radio-direct" value="1" />
                   <span className="ml-2">Option 1</span>
                 </label>
               </div>
               <div>
                 <label className="inline-flex items-center">
-                  <input type="radio" className="form-radio text-gray-800" name="radio-direct" value="2"/>
+                  <input type="radio" className="form-radio" name="radio-direct" value="2" />
                   <span className="ml-2">Option 2</span>
                 </label>
               </div>
               <div>
                 <label className="inline-flex items-center">
-                  <input type="radio" className="form-radio text-gray-800" name="radio-direct" value="3"/>
+                  <input type="radio" className="form-radio" name="radio-direct" value="3" />
                   <span className="ml-2">Option 3</span>
                 </label>
               </div>
