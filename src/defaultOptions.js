@@ -26,14 +26,12 @@ module.exports = (theme) => ({
     },
     '&:focus': {
       outline: 'none',
-      'box-shadow': [
-        `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
-        `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
-          'colors.blue.600',
-          colors.blue[600]
-        )})`,
-        `var(--box-shadow, 0 0 #0000)`,
-      ].join(', '),
+      '--ring-offset-shadow': `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
+      '--ring-shadow': `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
+        'colors.blue.600',
+        colors.blue[600]
+      )})`,
+      'box-shadow': [`var(--ring-offset-shadow)`, `var(--ring-shadow)`, `var(--box-shadow, 0 0 #0000)`].join(', '),
       borderColor: theme('colors.blue.600', colors.blue[600]),
     },
   },
@@ -55,14 +53,12 @@ module.exports = (theme) => ({
     },
     '&:focus': {
       outline: 'none',
-      'box-shadow': [
-        `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
-        `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
-          'colors.blue.600',
-          colors.blue[600]
-        )})`,
-        `var(--box-shadow, 0 0 #0000)`,
-      ].join(', '),
+      '--ring-offset-shadow': `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
+      '--ring-shadow': `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
+        'colors.blue.600',
+        colors.blue[600]
+      )})`,
+      'box-shadow': [`var(--ring-offset-shadow)`, `var(--ring-shadow)`, `var(--box-shadow, 0 0 #0000)`].join(', '),
       borderColor: theme('colors.blue.600', colors.blue[600]),
     },
   },
@@ -80,14 +76,12 @@ module.exports = (theme) => ({
     lineHeight: baseLineHeight,
     '&:focus': {
       outline: 'none',
-      'box-shadow': [
-        `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
-        `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
-          'colors.blue.600',
-          colors.blue[600]
-        )})`,
-        `var(--box-shadow, 0 0 #0000)`,
-      ].join(', '),
+      '--ring-offset-shadow': `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
+      '--ring-shadow': `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
+        'colors.blue.600',
+        colors.blue[600]
+      )})`,
+      'box-shadow': [`var(--ring-offset-shadow)`, `var(--ring-shadow)`, `var(--box-shadow, 0 0 #0000)`].join(', '),
       borderColor: theme('colors.blue.600', colors.blue[600]),
     },
   },
@@ -112,14 +106,12 @@ module.exports = (theme) => ({
       `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><path stroke="${iconColor}" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/></svg>`,
     '&:focus': {
       outline: 'none',
-      'box-shadow': [
-        `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
-        `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
-          'colors.blue.600',
-          colors.blue[600]
-        )})`,
-        `var(--box-shadow, 0 0 #0000)`,
-      ].join(', '),
+      '--ring-offset-shadow': `0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff)`,
+      '--ring-shadow': `0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, ${theme(
+        'colors.blue.600',
+        colors.blue[600]
+      )})`,
+      'box-shadow': [`var(--ring-offset-shadow)`, `var(--ring-shadow)`, `var(--box-shadow, 0 0 #0000)`].join(', '),
       borderColor: theme('colors.blue.600', colors.blue[600]),
     },
   },
@@ -143,14 +135,12 @@ module.exports = (theme) => ({
       `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"/></svg>`,
     '&:focus': {
       outline: 'none',
-      'box-shadow': [
-        `0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff)`,
-        `0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, ${theme(
-          'colors.blue.600',
-          colors.blue[600]
-        )})`,
-        `var(--box-shadow, 0 0 #0000)`,
-      ].join(', '),
+      '--ring-offset-shadow': `0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff)`,
+      '--ring-shadow': `0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, ${theme(
+        'colors.blue.600',
+        colors.blue[600]
+      )})`,
+      'box-shadow': [`var(--ring-offset-shadow)`, `var(--ring-shadow)`, `var(--box-shadow, 0 0 #0000)`].join(', '),
     },
     '&:checked': {
       borderColor: 'transparent',
@@ -188,14 +178,12 @@ module.exports = (theme) => ({
       `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>`,
     '&:focus': {
       outline: 'none',
-      'box-shadow': [
-        `0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff)`,
-        `0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, ${theme(
-          'colors.blue.600',
-          colors.blue[600]
-        )})`,
-        `var(--box-shadow, 0 0 #0000)`,
-      ].join(', '),
+      '--ring-offset-shadow': `0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff)`,
+      '--ring-shadow': `0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, ${theme(
+        'colors.blue.600',
+        colors.blue[600]
+      )})`,
+      'box-shadow': [`var(--ring-offset-shadow)`, `var(--ring-shadow)`, `var(--box-shadow, 0 0 #0000)`].join(', '),
     },
     '&:checked': {
       borderColor: 'transparent',
