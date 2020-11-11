@@ -133,6 +133,8 @@ module.exports = (theme) => ({
     iconColor: theme('colors.white', colors.white),
     icon: (iconColor) =>
       `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"/></svg>`,
+    indeterminateIcon: (iconColor) =>
+      `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="${iconColor}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h8"/></svg>`,
     '&:focus': {
       outline: 'none',
       '--ring-offset-shadow': `0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff)`,
@@ -156,6 +158,13 @@ module.exports = (theme) => ({
     '&:checked:focus': {
       borderColor: 'transparent',
       backgroundColor: 'currentColor',
+    },
+    '&[indeterminate]': {
+      borderColor: 'transparent',
+      backgroundColor: 'currentColor',
+      backgroundSize: '100% 100%',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
     },
   },
   radio: {

@@ -220,7 +220,7 @@ impose any opinions in that regard. Here we've used flexbox to center the checkb
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox">
+          <input type="checkbox" class="form-checkbox" indeterminate>
           <span class="ml-2">Option 3</span>
         </label>
       </div>
@@ -251,7 +251,7 @@ color utilities, like `text-indigo-600`.
       </div>
       <div>
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbox text-pink-600" checked>
+          <input type="checkbox" class="form-checkbox text-pink-600">
           <span class="ml-2">Option 3</span>
         </label>
       </div>
@@ -462,6 +462,26 @@ module.exports = {
 }
 ```
 
+You can also customize the [indeterminate state](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate) icon for a checkbox using the special `indeterminateIcon` property.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    customForms: theme => ({
+      default: {
+        checkbox: {
+          indeterminateIcon: '<svg fill="#1a202c" viewBox="0 0 24 26" xmlns="http://www.w3.org/2000/svg"><path d="M18,11H6c-1.104,0-2,0.896-2,2s0.896,2,2,2h12c1.104,0,2-0.896,2-2S19.104,11,18,11z"/></svg>'
+        },
+      },
+    })
+  },
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
+}
+```
+
 You can also switch to a different icon for different states, like if you wanted to change the
 checkmark on hover:
 
@@ -488,6 +508,10 @@ module.exports = {
 
 Checkbox and radio icons are automatically hidden unless the elements are `:checked`, so you don't
 need to include that pseudo-selector in your configuration when using the special `icon` property.
+
+
+
+
 
 #### Customizing the icon color
 

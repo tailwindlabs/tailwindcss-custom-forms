@@ -15,8 +15,8 @@ function replaceIconDeclarations(component, replace) {
     if (!isPlainObject(value)) return
 
     if (Object.keys(value).some((prop) => properties.includes(prop))) {
-      const { iconColor, icon, ...rest } = value
-      this.update(merge(replace({ icon, iconColor }), rest))
+      const { iconColor, icon, indeterminateIcon, ...rest } = value
+      this.update(merge(replace({ icon, indeterminateIcon, iconColor }), rest))
     }
   })
 }
@@ -46,11 +46,19 @@ module.exports = plugin(
       },
       checkbox(options, modifier) {
         addComponents(
-          replaceIconDeclarations({ [`.form-checkbox${modifier}`]: options }, ({ icon, iconColor }) => ({
-            '&:checked': {
-              backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`,
-            },
-          }))
+          replaceIconDeclarations(
+            { [`.form-checkbox${modifier}`]: options },
+            ({ icon, indeterminateIcon, iconColor }) => ({
+              '&:checked': {
+                backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`,
+              },
+              '&[indeterminate]': {
+                backgroundImage: `url("${svgToDataUri(
+                  isFunction(indeterminateIcon) ? indeterminateIcon(iconColor) : indeterminateIcon
+                )}")`,
+              },
+            })
+          )
         )
       },
       radio(options, modifier) {
