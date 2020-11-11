@@ -49,7 +49,9 @@ it('should generate the default classes for the form components', async () => {
 
     .form-input:focus {
       outline: none;
-      box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff);
+      --ring-shadow: 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb);
+      box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       border-color: #2563eb;
     }
 
@@ -74,7 +76,9 @@ it('should generate the default classes for the form components', async () => {
 
     .form-textarea:focus {
       outline: none;
-      box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff);
+      --ring-shadow: 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb);
+      box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       border-color: #2563eb;
     }
 
@@ -94,7 +98,9 @@ it('should generate the default classes for the form components', async () => {
 
     .form-multiselect:focus {
       outline: none;
-      box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff);
+      --ring-shadow: 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb);
+      box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       border-color: #2563eb;
     }
 
@@ -119,7 +125,9 @@ it('should generate the default classes for the form components', async () => {
 
     .form-select:focus {
       outline: none;
-      box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff);
+      --ring-shadow: 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb);
+      box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       border-color: #2563eb;
     }
 
@@ -151,7 +159,9 @@ it('should generate the default classes for the form components', async () => {
 
     .form-checkbox:focus {
       outline: none;
-      box-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff), 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff);
+      --ring-shadow: 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb);
+      box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
     }
 
     .form-checkbox:checked:hover {
@@ -192,7 +202,9 @@ it('should generate the default classes for the form components', async () => {
 
     .form-radio:focus {
       outline: none;
-      box-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff), 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff);
+      --ring-shadow: 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb);
+      box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
     }
 
     .form-radio:checked:hover {
@@ -271,7 +283,9 @@ it('should be possible to remove the `input` component', async () => {
       -
       - .form-input:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      -   --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff);
+      -   --ring-shadow: 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb);
+      -   box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       -   border-color: #2563eb;
       - }
       -
@@ -319,7 +333,9 @@ it('should be possible to remove the `textarea` component', async () => {
       -
       - .form-textarea:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      -   --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff);
+      -   --ring-shadow: 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb);
+      -   box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       -   border-color: #2563eb;
       - }
       -
@@ -362,7 +378,9 @@ it('should be possible to remove the `multiselect` component', async () => {
       -
       - .form-multiselect:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      -   --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff);
+      -   --ring-shadow: 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb);
+      -   box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       -   border-color: #2563eb;
       - }
       -
@@ -410,7 +428,9 @@ it('should be possible to remove the `select` component', async () => {
       -
       - .form-select:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff), 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      -   --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 0) var(--ring-offset-color, #fff);
+      -   --ring-shadow: 0 0 0 calc(1px + var(--ring-offset-width, 0px)) var(--ring-color, #2563eb);
+      -   box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       -   border-color: #2563eb;
       - }
       -
@@ -465,7 +485,9 @@ it('should be possible to remove the `checkbox` component', async () => {
       -
       - .form-checkbox:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff), 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      -   --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff);
+      -   --ring-shadow: 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb);
+      -   box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       - }
       -
       - .form-checkbox:checked:hover {
@@ -530,7 +552,9 @@ it('should be possible to remove the `radio` component', async () => {
       -
       - .form-radio:focus {
       -   outline: none;
-      -   box-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff), 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb), var(--box-shadow, 0 0 #0000);
+      -   --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff);
+      -   --ring-shadow: 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb);
+      -   box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       - }
       -
       - .form-radio:checked:hover {
