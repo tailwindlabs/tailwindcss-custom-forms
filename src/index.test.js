@@ -131,15 +131,6 @@ it('should generate the default classes for the form components', async () => {
       border-color: #2563eb;
     }
 
-    .form-checkbox:checked {
-      background-image: url(\\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\\");
-      border-color: transparent;
-      background-color: currentColor;
-      background-size: 100% 100%;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
     .form-checkbox {
       appearance: none;
       color-adjust: exact;
@@ -164,6 +155,15 @@ it('should generate the default classes for the form components', async () => {
       box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
     }
 
+    .form-checkbox:checked {
+      background-image: url(\\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\\");
+      border-color: transparent;
+      background-color: currentColor;
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
     .form-checkbox:checked:hover {
       border-color: transparent;
       background-color: currentColor;
@@ -174,13 +174,23 @@ it('should generate the default classes for the form components', async () => {
       background-color: currentColor;
     }
 
-    .form-radio:checked {
-      background-image: url(\\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e\\");
+    .form-checkbox:indeterminate {
+      background-image: url(\\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e\\");
       border-color: transparent;
       background-color: currentColor;
       background-size: 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
+    }
+
+    .form-checkbox:indeterminate:hover {
+      border-color: transparent;
+      background-color: currentColor;
+    }
+
+    .form-checkbox:indeterminate:focus {
+      border-color: transparent;
+      background-color: currentColor;
     }
 
     .form-radio {
@@ -205,6 +215,15 @@ it('should generate the default classes for the form components', async () => {
       --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff);
       --ring-shadow: 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb);
       box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
+    }
+
+    .form-radio:checked {
+      background-image: url(\\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e\\");
+      border-color: transparent;
+      background-color: currentColor;
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .form-radio:checked:hover {
@@ -457,15 +476,6 @@ it('should be possible to remove the `checkbox` component', async () => {
   ).toMatchInlineSnapshot(`
     "
 
-      - .form-checkbox:checked {
-      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
-      -   border-color: transparent;
-      -   background-color: currentColor;
-      -   background-size: 100% 100%;
-      -   background-position: center;
-      -   background-repeat: no-repeat;
-      - }
-      -
       - .form-checkbox {
       -   appearance: none;
       -   color-adjust: exact;
@@ -490,12 +500,40 @@ it('should be possible to remove the `checkbox` component', async () => {
       -   box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
       - }
       -
+      - .form-checkbox:checked {
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
+      -   border-color: transparent;
+      -   background-color: currentColor;
+      -   background-size: 100% 100%;
+      -   background-position: center;
+      -   background-repeat: no-repeat;
+      - }
+      -
       - .form-checkbox:checked:hover {
       -   border-color: transparent;
       -   background-color: currentColor;
       - }
       -
       - .form-checkbox:checked:focus {
+      -   border-color: transparent;
+      -   background-color: currentColor;
+      - }
+      -
+      - .form-checkbox:indeterminate {
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e');
+      -   border-color: transparent;
+      -   background-color: currentColor;
+      -   background-size: 100% 100%;
+      -   background-position: center;
+      -   background-repeat: no-repeat;
+      - }
+      -
+      - .form-checkbox:indeterminate:hover {
+      -   border-color: transparent;
+      -   background-color: currentColor;
+      - }
+      -
+      - .form-checkbox:indeterminate:focus {
       -   border-color: transparent;
       -   background-color: currentColor;
       - }
@@ -524,15 +562,6 @@ it('should be possible to remove the `radio` component', async () => {
     "
 
       -
-      - .form-radio:checked {
-      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
-      -   border-color: transparent;
-      -   background-color: currentColor;
-      -   background-size: 100% 100%;
-      -   background-position: center;
-      -   background-repeat: no-repeat;
-      - }
-      -
       - .form-radio {
       -   appearance: none;
       -   color-adjust: exact;
@@ -555,6 +584,15 @@ it('should be possible to remove the `radio` component', async () => {
       -   --ring-offset-shadow: 0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff);
       -   --ring-shadow: 0 0 0 calc(2px + var(--ring-offset-width, 2px)) var(--ring-color, #2563eb);
       -   box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--box-shadow, 0 0 #0000);
+      - }
+      -
+      - .form-radio:checked {
+      -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
+      -   border-color: transparent;
+      -   background-color: currentColor;
+      -   background-size: 100% 100%;
+      -   background-position: center;
+      -   background-repeat: no-repeat;
       - }
       -
       - .form-radio:checked:hover {
@@ -925,8 +963,10 @@ it('should be possible to change the icon and icon color of a `checkbox` compone
             DEFAULT: {
               css: {
                 checkbox: {
-                  icon: (iconColor) => `<svg fill="${iconColor}" />`,
-                  iconColor: 'pink',
+                  '&:checked': {
+                    icon: (iconColor) => `<svg fill="${iconColor}" />`,
+                    iconColor: 'pink',
+                  },
                 },
               },
             },
@@ -953,7 +993,9 @@ it('should be possible to change the icon of a `checkbox` component', async () =
             DEFAULT: {
               css: {
                 checkbox: {
-                  icon: `<svg />`,
+                  '&:checked': {
+                    icon: `<svg />`,
+                  },
                 },
               },
             },
@@ -980,7 +1022,9 @@ it('should be possible to change the iconColor of a `checkbox` component', async
             DEFAULT: {
               css: {
                 checkbox: {
-                  iconColor: 'pink',
+                  '&:checked': {
+                    iconColor: 'pink',
+                  },
                 },
               },
             },
@@ -1007,8 +1051,10 @@ it('should be possible to change the icon and icon color of a `radio` component'
             DEFAULT: {
               css: {
                 radio: {
-                  icon: (iconColor) => `<svg fill="${iconColor}" />`,
-                  iconColor: 'pink',
+                  '&:checked': {
+                    icon: (iconColor) => `<svg fill="${iconColor}" />`,
+                    iconColor: 'pink',
+                  },
                 },
               },
             },
@@ -1035,7 +1081,9 @@ it('should be possible to change the icon of a `radio` component', async () => {
             DEFAULT: {
               css: {
                 radio: {
-                  icon: `<svg />`,
+                  '&:checked': {
+                    icon: `<svg />`,
+                  },
                 },
               },
             },
@@ -1062,7 +1110,9 @@ it('should be possible to change the iconColor of a `radio` component', async ()
             DEFAULT: {
               css: {
                 radio: {
-                  iconColor: 'pink',
+                  '&:checked': {
+                    iconColor: 'pink',
+                  },
                 },
               },
             },
@@ -1143,8 +1193,20 @@ it('should pull values from the user config for colors', async () => {
       
       ---
       
+      -   background-color: #fff;
+      -   border-color: #d1d5db;
+      +   background-color: #WHITE;
+      +   border-color: #GRAY300;
+      
+      ---
+      
       -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
       +   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23WHITE' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
+      
+      ---
+      
+      -   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e');
+      +   background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='%23WHITE' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e');
       
       ---
       
@@ -1157,13 +1219,6 @@ it('should pull values from the user config for colors', async () => {
       
       -   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
       +   background-image: url('data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23WHITE' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e');
-      
-      ---
-      
-      -   background-color: #fff;
-      -   border-color: #d1d5db;
-      +   background-color: #WHITE;
-      +   border-color: #GRAY300;
 
     "
   `)

@@ -35,7 +35,7 @@ export default () => (
               </div>
               <div>
                 <label className="inline-flex items-center">
-                  <input type="checkbox" className="form-checkbox" />
+                  <input type="checkbox" className="form-checkbox" defaultChecked={true} />
                   <span className="ml-2">Option 2</span>
                 </label>
               </div>

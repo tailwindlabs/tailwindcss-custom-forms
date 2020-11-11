@@ -130,9 +130,6 @@ module.exports = (theme) => ({
     borderColor: theme('colors.gray.300', colors.gray[300]),
     borderWidth: borderWidth.DEFAULT,
     borderRadius: borderRadius.DEFAULT,
-    iconColor: theme('colors.white', colors.white),
-    icon: (iconColor) =>
-      `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"/></svg>`,
     '&:focus': {
       outline: 'none',
       '--ring-offset-shadow': `0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff)`,
@@ -148,12 +145,33 @@ module.exports = (theme) => ({
       backgroundSize: '100% 100%',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
+      iconColor: theme('colors.white', colors.white),
+      icon: (iconColor) =>
+        `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"/></svg>`,
     },
     '&:checked:hover': {
       borderColor: 'transparent',
       backgroundColor: 'currentColor',
     },
     '&:checked:focus': {
+      borderColor: 'transparent',
+      backgroundColor: 'currentColor',
+    },
+    '&:indeterminate': {
+      borderColor: 'transparent',
+      backgroundColor: 'currentColor',
+      backgroundSize: '100% 100%',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      iconColor: theme('colors.white', colors.white),
+      icon: (iconColor) =>
+        `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="${iconColor}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h8"/></svg>`,
+    },
+    '&:indeterminate:hover': {
+      borderColor: 'transparent',
+      backgroundColor: 'currentColor',
+    },
+    '&:indeterminate:focus': {
       borderColor: 'transparent',
       backgroundColor: 'currentColor',
     },
@@ -173,9 +191,6 @@ module.exports = (theme) => ({
     backgroundColor: theme('colors.white', colors.white),
     borderColor: theme('colors.gray.300', colors.gray[300]),
     borderWidth: borderWidth.DEFAULT,
-    iconColor: theme('colors.white', colors.white),
-    icon: (iconColor) =>
-      `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>`,
     '&:focus': {
       outline: 'none',
       '--ring-offset-shadow': `0 0 0 var(--ring-offset-width, 2px) var(--ring-offset-color, #fff)`,
@@ -191,6 +206,9 @@ module.exports = (theme) => ({
       backgroundSize: '100% 100%',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
+      iconColor: theme('colors.white', colors.white),
+      icon: (iconColor) =>
+        `<svg viewBox="0 0 16 16" fill="${iconColor}" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>`,
     },
     '&:checked:hover': {
       borderColor: 'transparent',
