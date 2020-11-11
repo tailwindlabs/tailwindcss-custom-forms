@@ -10,30 +10,28 @@ function buildDistFile(filename) {
     fs.readFile(`./css/${filename}.css`, (err, css) => {
       if (err) throw err
 
-      return postcss([tailwind({
-        corePlugins: false,
-        plugins: [
-          require('../src/index.js')
-        ]
-      }), require('autoprefixer')])
+      return postcss([
+        tailwind({
+          corePlugins: false,
+          plugins: [require('../src/index.js')],
+        }),
+        require('autoprefixer'),
+      ])
         .process(css, {
           from: `./${filename}.css`,
           to: `./dist/${filename}.css`,
           map: { inline: false },
         })
-        .then(result => {
+        .then((result) => {
           fs.writeFileSync(`./dist/${filename}.css`, result.css)
-          if (result.map) {
-            fs.writeFileSync(`./dist/${filename}.css.map`, result.map)
-          }
           return result
         })
-        .then(result => {
+        .then((result) => {
           const minified = new CleanCSS().minify(result.css)
           fs.writeFileSync(`./dist/${filename}.min.css`, minified.styles)
         })
         .then(resolve)
-        .catch(error => {
+        .catch((error) => {
           console.log(error)
           reject()
         })
@@ -43,8 +41,6 @@ function buildDistFile(filename) {
 
 console.info('Building Tailwind!')
 
-Promise.all([
-  buildDistFile('custom-forms'),
-]).then(() => {
+Promise.all([buildDistFile('custom-forms')]).then(() => {
   console.log('Finished building CSS.')
 })
