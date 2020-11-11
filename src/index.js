@@ -58,10 +58,10 @@ module.exports = plugin(
     // Register components
     toPairs(flattenOptions(theme('customForms'))).forEach(([key, config]) => {
       const modifier = key === 'DEFAULT' ? '' : `-${key}`
-      toPairs(config.css)
+      toPairs(config)
         .filter(([, options]) => !isEmpty(options))
         .forEach(([key, options]) => components[key](options, modifier))
     })
   },
-  { theme: { customForms: (theme) => ({ DEFAULT: { css: defaultOptions(theme) } }) } }
+  { theme: { customForms: (theme) => ({ DEFAULT: defaultOptions(theme) }) } }
 )
