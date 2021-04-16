@@ -1,3 +1,7 @@
+**This project is not compatible with Tailwind CSS v2.0+ and has been deprecated in favor of [@tailwindcss/forms](https://github.com/tailwindlabs/forms)**. You can still use this if you are on Tailwind CSS v1.x, but we recommend updating to v2.0 and migrating to `@tailwindcss/forms` if possible.
+
+---
+
 # Tailwind CSS Custom Forms
 
 Out of the box, selects, checkboxes, and radios look awful in Tailwind and the only way to make them look better is with custom CSS.
